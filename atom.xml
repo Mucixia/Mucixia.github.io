@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-08T14:17:58.527Z</updated>
+    <updated>2021-08-09T08:23:23.962Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://mucixia.github.io/images/avatar.png</logo>
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
+    <entry>
+        <title type="html"><![CDATA[爬虫案列]]></title>
+        <id>https://mucixia.github.io/post/pa-chong-an-lie/</id>
+        <link href="https://mucixia.github.io/post/pa-chong-an-lie/">
+        </link>
+        <updated>2021-08-09T07:57:06.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="写在前面">写在前面：</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/391928824">爬虫基础</a><br>
+<a href="https://zhuanlan.zhihu.com/p/386867829">python基础</a><br>
+<a href="https://zhuanlan.zhihu.com/p/394388182/edit">爬虫案例</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Road of Python]]></title>
         <id>https://mucixia.github.io/post/the-road-of-python/</id>
