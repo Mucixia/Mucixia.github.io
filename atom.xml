@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-14T07:27:01.796Z</updated>
+    <updated>2021-08-14T07:44:18.480Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -38,9 +38,12 @@
         <link href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
         </link>
         <updated>2020-01-15T05:40:06.000Z</updated>
+        <summary type="html"><![CDATA[<h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
+]]></summary>
         <content type="html"><![CDATA[<h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
-<p>《船》<br>
-一只船孤独地泊在湖上<br>
+<!-- more -->
+<p>《船》</p>
+<p>一只船孤独地泊在湖上<br>
 既没有向往远方<br>
 亦无怀恋过往<br>
 只在原地静默<br>
@@ -48,7 +51,23 @@
 底下是静静的群山<br>
 船在群山之下<br>
 却又停在了群山之上<br>
-它去到了永不会去的地方</p>
+它去到了永不会去的地方<br>
+<img src="https://mucixia.github.io/post-images/1628926441921.jpg" alt="" loading="lazy"></p>
+<p>《十年后》</p>
+<p>十年后，二十年后，或许是论尽半生<br>
+于 半生的尽头<br>
+回望 记不起究竟多少年前<br>
+留下的痕迹<br>
+当时那一封 心书<br>
+已蒙上 光留下的灰尘<br>
+大概早已被当事人遗忘<br>
+只有纸墨勤勤恳恳还记着</p>
+<p>那些尘埃<br>
+仅此证明 时间走过<br>
+还有<br>
+这个世界<br>
+他也来过<br>
+2019-11-27</p>
 ]]></content>
     </entry>
     <entry>
