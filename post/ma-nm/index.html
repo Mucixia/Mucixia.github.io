@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Hello Gridea | 在高处，凝望世界流动
+    关于Gridea数据（文章，标签清空）的原因和解决方法 | 在高处，凝望世界流动
 </title>
 <link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629103459677">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -106,47 +106,35 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            Hello Gridea
+                            关于Gridea数据（文章，标签清空）的原因和解决方法
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2018-12-12</time>
+                            <time class="post-time">2021-08-16</time>
                             
-                                <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-info">
-                            #Gridea
-                        </a>
-                                
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://mucixia.github.io/post-images/hello-gridea.png')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://mucixia.github.io/post-images/ma-nm.png')"></div>
                             
                                 <div class="post-content">
-                                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                                    <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/16/G6EobCWkKingQBD.png" alt="68747470733a2f2f67767a2d626c6f672e6f73732d636e2d6368656e6764752e616c6979756e63732e636f6d2f696d672f32303230303330323137313331322e706e67.png" loading="lazy"></figure>
+<p><strong>原因</strong><br>
+今天我想更新一篇文章，在设置封面图的时候，选择了外链的方式打开，结果...Gridea的数据全没了，后来查明是因为在软件内填写封面图地址时，填入地址不合法，导致生成的md文件中“feature” 不合法。会导致软件无法读取数据。地址应该是url，而我用<a href="https://sm.ms/"></a>地址转换网站转换成markdown格式传上去了，就导致了后续的错误。</p>
+<p><strong>解决办法</strong><br>
+找到Gridea的存储路径，我的是C:\Users\hp\Documents\Gridea，里面找到/post文件夹，然后找到你最近一次修改过的文章，<img src="https://i.loli.net/2021/08/16/tO8KVWgdLuBM4s7.png" alt="QQ截图20210816164110.png" loading="lazy">,点进去将feature删除，<img src="https://i.loli.net/2021/08/16/E6FOu5vGilBXSZt.png" alt="QQ截图20210816164314.png" loading="lazy">保存后再次打开Gridea客户端即可。</p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
+                                <h3 class="post-title">
+                                    算法与数据结构
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -155,46 +143,32 @@
                 <!-- right -->
                 <div id="sidebar" class="main-container-right">
                     
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
-</ul>
-</li>
-</ul>
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629103459677)">
+        </div>
+        <h1 class="id_card-title">
+            在高处，凝望世界流动
+        </h1>
+        <h2 class="id_card-description">
+            不必等候炬火，我便是惟一的光
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
         </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
     </div>
     
-                            
+                                    
 
                 </div>
 

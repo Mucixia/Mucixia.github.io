@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-16T08:09:07.495Z</updated>
+    <updated>2021-08-16T08:44:27.262Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://mucixia.github.io/images/avatar.png</logo>
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
+    <entry>
+        <title type="html"><![CDATA[关于Gridea数据（文章，标签清空）的原因和解决方法]]></title>
+        <id>https://mucixia.github.io/post/ma-nm/</id>
+        <link href="https://mucixia.github.io/post/ma-nm/">
+        </link>
+        <updated>2021-08-16T08:10:20.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/16/G6EobCWkKingQBD.png" alt="68747470733a2f2f67767a2d626c6f672e6f73732d636e2d6368656e6764752e616c6979756e63732e636f6d2f696d672f32303230303330323137313331322e706e67.png" loading="lazy"></figure>
+<p><strong>原因</strong><br>
+今天我想更新一篇文章，在设置封面图的时候，选择了外链的方式打开，结果...Gridea的数据全没了，后来查明是因为在软件内填写封面图地址时，填入地址不合法，导致生成的md文件中“feature” 不合法。会导致软件无法读取数据。地址应该是url，而我用<a href="https://sm.ms/"></a>地址转换网站转换成markdown格式传上去了，就导致了后续的错误。</p>
+<p><strong>解决办法</strong><br>
+找到Gridea的存储路径，我的是C:\Users\hp\Documents\Gridea，里面找到/post文件夹，然后找到你最近一次修改过的文章，<img src="https://i.loli.net/2021/08/16/tO8KVWgdLuBM4s7.png" alt="QQ截图20210816164110.png" loading="lazy">,点进去将feature删除，<img src="https://i.loli.net/2021/08/16/E6FOu5vGilBXSZt.png" alt="QQ截图20210816164314.png" loading="lazy">保存后再次打开Gridea客户端即可。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[算法与数据结构]]></title>
+        <id>https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/</id>
+        <link href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
+        </link>
+        <updated>2021-08-16T08:08:16.000Z</updated>
+        <content type="html"><![CDATA[<p>那可就是差不多，</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[爬虫案列]]></title>
         <id>https://mucixia.github.io/post/pa-chong-an-lie/</id>
