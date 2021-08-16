@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-16T08:57:02.237Z</updated>
+    <updated>2021-08-16T11:22:43.138Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -29,7 +29,65 @@
         <link href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
         </link>
         <updated>2021-08-16T08:08:16.000Z</updated>
-        <content type="html"><![CDATA[<p>那可就是差不多，</p>
+        <content type="html"><![CDATA[<blockquote>
+<p>“程序=数据结构+算法”<br>
+——Pascal语言之父-Nicklaus Wirth</p>
+</blockquote>
+<h2 id="一-绪论">一、绪论</h2>
+<h3 id="11-研究内容">1.1 研究内容</h3>
+<p>具体问题抽象为<strong>数学模型</strong>-&gt;分析问题、<strong>提取操作对象</strong>、<strong>找出操作对象间的关系</strong>、用<strong>数学语言</strong>描述。其中，操作对象和对象间的关系也就是数据结构。如何根据关系状态来解决问题用的方法就是算法。📐📏</p>
+<h3 id="12-基本概念于术语">1.2  基本概念于术语</h3>
+<h4 id="1数据">（1）数据</h4>
+<p>数据是能输入计算机且能被计算机处理的<strong>各种符号的集合</strong>。包括数值型数据：int、float等；非数值型数据：文字、图像、声音等。</p>
+<h4 id="2数据元素与数据项">（2）数据元素与数据项</h4>
+<p>数据元素是<strong>数据的基本单位</strong>，在计算机程序中通常作为一个整体进行考虑和处理；数据项是<strong>数据元素不可分割的最小单位</strong>。比如，学生李华的姓名、学号、年龄等是一个数据元素，其中的姓名就是一个数据项。</p>
+<h4 id="3数据对象">（3）数据对象</h4>
+<p>数据对象是<strong>性质相同的****数据元素的集合</strong>，是数据集合的子集。比如整数集合，字母集合。<br>
+我画了如下一张图来表示他们之间的关系👇📣：<br>
+<img src="https://i.loli.net/2021/08/16/36fNPOAxw2eSXKT.jpg" alt="QQ图片20210816181239.jpg" loading="lazy"></p>
+<h4 id="4数据结构">（4）数据结构</h4>
+<p>数据结构是带结构的数据元素的集合；结构是指数据元素之间的关系。<br>
+数据结构的分类：</p>
+<ol>
+<li><strong>逻辑结构</strong>：数据元素之间的<strong>逻辑关系</strong></li>
+<li><strong>物理（存储）结构</strong>：数据元素及其关系在计算机内存中的表示（又称映像）</li>
+<li><strong>运算和实现</strong>：对数据元素的操作</li>
+</ol>
+<p><strong>逻辑结构和存储结构的关系：</strong></p>
+<ol>
+<li>存储结构是逻辑关系的映像与元素本身之间的映像</li>
+<li>逻辑结构是数据结构的抽象，存储结构是数据结构的实现</li>
+<li>两者建立了数据元素之间的结构关系<br>
+<strong>逻辑结构的种类：</strong></li>
+<li>线性结构：最多只有一个直接前驱和直接后继</li>
+<li>非线性结构：可能有多个直接前驱和直接后继<br>
+<strong>存储结构的分类：</strong></li>
+<li>顺序结构：用一组<strong>连续</strong>的存储单元<strong>依次</strong>存储数据元素，数据元素之间的逻辑关系由元素的存储位置决定的。C语言中用<strong>数组</strong>表示</li>
+<li>链式存储：用一组<strong>任意</strong>的存储单元存储数据元素，数据元素之间的逻辑关系用<strong>指针</strong>来表示。</li>
+<li>索引存储：在存储信息的同时，还建立了附加的索引表。</li>
+<li>散列存储：根据结点的关键字直接计算出该结点的存储地址。</li>
+</ol>
+<h4 id="5数据类型">（5）数据类型</h4>
+<ol>
+<li>数据类型<br>
+包括int、float等基本数据类型，数字、结构、共用体等构造数据类型，指针。<br>
+数据类型是一组性质相同的<strong>值的集合</strong>和定义于这个值集合上的<strong>一组操作</strong>的总称。</li>
+<li>抽象数据类型（ADT）<br>
+形式定义：（D、S、P）三元组表示，<br>
+D:数据对象； S：对象的关系集合； P：对D的基本操作集合<br>
+定义格式：<br>
+ADT 抽象数据类型名{<br>
+数据对象：定义<br>
+数据关系：定义<br>
+基本操作：定义<br>
+} ADT 抽象数据类型名<br>
+其中基本操作的定义内容为：<br>
+参数表：赋值参数，为操作提供输入值；引用参数：用连字符&amp;表示，返回操作结果、<br>
+初始条件和操作结果。<br>
+<strong>概念小结：</strong><br>
+<img src="https://i.loli.net/2021/08/16/YAMOEsUzSRwgKcn.jpg" alt="QQ图片20210816191217.jpg" loading="lazy"></li>
+</ol>
+<h3 id="算法与算法分析">算法与算法分析</h3>
 ]]></content>
     </entry>
     <entry>
