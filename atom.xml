@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-17T12:13:41.007Z</updated>
+    <updated>2021-08-17T17:25:36.642Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -62,7 +62,7 @@
 <li>线性结构：最多只有一个直接前驱和直接后继</li>
 <li>非线性结构：可能有多个直接前驱和直接后继<br>
 <strong>存储结构的分类：</strong></li>
-<li>顺序结构：用一组<strong>连续</strong>的存储单元<strong>依次</strong>存储数据元素，数据元素之间的逻辑关系由元素的存储位置决定的。C语言中用<strong>数组</strong>表示</li>
+<li>顺序存储：用一组<strong>连续</strong>的存储单元<strong>依次</strong>存储数据元素，数据元素之间的逻辑关系由元素的存储位置决定的。C语言中用<strong>数组</strong>表示</li>
 <li>链式存储：用一组<strong>任意</strong>的存储单元存储数据元素，数据元素之间的逻辑关系用<strong>指针</strong>来表示。</li>
 <li>索引存储：在存储信息的同时，还建立了附加的索引表。</li>
 <li>散列存储：根据结点的关键字直接计算出该结点的存储地址。</li>
@@ -106,13 +106,28 @@ ADT 抽象数据类型名{<br>
 <h4 id="133-算法效率">1.3.3 算法效率</h4>
 <p>算法的复杂度分析是<strong>事前估计</strong>，考虑其<strong>最坏情况</strong>，用大写O（f（n））表示。</p>
 <h5 id="1时间复杂度">(1)时间复杂度</h5>
-<p>算法运行时间= （语句频度）每条语句的执行次数*执行时间之和<br>
+<p>算法运行时间= （语句频度）每条语句的<strong>执行次数</strong>执行时间之和<br>
 —&gt;单次执行时间由机器决定，所以<strong>算法运行时间只讨论语句频度</strong><br>
 <strong>如何计算时间复杂度：</strong><br>
 <strong>计算规则</strong>：忽略常数、忽略系数、只取最高次项。<br>
-<strong>计算方法</strong>：<br>
-常见时间复杂度：</p>
+<strong>计算流程</strong>：算法中<strong>基本语句重复执行的次数</strong>是<strong>问题规模n</strong>的某个函数f（n），算法的时间量度记作：T(n)=O(f(n)),O(f(n))称为<strong>算法的渐进时间复杂度</strong>（O是数量级的符号），简称为<strong>时间复杂度</strong>。<br>
+首先，找到基本语句（即执行次数最多的语句），<br>
+还有关于问题规模n的函数f（n）：</p>
 <ul>
+<li>排序：n为记录数</li>
+<li>矩阵：n为矩阵的阶数</li>
+<li>多项式：n为项数</li>
+<li>集合：n为元素个数</li>
+<li>树：n为树的结点个数</li>
+<li>图：n为图的顶点数或边数<br>
+最后用O表示<br>
+<strong>计算方法</strong>：<br>
+<strong>定理一</strong>:找最高次项<img src="https://i.loli.net/2021/08/18/16CyPoLYbAHQrBX.jpg" alt="QQ图片20210818004811.jpg" loading="lazy"><br>
+<strong>例子</strong>：</li>
+<li>for循环：嵌套几个for循环，时间复杂度就是n的多少次方</li>
+<li>关于log2n的问题</li>
+<li>...<br>
+常见时间复杂度：</li>
 <li>执行常数次操作：O(1)</li>
 <li>二分查找：O（logN）</li>
 <li>线性查找：O（N）</li>
@@ -120,6 +135,17 @@ ADT 抽象数据类型名{<br>
 <li>选择排序、插入排序：O（N^2）</li>
 <li>搜索算法：O（2^N）</li>
 </ul>
+<h2 id="二-线性表">二、线性表</h2>
+<p>逻辑结构分为线性结构和非线性结构，其中线性结构有线性表、栈、队列、字符串、数组、广义表等。</p>
+<h3 id="11-线性表的定义及特点">1.1 线性表的定义及特点</h3>
+<h4 id="1定义">（1）定义</h4>
+<p>线性表是具有<strong>相同特性</strong>的数据元素的<strong>有限序列</strong>,记作（a1,a2,a3, a4, a5, a6......an），其中a1为线性起点，an为线性终点，a3的直接前驱是a2，直接后继是a4；数据元素的个数n叫表长，n=0是叫空表。</p>
+<h4 id="2特点">(2)特点</h4>
+<ol>
+<li>开始节点：有且只有一个，没有直接前驱，有且只有一个直接后继</li>
+<li>终端节点：有且只有一个，没有直接后继，有且只有一个直接前驱</li>
+<li>中间节点：有且只有一个直接前驱，有且只有一个直接后继</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
@@ -153,7 +179,7 @@ ADT 抽象数据类型名{<br>
 ]]></summary>
         <content type="html"><![CDATA[<h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
 <!-- more -->
-<p><strong>《船》</strong></p>
+<p><strong>《在山上的船》</strong></p>
 <p>一只船孤独地泊在湖上<br>
 既没有向往远方<br>
 亦无怀恋过往<br>
@@ -230,7 +256,7 @@ part02<br>
 壮年迷茫<br>
 奢求桃花源般的容身圣境<br>
 老年暗伤<br>
-回忆草蛇灰线似地可怜时光<br>
+回忆草蛇灰线似可怜时光<br>
 <img src="https://i.loli.net/2021/08/14/VRpNvMO38ysq7E1.jpg" alt="pexels-krunal-parmar-965663.jpg" loading="lazy"></p>
 <p><strong>《人生的一种》</strong><br>
 生命中平凡<br>
@@ -239,6 +265,14 @@ part02<br>
 周而复始<br>
 生而不息<br>
 <img src="https://i.loli.net/2021/08/14/MbcRIPYkWgToZCJ.jpg" alt="pexels-cats-coming-707582.jpg" loading="lazy"></p>
+<p><strong>《归向》</strong><br>
+在高处 凝望世界流动<br>
+为归向每一个虚弱地方<br>
+行人揣着欲望涌进街巷<br>
+人车停在线前渴望远方<br>
+可他们 终会重聚于某点<br>
+周而往复 往复不息<br>
+<img src="https://i.loli.net/2021/08/17/iPOWUb4Rlu3dIgV.jpg" alt="pexels-paweł-l-1309687.jpg" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
