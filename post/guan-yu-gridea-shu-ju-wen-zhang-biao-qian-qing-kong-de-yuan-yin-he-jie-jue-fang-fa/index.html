@@ -1,183 +1,225 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>关于Gridea数据（文章，标签清空）的原因和解决方法 | 在高处，凝望世界流动</title>
-<meta name="description" content="不必等候炬火，我便是惟一的光">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629201899815">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    关于Gridea数据（文章，标签清空）的原因和解决方法 | 在高处，凝望世界流动
+</title>
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629202110586">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://mucixia.github.io/styles/main.css">
-
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://mucixia.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://mucixia.github.io">
-        <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629201899815" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://mucixia.github.io">
-        <h1 class="site-title">在高处，凝望世界流动</h1>
-      </a>
+                    
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://mucixia.github.io">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629202110586" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    在高处，凝望世界流动
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">关于Gridea数据（文章，标签清空）的原因和解决方法</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2021-08-16</span>
-            
-          </div>
-          <div class="post-content">
-            <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/16/G6EobCWkKingQBD.png" alt="68747470733a2f2f67767a2d626c6f672e6f73732d636e2d6368656e6764752e616c6979756e63732e636f6d2f696d672f32303230303330323137313331322e706e67.png" loading="lazy"></figure>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            关于Gridea数据（文章，标签清空）的原因和解决方法
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-08-16</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/16/G6EobCWkKingQBD.png" alt="68747470733a2f2f67767a2d626c6f672e6f73732d636e2d6368656e6764752e616c6979756e63732e636f6d2f696d672f32303230303330323137313331322e706e67.png" loading="lazy"></figure>
 <p><strong>原因</strong><br>
 今天我想更新一篇文章，在设置封面图的时候，选择了外链的方式打开，结果...Gridea的数据全没了，后来查明是因为在软件内填写封面图地址时，填入地址不合法，导致生成的md文件中“feature” 不合法。会导致软件无法读取数据。地址应该是url，而我用<a href="https://sm.ms/"></a>地址转换网站转换成markdown格式传上去了，就导致了后续的错误。</p>
 <p><strong>解决办法</strong><br>
 找到Gridea的存储路径，我的是C:\Users\hp\Documents\Gridea，里面找到/post文件夹，然后找到你最近一次修改过的文章，<img src="https://i.loli.net/2021/08/16/tO8KVWgdLuBM4s7.png" alt="QQ截图20210816164110.png" loading="lazy">,点进去将feature删除，<img src="https://i.loli.net/2021/08/16/E6FOu5vGilBXSZt.png" alt="QQ截图20210816164314.png" loading="lazy">保存后再次打开Gridea客户端即可。</p>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
+                                <h3 class="post-title">
+                                    算法与数据结构
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629202110586)">
         </div>
+        <h1 class="id_card-title">
+            在高处，凝望世界流动
+        </h1>
+        <h2 class="id_card-description">
+            不必等候炬火，我便是惟一的光
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                <a href="https://github.com/Mucixia" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
+                
+                    <!-- twitter -->
+                    
+                            <!-- zhihu -->
+                            
+                                <a href="https://www.zhihu.com/people/liu-nian-19-58" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-zhihu"></i></a>
+                                
+                                    <!-- facebook -->
+                                    
 
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
-              <h3 class="post-title">
-                下一篇：算法与数据结构
-              </h3>
-            </a>
-          </div>
-          
-      </div>
+        </div>
+    </div>
+    
+                                    
 
-      
-        
-          <div id="gitalk-container"></div>
-        
+                </div>
 
-        
-      
 
-      <div class="site-footer">
-  <div class="slogan">不必等候炬火，我便是惟一的光</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://mucixia.github.io/atom.xml" target="_blank">RSS</a>
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://mucixia.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    </div>
     <script>
-
-      var gitalk = new Gitalk({
-        clientID: '0c52917495473d30a4b8',
-        clientSecret: '9a3f23dff868824b7ca4b492734eaefd38b9b34b',
-        repo: 'mucixia.github.io',
-        owner: 'mucixia',
-        admin: ['mucixia'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
     </script>
-  
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '0c52917495473d30a4b8',
+            clientSecret: '9a3f23dff868824b7ca4b492734eaefd38b9b34b',
+            repo: 'mucixia.github.io',
+            owner: 'mucixia',
+            admin: ['mucixia'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
 
-  
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
 
+                    
+                                
+</body>
 
-
-
-  </body>
 </html>
