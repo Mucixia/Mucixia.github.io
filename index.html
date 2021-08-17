@@ -1,435 +1,277 @@
-<html>
 
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    在高处，凝望世界流动
-</title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629201774560">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>在高处，凝望世界流动</title>
+<meta name="description" content="不必等候炬火，我便是惟一的光">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629201899815">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://mucixia.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://mucixia.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-</head>
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629201774560" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    在高处，凝望世界流动
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/about" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://mucixia.github.io">
+        <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629201899815" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://mucixia.github.io">
+        <h1 class="site-title">在高处，凝望世界流动</h1>
+      </a>
     </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-container main-container">
-                <div id="content" class="main-container-left">
-                    
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
         
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/guan-yu-gridea-shu-ju-wen-zhang-biao-qian-qing-kong-de-yuan-yin-he-jie-jue-fang-fa/">
-                        关于Gridea数据（文章，标签清空）的原因和解决方法
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2021-08-16</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            
-原因
-今天我想更新一篇文章，在设置封面图的时候，选择了外链的方式打开，结果...Gridea的数据全没了，后来查明是因为在软件内填写封面图地址时，填入地址不合法，导致生成的md文件中“feature” 不合法。会导致软件无法读取数据。地址应该是url，而我用地址转换网站转换成markdown格式传上去了，就导致了后续的错误。
-解决办法
-找到Gridea的存储路径，我的是C:\Users\hp\Documents\Gridea，里面找到/post文件夹，然后找到你最近一次修改过的文章，,点进去将feature删除，保存后再次打开Gridea客户端即可。
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/guan-yu-gridea-shu-ju-wen-zhang-biao-qian-qing-kong-de-yuan-yin-he-jie-jue-fang-fa/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
-                        算法与数据结构
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2021-08-16</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                        <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/" class="post-feature-image" style="background-image:url(https://mucixia.github.io/post-images/suan-fa-yu-shu-ju-jie-gou.jpg) ">
-                        </a>
-                        
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            
-“程序=数据结构+算法”
-——Pascal语言之父-Nicklaus Wirth
-
-一、绪论
-1.1 研究内容
-具体问题抽象为数学模型-&amp;gt;分析问题、提取操作对象、找出操作对象间的关系、用数学语言描述。其中，操作对象和对象间的关系也就是数据结构。如何根据关系状态来解决问题用的方法就是算法。📐📏
-1.2  基本概念于术语
-（1）数据
-数据是能输入计算机且能被计算机处理的各种符号的集合。包括数值型数据：int、float等；非数值型数据：文字、图像、声音等。
-（2）数据元素与数据项
-数据元素是数据的基本单位，在计算机程序中通常作为一个整体进行考虑和处理；数据项是数据元素不可分割的最小单位。比如，学生李华的姓名、学号、年龄等是一个数据元素，其中的姓名就是一个数据项。
-（3）数据对象
-数据对象是性质相同的****数据元素的集合，是数据集合的子集。比如整数集合，字母集合。
-我画了如下一张图来表示他们之间的关系👇📣：
-
-（4）数据结构
-数据结构是带结构的数据元素的集合；结构是指数据元素之间的关系。
-数据结构的分类：
-
-逻辑结构：数据元素之间的逻辑关系
-物理（存储）结构：数据元素及其关系在计算机内存中的表示（又称映像）
-运算和实现：对数据元素的操作
-
-逻辑结构和存储结构的关系：
-
-存储结构是逻辑关系的映像与元素本身之间的映像
-逻辑结构是数据结构的抽象，存储结构是数据结构的实现
-两者建立了数据元素之间的结构关系
-逻辑结构的种类：
-线性结构：最多只有一个直接前驱和直接后继
-非线性结构：可能有多个直接前驱和直接后继
-存储结构的分类：
-顺序结构：用一组连续的存储单元依次存储数据元素，数据元素之间的逻辑关系由元素的存储位置决定的。C语言中用数组表示
-链式存储：用一组任意的存储单元存储数据元素，数据元素之间的逻辑关系用指针来表示。
-索引存储：在存储信息的同时，还建立了附加的索引表。
-散列存储：根据结点的关键字直接计算出该结点的存储地址。
-
-（5）数据类型
-
-数据类型
-包括int、float等基本数据类型，数字、结构、共用体等构造数据类型，指针。
-数据类型是一组性质相同的值的集合和定义于这个值集合上的一组操作的总称。
-抽象数据类型（ADT）
-形式定义：（D、S、P）三元组表示，
-D:数据对象； S：对象的关系集合； P：对D的基本操作集合
-定义格式：
-ADT 抽象数据类型名{
-数据对象：定义
-数据关系：定义
-基本操作：定义
-} ADT 抽象数据类型名
-其中基本操作的定义内容为：
-参数表：赋值参数，为操作提供输入值；引用参数：用连字符&amp;amp;表示，返回操作结果、
-初始条件和操作结果。
-
-概念小结：
-
-1.3 算法与算法分析
-1.3.1 算法特性：
-
-有穷性
-确定性
-可行性
-输入
-输出
-
-1.3.2 设计要求
-
-正确性
-可读性
-健壮性
-高效性
-
-1.3.3 算法效率
-算法的复杂度分析是事前估计，考虑其最坏情况，用大写O（f（n））表示。
-(1)时间复杂度
-算法运行时间= （语句频度）每条语句的执行次数*执行时间之和
-—&amp;gt;单次执行时间由机器决定，所以算法运行时间只讨论语句频度
-如何计算时间复杂度：
-计算规则：忽略常数、忽略系数、只取最高次项。
-计算方法：
-常见时间复杂度：
-
-执行常数次操作：O(1)
-二分查找：O（logN）
-线性查找：O（N）
-归并排序、快速排序：O（NlogN）
-选择排序、插入排序：O（N^2）
-搜索算法：O（2^N）
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
 
 
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/pa-chong-an-lie/">
-                        爬虫案列
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2021-08-09</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            写在前面：
-爬虫基础
-python基础
-爬虫案例
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/pa-chong-an-lie/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/the-road-of-python/">
-                        The Road of Python
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2021-08-08</time>
-                    
-                        <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-other_1">
-            #Python
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                        <a href="https://mucixia.github.io/post/the-road-of-python/" class="post-feature-image" style="background-image:url(https://mucixia.github.io/post-images/the-road-of-python.jpg) ">
-                        </a>
-                        
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            我的python 之旅 记录与心得 - 流年的文章 - 知乎
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/the-road-of-python/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
-                        简单的记录
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2020-01-15</time>
-                    
-                        <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-other_3">
-            #心情
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                        <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/" class="post-feature-image" style="background-image:url(https://mucixia.github.io/post-images/jian-dan-de-ji-lu.jpg) ">
-                        </a>
-                        
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/hello-gridea/">
-                        Hello Gridea
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2018-12-12</time>
-                    
-                        <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_3">
-            #Gridea
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                        <a href="https://mucixia.github.io/post/hello-gridea/" class="post-feature-image" style="background-image:url(https://mucixia.github.io/post-images/hello-gridea.png) ">
-                        </a>
-                        
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/hello-gridea/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-                <!-- 翻页 -->
-                
-                </div>
-                <!--  -->
-                <div class="main-container-middle"></div>
-                <!--  -->
-                <div id="sidebar" class="main-container-right">
-
-                    <!-- 个人信息 -->
-                    
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629201774560)">
-        </div>
-        <h1 class="id_card-title">
-            在高处，凝望世界流动
-        </h1>
-        <h2 class="id_card-description">
-            不必等候炬火，我便是惟一的光
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                <a href="https://github.com/Mucixia" target="_blank" rel="noopener noreferrer"><i
-                class="fa fa-github"></i></a>
-                
-                    <!-- twitter -->
-                    
-                            <!-- zhihu -->
-                            
-                                <a href="https://www.zhihu.com/people/liu-nian-19-58" target="_blank" rel="noopener noreferrer"><i
-                class="fa fa-zhihu"></i></a>
-                                
-                                    <!-- facebook -->
-                                    
-
-        </div>
+      <div class="content-container">
+        
+        
+<section class="post-item">
+    <div class="content">
+      <a href="https://mucixia.github.io/post/guan-yu-gridea-shu-ju-wen-zhang-biao-qian-qing-kong-de-yuan-yin-he-jie-jue-fang-fa/">
+        <h2 class="post-title">关于Gridea数据（文章，标签清空）的原因和解决方法</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-08-16</span>
+        
+      </div>
     </div>
     
+  </section>
 
-                        <!-- 公告栏 -->
-                        
+<section class="post-item">
+    <div class="content">
+      <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
+        <h2 class="post-title">算法与数据结构</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-08-16</span>
+        
+      </div>
+    </div>
+    
+      <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
+        <div class="feature-container" style="background-image: url('https://mucixia.github.io/post-images/suan-fa-yu-shu-ju-jie-gou.jpg')">
+        </div>
+      </a>
+    
+  </section>
 
-                </div>
-            </div>
+<section class="post-item">
+    <div class="content">
+      <a href="https://mucixia.github.io/post/pa-chong-an-lie/">
+        <h2 class="post-title">爬虫案列</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-08-09</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://mucixia.github.io/post/the-road-of-python/">
+        <h2 class="post-title">The Road of Python</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-08-08</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://mucixia.github.io/tag/np7UkmaTS/">
+                Python
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://mucixia.github.io/post/the-road-of-python/">
+        <div class="feature-container" style="background-image: url('https://mucixia.github.io/post-images/the-road-of-python.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
+        <h2 class="post-title">简单的记录</h2>
+      </a>
+      <div class="post-abstract">
+        <h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2020-01-15</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://mucixia.github.io/tag/tATJ1Mcio/">
+                心情
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
+        <div class="feature-container" style="background-image: url('https://mucixia.github.io/post-images/jian-dan-de-ji-lu.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://mucixia.github.io/post/hello-gridea/">
+        <h2 class="post-title">Hello Gridea</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-12-12</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://mucixia.github.io/tag/CzEDw4Xfz/">
+                Gridea
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://mucixia.github.io/post/hello-gridea/">
+        <div class="feature-container" style="background-image: url('https://mucixia.github.io/post-images/hello-gridea.png')">
+        </div>
+      </a>
+    
+  </section>
 
 
-
-            <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://mucixia.github.io/atom.xml" target="_blank">RSS</a>
+<div class="pagination-container">
+  
+  
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
+
+      </div>
+
+      <div class="site-footer">
+  <div class="slogan">不必等候炬火，我便是惟一的光</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://mucixia.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
 
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-</body>
+    <script type="application/javascript">
 
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
 </html>
