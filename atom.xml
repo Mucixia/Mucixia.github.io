@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-16T13:56:23.489Z</updated>
+    <updated>2021-08-17T05:02:43.409Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -33,7 +33,28 @@
 <p>“程序=数据结构+算法”<br>
 ——Pascal语言之父-Nicklaus Wirth</p>
 </blockquote>
-<h2 id="一-绪论">一、绪论</h2>
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#11-%E7%A0%94%E7%A9%B6%E5%86%85%E5%AE%B9">1.1 研究内容</a></li>
+<li><a href="#12-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%BA%8E%E6%9C%AF%E8%AF%AD">1.2  基本概念于术语</a>
+<ul>
+<li><a href="#1%E6%95%B0%E6%8D%AE">（1）数据</a></li>
+<li><a href="#2%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0%E4%B8%8E%E6%95%B0%E6%8D%AE%E9%A1%B9">（2）数据元素与数据项</a></li>
+<li><a href="#3%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1">（3）数据对象</a></li>
+<li><a href="#4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">（4）数据结构</a></li>
+<li><a href="#5%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">（5）数据类型</a></li>
+</ul>
+</li>
+<li><a href="#13-%E7%AE%97%E6%B3%95%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90">1.3 算法与算法分析</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+##  一、绪论</p>
 <h3 id="11-研究内容">1.1 研究内容</h3>
 <p>具体问题抽象为<strong>数学模型</strong>-&gt;分析问题、<strong>提取操作对象</strong>、<strong>找出操作对象间的关系</strong>、用<strong>数学语言</strong>描述。其中，操作对象和对象间的关系也就是数据结构。如何根据关系状态来解决问题用的方法就是算法。📐📏</p>
 <h3 id="12-基本概念于术语">1.2  基本概念于术语</h3>
@@ -83,11 +104,11 @@ ADT 抽象数据类型名{<br>
 } ADT 抽象数据类型名<br>
 其中基本操作的定义内容为：<br>
 参数表：赋值参数，为操作提供输入值；引用参数：用连字符&amp;表示，返回操作结果、<br>
-初始条件和操作结果。<br>
-<strong>概念小结：</strong><br>
-<img src="https://i.loli.net/2021/08/16/YAMOEsUzSRwgKcn.jpg" alt="QQ图片20210816191217.jpg" loading="lazy"></li>
+初始条件和操作结果。</li>
 </ol>
-<h3 id="算法与算法分析">算法与算法分析</h3>
+<p><strong>概念小结：</strong><br>
+<img src="https://i.loli.net/2021/08/16/YAMOEsUzSRwgKcn.jpg" alt="QQ图片20210816191217.jpg" loading="lazy"></p>
+<h3 id="13-算法与算法分析">1.3 算法与算法分析</h3>
 ]]></content>
     </entry>
     <entry>
