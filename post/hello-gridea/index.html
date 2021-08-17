@@ -7,7 +7,7 @@
 <title>
     Hello Gridea | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629181667433">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629195468666">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629181667433" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629195468666" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -177,6 +177,7 @@
                 var sidebar_alis = $('.markdownIt-TOC a');
                 /*获取滚动条到顶部的距离*/
                 var scroll_height = $(window).scrollTop();
+                var a = $('site-title h1');
                 for (var i = 0; i < alis.length; i++) {
                     /*获取锚点集合中的元素分别到顶点的距离*/
                     var a_height = $(alis[i]).offset().top;
@@ -184,6 +185,7 @@
                         /*高亮显示*/
                         sidebar_alis.removeClass('on');
                         $(sidebar_alis[i]).addClass('on');
+                        a.innerHTML = sidebar_alis[1].innerHTML;
                     }
                 }
             }

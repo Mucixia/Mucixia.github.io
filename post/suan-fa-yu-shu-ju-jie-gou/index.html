@@ -7,7 +7,7 @@
 <title>
     算法与数据结构 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629181667433">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629195468666">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629181667433" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629195468666" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -175,6 +175,38 @@ ADT 抽象数据类型名{<br>
 <p><strong>概念小结：</strong><br>
 <img src="https://i.loli.net/2021/08/16/YAMOEsUzSRwgKcn.jpg" alt="QQ图片20210816191217.jpg" loading="lazy"></p>
 <h3 id="13-算法与算法分析">1.3 算法与算法分析</h3>
+<h4 id="131-算法特性">1.3.1 算法特性：</h4>
+<ol>
+<li>有穷性</li>
+<li>确定性</li>
+<li>可行性</li>
+<li>输入</li>
+<li>输出</li>
+</ol>
+<h4 id="132-设计要求">1.3.2 设计要求</h4>
+<ol>
+<li>正确性</li>
+<li>可读性</li>
+<li>健壮性</li>
+<li><strong>高效性</strong></li>
+</ol>
+<h4 id="133-算法效率">1.3.3 算法效率</h4>
+<p>算法的复杂度分析是<strong>事前估计</strong>，考虑其<strong>最坏情况</strong>，用大写O（f（n））表示。</p>
+<h5 id="1时间复杂度">(1)时间复杂度</h5>
+<p>算法运行时间= （语句频度）每条语句的执行次数*执行时间之和<br>
+—&gt;单次执行时间由机器决定，所以<strong>算法运行时间只讨论语句频度</strong><br>
+<strong>如何计算时间复杂度：</strong><br>
+<strong>计算规则</strong>：忽略常数、忽略系数、只取最高次项。<br>
+<strong>计算方法</strong>：<br>
+常见时间复杂度：</p>
+<ul>
+<li>执行常数次操作：O(1)</li>
+<li>二分查找：O（logN）</li>
+<li>线性查找：O（N）</li>
+<li>归并排序、快速排序：O（NlogN）</li>
+<li>选择排序、插入排序：O（N^2）</li>
+<li>搜索算法：O（2^N）</li>
+</ul>
 
                                 </div>
                     </article>
@@ -217,7 +249,17 @@ ADT 抽象数据类型名{<br>
 <li><a href="#5%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">（5）数据类型</a></li>
 </ul>
 </li>
-<li><a href="#13-%E7%AE%97%E6%B3%95%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90">1.3 算法与算法分析</a></li>
+<li><a href="#13-%E7%AE%97%E6%B3%95%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90">1.3 算法与算法分析</a>
+<ul>
+<li><a href="#131-%E7%AE%97%E6%B3%95%E7%89%B9%E6%80%A7">1.3.1 算法特性：</a></li>
+<li><a href="#132-%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82">1.3.2 设计要求</a></li>
+<li><a href="#133-%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87">1.3.3 算法效率</a>
+<ul>
+<li><a href="#1%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6">(1)时间复杂度</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -233,6 +275,7 @@ ADT 抽象数据类型名{<br>
                 var sidebar_alis = $('.markdownIt-TOC a');
                 /*获取滚动条到顶部的距离*/
                 var scroll_height = $(window).scrollTop();
+                var a = $('site-title h1');
                 for (var i = 0; i < alis.length; i++) {
                     /*获取锚点集合中的元素分别到顶点的距离*/
                     var a_height = $(alis[i]).offset().top;
@@ -240,6 +283,7 @@ ADT 抽象数据类型名{<br>
                         /*高亮显示*/
                         sidebar_alis.removeClass('on');
                         $(sidebar_alis[i]).addClass('on');
+                        a.innerHTML = sidebar_alis[1].innerHTML;
                     }
                 }
             }
