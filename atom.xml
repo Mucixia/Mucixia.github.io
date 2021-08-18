@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-17T17:29:12.564Z</updated>
+    <updated>2021-08-18T10:19:58.479Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://mucixia.github.io/images/avatar.png</logo>
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言-关于数组、结构、指针]]></title>
+        <id>https://mucixia.github.io/post/c-yu-yan-guan-yu-shu-zu-jie-gou-zhi-zhen/</id>
+        <link href="https://mucixia.github.io/post/c-yu-yan-guan-yu-shu-zu-jie-gou-zhi-zhen/">
+        </link>
+        <updated>2021-08-18T05:04:25.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-数组">一、数组</h2>
+<h3 id="1-定义">1. 定义</h3>
+<p>数组是一组<strong>相同类型</strong>元素的集合。<strong>创建方式</strong>为：<br>
+<code>type_t arr_name [const_n]</code> ,如：</p>
+<blockquote>
+<p>int arr[5]<br>
+char arr[3]<br>
+double arr[10]</p>
+</blockquote>
+<h3 id="2初始化">2.初始化：</h3>
+<ul>
+<li>不完全初始化：<code>int arr[5]={1,2,3}</code> 剩下的元素默认为0；</li>
+<li>未指定数组长度：<code>int arr[]={1,2,3,4}</code></li>
+<li>字符串形式初始化：<code>char arr[]='abcd'</code></li>
+</ul>
+<p>补充：sizeof和strlen<br>
+sizeof：“sizeof()”运算符求的是<strong>字符数组</strong>的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]='abc\0'.<br>
+strlen：用来计算以’\0’结尾的<strong>字符串</strong>长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。<br>
+<code>char arr1[]='abc';</code><br>
+<code>char[]={'a','b','c'}</code><br>
+sizeof(arr1[])=4<br>
+sizeof(arr2[])=3<br>
+strlen(arr[]1)=3<br>
+strlen(arr2[])=随机数<br>
+其中，arr1[]是字符串,arr2[]是字符数组</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于Gridea数据（文章，标签清空）的原因和解决方法]]></title>
         <id>https://mucixia.github.io/post/guan-yu-gridea-shu-ju-wen-zhang-biao-qian-qing-kong-de-yuan-yin-he-jie-jue-fang-fa/</id>
@@ -136,7 +169,8 @@ ADT 抽象数据类型名{<br>
 <li>搜索算法：O（2^N）</li>
 </ul>
 <h2 id="二-线性表">二、线性表</h2>
-<p>逻辑结构分为线性结构和非线性结构，其中线性结构有线性表、栈、队列、字符串、数组、广义表等。</p>
+<p>逻辑结构分为线性结构和非线性结构，其中线性结构有线性表、栈、队列、字符串、数组、广义表等。<br>
+线性表有两种基本存储结构：顺序存储和链式存储。</p>
 <h3 id="11-线性表的定义及特点">1.1 线性表的定义及特点</h3>
 <h4 id="1定义">（1）定义</h4>
 <p>线性表是具有<strong>相同特性</strong>的数据元素的<strong>有限序列</strong>,记作（a1,a2,a3, a4, a5, a6......an），其中a1为线性起点，an为线性终点，a3的直接前驱是a2，直接后继是a4；数据元素的个数n叫表长，n=0是叫空表。</p>
@@ -146,6 +180,48 @@ ADT 抽象数据类型名{<br>
 <li>终端节点：有且只有一个，没有直接后继，有且只有一个直接前驱</li>
 <li>中间节点：有且只有一个直接前驱，有且只有一个直接后继</li>
 </ol>
+<h4 id="3案例">（3）案例</h4>
+<ol>
+<li>稀疏多项式：没有包含所有x的幂的多项式<br>
+如A=7+3x+9x<sup>8+5x</sup>17<br>
+B=8x+22x<sup>7-9x</sup>8<br>
+用线性表表示：p=（系数，指数）<br>
+A=((7,0),(3,1),(9,8),(5,17))<br>
+B=((8,1),(22,7),(-9,8)</li>
+<li>线性表运算：<br>
+先创建一个<strong>新数组C</strong>，分别遍历比较A、B里面的项：</li>
+</ol>
+<ul>
+<li>指数相同，系数相加，其和不为零，则加到C中</li>
+<li>指数不同，将指数较小的复制到C中<br>
+按照此方法：C=((7,0),(11,1),（22，7），(5,17))<br>
+那么，新数组的大小应该定义成多大呢？显然并不好操作。我们可以用更合适的链式存储结构来存储A+B：<br>
+<img src="https://i.loli.net/2021/08/18/sY6aQmN9dKOMctj.jpg" alt="QQ图片20210818161509.jpg" loading="lazy"><br>
+还是分别遍历A，B：<br>
+<img src="https://i.loli.net/2021/08/18/RoWATOBsMiK6bd2.jpg" alt="QQ图片20210818161516.jpg" loading="lazy"></li>
+</ul>
+<h3 id="12-线性表的类型定义">1.2 线性表的类型定义</h3>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/18/kYDE5moWxKFsqrT.jpg" alt="51501D751C327E771B77507110C7E795.png" loading="lazy"></figure>
+<h4 id="1基本操作">（1）基本操作</h4>
+<p><strong>InitList（&amp;L）</strong>：初始化，构造一个空的线性表L<br>
+<strong>DesyroyList（&amp;L）</strong>：销毁已存在的线性表L<br>
+<strong>ClearList</strong>：清空重置已存在的线性表L<br>
+<strong>ListEmpty（L）</strong>：判断线性表是否为空，返回True或False<br>
+<strong>ListLength（L）</strong>：计算线性表的元素个数<br>
+<strong>GetElem（L，i，&amp;e）</strong>：若1&lt;=i&lt;=ListLength(L),用e返回第i个元素<br>
+<strong>LocateElem（L，e，compare（））</strong>：compare（）为数据元素判定函数，返回第一个与e满足compare（）的数据元素<br>
+<strong>PriorElem（L，cur_e,&amp;pre_e）</strong>:c当ur_e不是第一个元素时，用pre_e返回cur_e的前驱。<br>
+<strong>NextElem（L，cur_e,&amp;next_e）</strong>:c当ur_e不是最后一个元素时，用next_e返回cur_e的后继。<br>
+<strong>GetElem（&amp;L，i，e）</strong>：若1&lt;=i&lt;=ListLength(L)+1（最后一个元素的后面）,在第i个位置插入新的元素e，L的长度加1。<br>
+<strong>ListDelete（&amp;L，i,&amp;e）</strong>:若1&lt;=i&lt;=ListLength(L),删除第i个元素，并用e返回其值，L长度减1.<br>
+<strong>ListTraverse（&amp;L，visited（））</strong>：遍历</p>
+<h3 id="13-线性表的顺序表示和实现">1.3 线性表的顺序表示和实现</h3>
+<p>顺序表示又叫顺序存储（顺序映像）<br>
+把逻辑上相邻的数据元素存储在物理上也相邻的存储单元中的存储结构，它占用了一片<strong>连续</strong>的储存空间。<br>
+故，可以计算出某个元素的位置。<br>
+公式：LOC（a_n）=LOC（a_m)+(n-m)*i<br>
+其中，已知第m个元素的位置和每个元素占用i个存储单元，求第n个元素的位置（n&gt;m）。<br>
+若已知第一个元素，就变成了：LOC（a_n）=LOC（a1)+(n-1)*i</p>
 ]]></content>
     </entry>
     <entry>

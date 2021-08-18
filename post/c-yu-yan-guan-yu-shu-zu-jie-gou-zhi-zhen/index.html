@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    关于Gridea数据（文章，标签清空）的原因和解决方法 | 在高处，凝望世界流动
+    C语言-关于数组、结构、指针 | 在高处，凝望世界流动
 </title>
 <link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629281995539">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -106,19 +106,39 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            关于Gridea数据（文章，标签清空）的原因和解决方法
+                            C语言-关于数组、结构、指针
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2021-08-16</time>
+                            <time class="post-time">2021-08-18</time>
                             
                         </div>
                         
                                 <div class="post-content">
-                                    <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/16/G6EobCWkKingQBD.png" alt="68747470733a2f2f67767a2d626c6f672e6f73732d636e2d6368656e6764752e616c6979756e63732e636f6d2f696d672f32303230303330323137313331322e706e67.png" loading="lazy"></figure>
-<p><strong>原因</strong><br>
-今天我想更新一篇文章，在设置封面图的时候，选择了外链的方式打开，结果...Gridea的数据全没了，后来查明是因为在软件内填写封面图地址时，填入地址不合法，导致生成的md文件中“feature” 不合法。会导致软件无法读取数据。地址应该是url，而我用<a href="https://sm.ms/"></a>地址转换网站转换成markdown格式传上去了，就导致了后续的错误。</p>
-<p><strong>解决办法</strong><br>
-找到Gridea的存储路径，我的是C:\Users\hp\Documents\Gridea，里面找到/post文件夹，然后找到你最近一次修改过的文章，<img src="https://i.loli.net/2021/08/16/tO8KVWgdLuBM4s7.png" alt="QQ截图20210816164110.png" loading="lazy">,点进去将feature删除，<img src="https://i.loli.net/2021/08/16/E6FOu5vGilBXSZt.png" alt="QQ截图20210816164314.png" loading="lazy">保存后再次打开Gridea客户端即可。</p>
+                                    <h2 id="一-数组">一、数组</h2>
+<h3 id="1-定义">1. 定义</h3>
+<p>数组是一组<strong>相同类型</strong>元素的集合。<strong>创建方式</strong>为：<br>
+<code>type_t arr_name [const_n]</code> ,如：</p>
+<blockquote>
+<p>int arr[5]<br>
+char arr[3]<br>
+double arr[10]</p>
+</blockquote>
+<h3 id="2初始化">2.初始化：</h3>
+<ul>
+<li>不完全初始化：<code>int arr[5]={1,2,3}</code> 剩下的元素默认为0；</li>
+<li>未指定数组长度：<code>int arr[]={1,2,3,4}</code></li>
+<li>字符串形式初始化：<code>char arr[]='abcd'</code></li>
+</ul>
+<p>补充：sizeof和strlen<br>
+sizeof：“sizeof()”运算符求的是<strong>字符数组</strong>的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]='abc\0'.<br>
+strlen：用来计算以’\0’结尾的<strong>字符串</strong>长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。<br>
+<code>char arr1[]='abc';</code><br>
+<code>char[]={'a','b','c'}</code><br>
+sizeof(arr1[])=4<br>
+sizeof(arr2[])=3<br>
+strlen(arr[]1)=3<br>
+strlen(arr2[])=随机数<br>
+其中，arr1[]是字符串,arr2[]是字符数组</p>
 
                                 </div>
                     </article>
@@ -126,9 +146,9 @@
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://mucixia.github.io/post/suan-fa-yu-shu-ju-jie-gou/">
+                            <a href="https://mucixia.github.io/post/guan-yu-gridea-shu-ju-wen-zhang-biao-qian-qing-kong-de-yuan-yin-he-jie-jue-fang-fa/">
                                 <h3 class="post-title">
-                                    算法与数据结构
+                                    关于Gridea数据（文章，标签清空）的原因和解决方法
                                 </h3>
                             </a>
                         </div>
@@ -141,38 +161,53 @@
                 <!-- right -->
                 <div id="sidebar" class="main-container-right">
                     
-                                <!-- id-card -->
-                                
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629281995539)">
-        </div>
-        <h1 class="id_card-title">
-            在高处，凝望世界流动
-        </h1>
-        <h2 class="id_card-description">
-            不必等候炬火，我便是惟一的光
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                <a href="https://github.com/Mucixia" target="_blank" rel="noopener noreferrer"><i
-                class="fa fa-github"></i></a>
-                
-                    <!-- twitter -->
-                    
-                            <!-- zhihu -->
-                            
-                                <a href="https://www.zhihu.com/people/liu-nian-19-58" target="_blank" rel="noopener noreferrer"><i
-                class="fa fa-zhihu"></i></a>
-                                
-                                    <!-- facebook -->
-                                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E6%95%B0%E7%BB%84">一、数组</a>
+<ul>
+<li><a href="#1-%E5%AE%9A%E4%B9%89">1. 定义</a></li>
+<li><a href="#2%E5%88%9D%E5%A7%8B%E5%8C%96">2.初始化：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                var a = $('.site-title h1');
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                        a.html($(sidebar_alis[i]).text());
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
     
-                                    
+                            
 
                 </div>
 
