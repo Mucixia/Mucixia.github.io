@@ -7,7 +7,7 @@
 <title>
     C语言-关于数组、结构、指针 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629299134935">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629303669993">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629299134935" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629303669993" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -145,16 +145,23 @@ strlen(arr2[])=随机数<br>
 <h4 id="32-初始化">3.2 初始化</h4>
 <ul>
 <li>不完全初始化：<code>int arr[3][2]={1,2,3}</code> 剩下的元素默认为0；<br>
-|  行   | 列  |<br>
-|  ----  | ----  |<br>
-| 1  | 2 |<br>
-| 3  | 0 |<br>
-| 0  | 0 |<br>
-| 左对齐 | 右对齐 | 居中对齐 |<br>
-| :-----| ----: | :----: |<br>
-| 单元格 | 单元格 | 单元格 |<br>
-| 单元格 | 单元格 | 单元格 |</li>
+1 2<br>
+3 0<br>
+0 0</li>
+<li>指定行列：<code>int arr[3][4]=={{1,2,3},{4,5}}</code><br>
+1 2 3 0<br>
+4 5 0 0<br>
+0 0 0 0</li>
 </ul>
+<h4 id="33-使用">3.3 使用</h4>
+<p>访问元素：<br>
+<code>for(int i=0;i&lt;3;i++){</code><br>
+ <code>for(int j=0;j&lt;4;j++){</code><br>
+       <code>print(&quot;%d&quot;,arr[i][j]);</code><br>
+<code>}</code><br>
+     <code>print(&quot;\n&quot;)</code><br>
+<code>}</code></p>
+<h4 id="数组作为函数参数">数组作为函数参数</h4>
 
                                 </div>
                     </article>
@@ -193,6 +200,8 @@ strlen(arr2[])=随机数<br>
 <ul>
 <li><a href="#31-%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F">3.1 创建方式</a></li>
 <li><a href="#32-%E5%88%9D%E5%A7%8B%E5%8C%96">3.2 初始化</a></li>
+<li><a href="#33-%E4%BD%BF%E7%94%A8">3.3 使用</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">数组作为函数参数</a></li>
 </ul>
 </li>
 </ul>

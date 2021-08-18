@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-18T15:05:52.291Z</updated>
+    <updated>2021-08-18T16:21:17.896Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -47,16 +47,23 @@ strlen(arr2[])=随机数<br>
 <h4 id="32-初始化">3.2 初始化</h4>
 <ul>
 <li>不完全初始化：<code>int arr[3][2]={1,2,3}</code> 剩下的元素默认为0；<br>
-|  行   | 列  |<br>
-|  ----  | ----  |<br>
-| 1  | 2 |<br>
-| 3  | 0 |<br>
-| 0  | 0 |<br>
-| 左对齐 | 右对齐 | 居中对齐 |<br>
-| :-----| ----: | :----: |<br>
-| 单元格 | 单元格 | 单元格 |<br>
-| 单元格 | 单元格 | 单元格 |</li>
+1 2<br>
+3 0<br>
+0 0</li>
+<li>指定行列：<code>int arr[3][4]=={{1,2,3},{4,5}}</code><br>
+1 2 3 0<br>
+4 5 0 0<br>
+0 0 0 0</li>
 </ul>
+<h4 id="33-使用">3.3 使用</h4>
+<p>访问元素：<br>
+<code>for(int i=0;i&lt;3;i++){</code><br>
+ <code>for(int j=0;j&lt;4;j++){</code><br>
+       <code>print(&quot;%d&quot;,arr[i][j]);</code><br>
+<code>}</code><br>
+     <code>print(&quot;\n&quot;)</code><br>
+<code>}</code></p>
+<h4 id="数组作为函数参数">数组作为函数参数</h4>
 ]]></content>
     </entry>
     <entry>
