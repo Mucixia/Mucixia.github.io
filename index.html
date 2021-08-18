@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629281995539">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629299086975">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629281995539" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629299086975" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -114,7 +114,7 @@
                                         <div class="post-content-content">
                                             一、数组
 1. 定义
-数组是一组相同类型元素的集合。创建方式为：
+数组是一组相同类型元素的集合，它在内存中是连续存放的。创建方式为：
 type_t arr_name [const_n] ,如：
 
 int arr[5]
@@ -137,6 +137,22 @@ sizeof(arr2[])=3
 strlen(arr[]1)=3
 strlen(arr2[])=随机数
 其中，arr1[]是字符串,arr2[]是字符数组
+3.二维数组
+3.1 创建方式
+数据类型 数组名称[行][列]，如：int arr[3][2]代表三行两列的数组
+3.2 初始化
+
+不完全初始化：int arr[3][2]={1,2,3} 剩下的元素默认为0；
+|  行   | 列  |
+|  ----  | ----  |
+| 1  | 2 |
+| 3  | 0 |
+| 0  | 0 |
+| 左对齐 | 右对齐 | 居中对齐 |
+| :-----| ----: | :----: |
+| 单元格 | 单元格 | 单元格 |
+| 单元格 | 单元格 | 单元格 |
+
 
                                         </div>
                                         
@@ -345,12 +361,14 @@ GetElem（&amp;amp;L，i，e）：若1&amp;lt;=i&amp;lt;=ListLength(L)+1（最�
 ListDelete（&amp;amp;L，i,&amp;amp;e）:若1&amp;lt;=i&amp;lt;=ListLength(L),删除第i个元素，并用e返回其值，L长度减1.
 ListTraverse（&amp;amp;L，visited（））：遍历
 1.3 线性表的顺序表示和实现
-顺序表示又叫顺序存储（顺序映像）
-把逻辑上相邻的数据元素存储在物理上也相邻的存储单元中的存储结构，它占用了一片连续的储存空间。
+顺序表示又叫顺序存储（顺序映像）；
+特点：地址连续、依次存放、随机存取、类型相同。
+定义：把逻辑上相邻的数据元素存储在物理上也相邻的存储单元中的存储结构，它占用了一片连续的储存空间。
 故，可以计算出某个元素的位置。
 公式：LOC（a_n）=LOC（a_m)+(n-m)*i
 其中，已知第m个元素的位置和每个元素占用i个存储单元，求第n个元素的位置（n&amp;gt;m）。
 若已知第一个元素，就变成了：LOC（a_n）=LOC（a1)+(n-1)*i
+根据顺序表特点可用一维数组来表示：
 
                                         </div>
                                         
@@ -396,7 +414,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-error">
             #Python
         </a>
                         
@@ -428,7 +446,7 @@ python基础
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-banana">
             #心情
         </a>
                         
@@ -460,7 +478,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-warning">
             #Gridea
         </a>
                         
@@ -494,7 +512,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629281995539)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629299086975)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动
