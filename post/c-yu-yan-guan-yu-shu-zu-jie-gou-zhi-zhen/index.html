@@ -5,9 +5,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    C语言-关于数组、结构、指针 | 在高处，凝望世界流动
+    C语言重难点-关于数组、结构体、递归、指针 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629303669993">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629365786573">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629303669993" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629365786573" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -106,7 +106,7 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            C语言-关于数组、结构、指针
+                            C语言重难点-关于数组、结构体、递归、指针
                         </h2>
                         <div class="post-info">
                             <time class="post-time">2021-08-18</time>
@@ -133,11 +133,11 @@ double arr[10]</p>
 sizeof：“sizeof()”运算符求的是<strong>字符数组</strong>的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]='abc\0'.<br>
 strlen：用来计算以’\0’结尾的<strong>字符串</strong>长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。<br>
 <code>char arr1[]='abc';</code><br>
-<code>char[]={'a','b','c'}</code><br>
-sizeof(arr1[])=4<br>
-sizeof(arr2[])=3<br>
-strlen(arr[]1)=3<br>
-strlen(arr2[])=随机数<br>
+<code>char arr2[]={'a','b','c'}</code><br>
+sizeof(arr1)=4<br>
+sizeof(arr2)=3<br>
+strlen(arr1)=3<br>
+strlen(arr2)=随机数<br>
 其中，arr1[]是字符串,arr2[]是字符数组</p>
 <h3 id="3二维数组">3.二维数组</h3>
 <h4 id="31-创建方式">3.1 创建方式</h4>
@@ -160,8 +160,61 @@ strlen(arr2[])=随机数<br>
        <code>print(&quot;%d&quot;,arr[i][j]);</code><br>
 <code>}</code><br>
      <code>print(&quot;\n&quot;)</code><br>
+<code>}</code><br>
+数组作为函数参数:<br>
+<code>void bubble_sort(int arr[],int sz){</code><br>
+<code>{</code><br>
+<code>...</code><br>
+<code>}</code><br>
+<code>int main(){</code><br>
+<code>int arr[]={1,2,3,4,5};</code><br>
+<code>bubble_sort(arr,sz);//我们对arr进行传参，实际上传递过去的是数组的首元素的地址即&amp;arr[0];</code><br>
+<code>int sz=sizeof(arr)/sizeof(arr[0]);</code><br>
+<code>...</code><br>
+<code>return 0;</code><br>
 <code>}</code></p>
-<h4 id="数组作为函数参数">数组作为函数参数</h4>
+<p><strong>补充1：关于sizeof（arr）/sizeof(arr[0])</strong><br>
+sizeof(arr)计算的是数组arr所占的总字节数，即空间大小；<br>
+sizeof(arr[0])是单个元素的大小；<br>
+sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
+如：<code>int arr[]={1,2,3,4,5}</code><br>
+数组长度：sizeof（arr）/sizeof(arr[0])<br>
+其中，整数 int占4个字节，总字节数/4就是数组长度；<br>
+<code>char arr[]={'a','b','c'}</code><br>
+数组长度：sizeof（arr）/sizeof(arr[0])<br>
+其字母占1个字节，故可简写成：sizeof（arr）。</p>
+<p><strong>补充2：&amp;数组名、&amp;数组名【】</strong><br>
+&amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）<br>
+&amp;数组名[0]：取出的是数组的首元素地址<br>
+数组名：取出的是数组的首元素地址</p>
+<h2 id="二-指针">二、指针</h2>
+<h3 id="11-定义">1.1 定义</h3>
+<p>指针是编程语言中的一个对象，<strong>利用地址</strong>，它的值<strong>直接指向</strong>存在电脑存储器中的<strong>另一个地方的值</strong>，地址指向变量单元，存放地址的变量就是指针变量，换句话说，<strong>指针就是一个变量，里面存放着地址，指针就是地址。</strong><br>
+如：<br>
+<code>int a=10</code><br>
+<code>int *p=&amp;a</code>//p是一个指针变量<br>
+<code>prunt(*p)</code>//*是解引用，取指针p指向的地址里的内容，*p=10<br>
+指针的大小在32位平台是四个字节，在64位平台是八个字节。</p>
+<h3 id="12-指针和指针类型">1.2 指针和指针类型</h3>
+<h4 id="1指针类型的意义">（1）指针类型的意义</h4>
+<p>①指针类型决定了指针进行解引用操作的时候，能够访问空间的大小。</p>
+<ul>
+<li>int*p： *p能够访问4个字节</li>
+<li>char *p：*p能够访问1个字节</li>
+<li>double* p：*p能够访问8个字节<br>
+②指针类型决定了指针走一步走多远（指针的步长）</li>
+<li>int*p： p+1--&gt;往后4字节</li>
+<li>char *p：p+1--&gt;往后1字节</li>
+<li>double* p：p+1--&gt;往后8字节</li>
+</ul>
+<h4 id="2野指针">（2）野指针</h4>
+<p>指针执行的位置是不可知的<br>
+导致野指针的原因：</p>
+<ul>
+<li>未初始化，局部变量不初始化，默认是随机值</li>
+<li>指针越界访问</li>
+<li>指针指向的空间释放</li>
+</ul>
 
                                 </div>
                     </article>
@@ -201,7 +254,17 @@ strlen(arr2[])=随机数<br>
 <li><a href="#31-%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F">3.1 创建方式</a></li>
 <li><a href="#32-%E5%88%9D%E5%A7%8B%E5%8C%96">3.2 初始化</a></li>
 <li><a href="#33-%E4%BD%BF%E7%94%A8">3.3 使用</a></li>
-<li><a href="#%E6%95%B0%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">数组作为函数参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%8C%87%E9%92%88">二、指针</a>
+<ul>
+<li><a href="#11-%E5%AE%9A%E4%B9%89">1.1 定义</a></li>
+<li><a href="#12-%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B">1.2 指针和指针类型</a>
+<ul>
+<li><a href="#1%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%84%8F%E4%B9%89">（1）指针类型的意义</a></li>
+<li><a href="#2%E9%87%8E%E6%8C%87%E9%92%88">（2）野指针</a></li>
 </ul>
 </li>
 </ul>

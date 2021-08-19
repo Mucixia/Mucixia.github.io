@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629303669993">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629365786573">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629303669993" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629365786573" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -100,7 +100,7 @@
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://mucixia.github.io/post/c-yu-yan-guan-yu-shu-zu-jie-gou-zhi-zhen/">
-                        C语言-关于数组、结构、指针
+                        C语言重难点-关于数组、结构体、递归、指针
                     </a>
                 </h2>
                 <div class="post-info">
@@ -131,11 +131,11 @@ double arr[10]
 sizeof：“sizeof()”运算符求的是字符数组的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]=&#39;abc\0&#39;.
 strlen：用来计算以’\0’结尾的字符串长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。
 char arr1[]=&#39;abc&#39;;
-char[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
-sizeof(arr1[])=4
-sizeof(arr2[])=3
-strlen(arr[]1)=3
-strlen(arr2[])=随机数
+char arr2[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
+sizeof(arr1)=4
+sizeof(arr2)=3
+strlen(arr1)=3
+strlen(arr2)=随机数
 其中，arr1[]是字符串,arr2[]是字符数组
 3.二维数组
 3.1 创建方式
@@ -159,7 +159,60 @@ for(int i=0;i&amp;lt;3;i++){
 }
      print(&amp;quot;\n&amp;quot;)
 }
-数组作为函数参数
+数组作为函数参数:
+void bubble_sort(int arr[],int sz){
+{
+...
+}
+int main(){
+int arr[]={1,2,3,4,5};
+bubble_sort(arr,sz);//我们对arr进行传参，实际上传递过去的是数组的首元素的地址即&amp;amp;arr[0];
+int sz=sizeof(arr)/sizeof(arr[0]);
+...
+return 0;
+}
+补充1：关于sizeof（arr）/sizeof(arr[0])
+sizeof(arr)计算的是数组arr所占的总字节数，即空间大小；
+sizeof(arr[0])是单个元素的大小；
+sizeof（arr）/sizeof(arr[0])就是数组的长度；
+如：int arr[]={1,2,3,4,5}
+数组长度：sizeof（arr）/sizeof(arr[0])
+其中，整数 int占4个字节，总字节数/4就是数组长度；
+char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
+数组长度：sizeof（arr）/sizeof(arr[0])
+其字母占1个字节，故可简写成：sizeof（arr）。
+补充2：&amp;amp;数组名、&amp;amp;数组名【】
+&amp;amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）
+&amp;amp;数组名[0]：取出的是数组的首元素地址
+数组名：取出的是数组的首元素地址
+二、指针
+1.1 定义
+指针是编程语言中的一个对象，利用地址，它的值直接指向存在电脑存储器中的另一个地方的值，地址指向变量单元，存放地址的变量就是指针变量，换句话说，指针就是一个变量，里面存放着地址，指针就是地址。
+如：
+int a=10
+int *p=&amp;amp;a//p是一个指针变量
+prunt(*p)//*是解引用，取指针p指向的地址里的内容，*p=10
+指针的大小在32位平台是四个字节，在64位平台是八个字节。
+1.2 指针和指针类型
+（1）指针类型的意义
+①指针类型决定了指针进行解引用操作的时候，能够访问空间的大小。
+
+int*p： *p能够访问4个字节
+char *p：*p能够访问1个字节
+double* p：*p能够访问8个字节
+②指针类型决定了指针走一步走多远（指针的步长）
+int*p： p+1--&amp;gt;往后4字节
+char *p：p+1--&amp;gt;往后1字节
+double* p：p+1--&amp;gt;往后8字节
+
+（2）野指针
+指针执行的位置是不可知的
+导致野指针的原因：
+
+未初始化，局部变量不初始化，默认是随机值
+指针越界访问
+指针指向的空间释放
+
 
                                         </div>
                                         
@@ -421,7 +474,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-banana">
             #Python
         </a>
                         
@@ -453,7 +506,7 @@ python基础
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-warning">
             #心情
         </a>
                         
@@ -485,7 +538,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-info">
             #Gridea
         </a>
                         
@@ -519,7 +572,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629303669993)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629365786573)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动
