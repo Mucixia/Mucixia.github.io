@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-19T09:36:30.204Z</updated>
+    <updated>2021-08-19T15:18:04.834Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -103,8 +103,8 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 <ul>
 <li>int*p： *p能够访问4个字节</li>
 <li>char *p：*p能够访问1个字节</li>
-<li>double* p：*p能够访问8个字节<br>
-②指针类型决定了指针走一步走多远（指针的步长）</li>
+<li>double* p：*p能够访问8个字节</li>
+<li>②指针类型决定了指针走一步走多远（指针的步长）</li>
 <li>int*p： p+1--&gt;往后4字节</li>
 <li>char *p：p+1--&gt;往后1字节</li>
 <li>double* p：p+1--&gt;往后8字节</li>
@@ -427,6 +427,17 @@ part02<br>
 可他们 终会重聚于某点<br>
 周而往复 往复不息<br>
 <img src="https://i.loli.net/2021/08/17/iPOWUb4Rlu3dIgV.jpg" alt="pexels-paweł-l-1309687.jpg" loading="lazy"></p>
+<p><strong>《捉迷藏》</strong></p>
+<p>趁着落霞的掩护<br>
+夕阳躲进山中<br>
+跟月亮捉着迷藏<br>
+朝着东方<br>
+赶了一夜<br>
+在另一边的山头<br>
+悄悄地探出头看月亮走了没<br>
+于是有了人们口中的朝阳<br>
+<img src="https://i.loli.net/2021/08/19/XbcS3ZrwGN1MkfC.jpg" alt="pexels-pixabay-462023.jpg" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/19/UqDVgdZE9kBcPXn.jpg" alt="pexels-tomáš-malík-3367619.jpg" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
