@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629386280895">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629621140283">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629386280895" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629621140283" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -128,7 +128,7 @@ double arr[10]
 字符串形式初始化：char arr[]=&#39;abcd&#39;
 
 补充：sizeof和strlen
-sizeof：“sizeof()”运算符求的是字符数组的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]=&#39;abc\0&#39;.
+sizeof：“sizeof()”运算符求的是字符数组的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]=&#39;abc\0&#39;。
 strlen：用来计算以’\0’结尾的字符串长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。
 char arr1[]=&#39;abc&#39;;
 char arr2[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
@@ -137,6 +137,7 @@ sizeof(arr2)=3
 strlen(arr1)=3
 strlen(arr2)=随机数
 其中，arr1[]是字符串,arr2[]是字符数组
+总结：以字符串形式出现的，编译器都会为该字符串自动添加一个0作为结束符，如在代码中写 &amp;quot;abc&amp;quot;,那么编译器帮你存储的是&amp;quot;abc/0&amp;quot;，char arr[]=&amp;quot;abc&amp;quot;实际上存储的是 char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;&#39;\0}
 3.二维数组
 3.1 创建方式
 数据类型 数组名称[行][列]，如：int arr[3][2]代表三行两列的数组
@@ -182,16 +183,21 @@ char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
 数组长度：sizeof（arr）/sizeof(arr[0])
 其字母占1个字节，故可简写成：sizeof（arr）。
 补充2：&amp;amp;数组名、&amp;amp;数组名【】
-&amp;amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）
+&amp;amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）-&amp;gt;p=&amp;amp;arr,*p=arr(p是整个数组的地址，*p是数组首元素的地址)
 &amp;amp;数组名[0]：取出的是数组的首元素地址
 数组名：取出的是数组的首元素地址
+注意：
+①绝大多数时候，&amp;amp;arr[0]和arr都是首元素地址，但是也有例外：
+sizeof（arr）/sizeof(arr[0])；arr表示整个数组，sizeof（arr）表示整个数组的大小。
+②int arr[10]={0}
+
 二、指针
 1.1 定义
 指针是编程语言中的一个对象，利用地址，它的值直接指向存在电脑存储器中的另一个地方的值，地址指向变量单元，存放地址的变量就是指针变量，换句话说，指针就是一个变量，里面存放着地址，指针就是地址。
 如：
 int a=10
 int *p=&amp;amp;a//p是一个指针变量
-prunt(*p)//*是解引用，取指针p指向的地址里的内容，*p=10
+prunt(*p)// *是解引用，取指针p指向的地址里的内容，*p=10
 指针的大小在32位平台是四个字节，在64位平台是八个字节。
 1.2 指针和指针类型
 （1）指针类型的意义
@@ -213,6 +219,172 @@ double* p：p+1--&amp;gt;往后8字节
 指针越界访问
 指针指向的空间释放
 
+怎么避免野指针：
+
+指针初始化
+小心指针越界
+指针指向空间释放的话，使之置为NULL
+指针使用之前检查有效性
+
+补充：
+① i++与++i
+区别一：i++是右值，++i是左值，左值是可以放到赋值符号左边的变量，即具有对应的可以由用户访问的存储单元，并且能够由用户去改变其值的量，而右值i++不可以。比如说：
+int i=0；
+++i=1;//正确
+i++=1;//错误
+左值与右值的根本区别在于是否允许取地址&amp;amp;运算符获得对应的内存地址，左值允许，右值不允许。如
+&amp;amp;（++i）//正确
+&amp;amp; (i++) //错误
+为什么++i允许，而i++不允许呢？
+
+C/C++语言中可以放在赋值符号左边的变量，即具有对应的可以由用户访问的存储单元，并且能够由用户去改变其值的量。左值表示存储在计算机内存的对象，而不是常量或计算的结果。或者说左值是代表一个内存地址值，并且通过这个内存地址，就可以对内存进行读并且写（主要是能写）操作；这也就是为什么左值可以被赋值的原因了。相对应的还有右值：当一个符号或者常量放在操作符右边的时候，计算机就读取他们的“右值”，也就是其代表的真实值。简单来说就是，左值相当于地址值，右值相当于数据值.
+区别二：i++是先运算后自加；++i是先自加后运算。比如说：
+i=3
+n=i++,此时，n=3，i=4（先赋值运算，后加1）
+n=++i，此时，n=4，i=4（先加1，后赋值运算）
+
+②指针+-整数
+float arr[5];
+float *vp；//定义一个指针变量
+for (vp=&amp;amp;arr[0]; vp&amp;lt;arr[5]; ){
+.    *vp++ = 0；
+}
+指针vp指向数组arr的首元素地址，vp++=0先赋值给vp为0，在vp+1指向第二个元素，第二个元素=0；直至第五个元素也为0.
+③指针-指针（地址-地址）
+必须是同类型指针
+int arr[5]={1，2，3，4，5}
+&amp;amp;arr[5]-&amp;amp;arr[0]=5//结果是两指针中间的元素个数
+④指针比较大小
+法一：
+for(vp = &amp;amp;arr[5];vp&amp;gt;&amp;amp;arr[0]; ){
+*--vp = 0;
+}
+法二：
+for(vp = &amp;amp;arr[5-1];vp&amp;gt;=&amp;amp;arr[0];vp-- ){
+*vp = 0;
+}
+
+但是更推荐第一种方法，标准规定：允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较即法一，不允许与指向第一个元素之前的那个内存位置的指针进行比较。
+1.4 二级指针
+1.4.1 定义
+int a=10;
+int * p1 = &amp;amp;a;//一级指针，int*分开，int表示p1指向的对象类型是int整形，*表示p1是指针
+int* * p2=&amp;amp;p1//二级指针，int*表示p2指向的对象类型是int*指针即p1，右边的*表示p2是一个指针;
+
+1.4.2 用法
+解引用：
+*p1=**p2=a=10
+*p2=p1
+1.4.3 指针与数组
+#####（1）指针数组
+指针数组就是存放指针的数组。
+int a = 10;
+int b = 20;
+int c = 30;
+int* pa=&amp;amp;a;
+int* pb=&amp;amp;b;
+int* pc=&amp;amp;c;
+为了方便，我们可以将pa,pb,pc指针存放在一个数组中。
+int* arr[3]={&amp;amp;a,&amp;amp;b,&amp;amp;c}
+或int* arr[3]={pa，pb，pc}
+遍历访问元素：
+int i=0;
+for(i=0;i&amp;lt;3,i++){
+. *(arr[i])
+}
+(2)数组指针
+存放数组的指针。见进阶
+三、指针进阶
+1.1 字符指针
+1.1.1 定义
+法一：
+char ch = &#39;abc;
+char* pc = &amp;amp;ch;
+法二：
+char* p = &amp;quot;abc&amp;quot;//把常量字符串“abc”的首元素a的地址放进了p中，而不是内容abc
+这个严格来说应该这么写：const char* p=&amp;quot;abc&amp;quot;,理由后面介绍。
+补充：字符数组和字符指针
+（1）字符数组：
+char arr1[4]=&amp;quot;abcd&amp;quot;
+char arr2[4]=&amp;quot;abcd&amp;quot;
+定义的是一个字符数组，所以就相当于定义了一些空间来存放&amp;quot;abcd&amp;quot;，而又因为字符数组就是把字符一个一个地存放的，所以编译器把这个语句解析为 char arr[5] = {&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;\0&#39;}; 回顾之前到讲到的，sizeof(arr[5])=5; 扩展一下，如果char arr[] = &amp;quot;abcd&amp;quot;是在函数内部写的话，那么这里 的&amp;quot;abcd/0&amp;quot;因为不是常量，所以应该被放在栈上。
+另外，arr1！=arr2，因为arr1，arr2分别定义了各自的空间来存储内容，这里恰巧两个的字符数组的内容一样而已。故，两者不一样。
+（2）字符指针：
+char* p1=&amp;quot;abcd&amp;quot;
+char* p2=&amp;quot;abcd&amp;quot;
+定义的是一个普通指针，并没有定义空间来存放&amp;quot;abcd&amp;quot;，所以编译器得帮我们找地方来放&amp;quot;abcd&amp;quot;，显然，把这里的&amp;quot;abcd&amp;quot;当成常量并把它放到程序 的常量区是编译器最合适的选择。拓展一下，
+字符指针指向的字符串保存在内存的静态存储区中。
+因为是常量字符串，如下操作：
+char* p1=&amp;quot;abcd&amp;quot;
+p1=“h”
+错误，常量字符串不可修改。
+另外，p1==p2,因为p1，p2都是常量，内容都是“abcd”，都指向同一个内存空间。
+此处，为避免错误，还是写成const char p=&amp;quot;abcd&amp;quot;为好。
+总结一下就是：
+首先在内存的中位置不同，字符数组保存的字符串存放在内存的栈中，而字符指针指向的字符串保存在内存的静态存储区中。
+其次字符数组保存的字符串属于字符串变量，可以被修改，而字符指针指向的字符串是属于字符串常量，不能被修改。
+1.2 指针数组
+1.2.1定义
+指针数组是一个数组，用来存放指针。
+int* p[10]={0}//存放整形指针的数组-指针数组
+char* p[10]={0}//存放字符指针的数组-指针数组
+1.2.2 使用
+指针数组访问每个元素：
+
+1.3 数组指针
+数组指针是一个指针,(*p)，用来指向数组的指针。
+int* p=NULL //p是整形指针-指向整型的指针-存放整形的地址
+char* pc=NULL //pc是字符指针-指向字符的指针-存放字符的指针
+int (*p )[10]=&amp;amp;arr //数组指针-指向数组的指针-存放数组的地址
+关于数组的地址，前面有讲过，即&amp;amp;arr。
+书写方法：
+char* arr[5];
+char* (*p)[5]=&amp;amp;arr;
+int arr2[10]={0];
+int (*p2)[10]=&amp;amp;arr2;
+
+补充：关于*星号
+①在定义变量时，代表着该变量是一个指针
+int a=10;
+int* p=&amp;amp;a;
+②在取值操作时，叫解引用，即得到指针指向的地址的内容
+*p=a=10
+遍历方法：
+int arr[10]={1,2,3,4,5,6,7,8,9,10};
+int* p=arr;
+int i=0;
+for(i=0;i&amp;lt;10;i++){
+. printf(&amp;quot;%d&amp;quot;, *(p+i))
+. printf(&amp;quot;%d&amp;quot;, *(arr+i))//用指针的方法打印
+. printf(&amp;quot;%d&amp;quot;, arr[i])//普通的数组打印方式
+. printf(&amp;quot;%d&amp;quot;,p[i])
+四种打方式结果一样
+}
+关于二维数组：
+二维数组的数组名是首元素的地址，这里的首元素不是第一行第一列的元素，而是第一行所有的元素。（这里把二维数组理解成特殊的一维数组）
+遍历二维数组的元素：
+法一：
+参数是数组的形式
+
+法二（用数组指针）：
+参数是指针的形式
+
+难点：解释下为什么是*（*（p+i）+j）:
+
+
+
+补充：
+*（*（p+i）+j）的等效写法：
+①（（p+i）[j]）//备注：*（p+i）其实就是一个数组首元素的地址，用指针名[下标]找到数组某个元素。（p+i）=p[i]
+②*（p[i]+j）
+③p[i][j]
+1.4关于以上几种类型的总结
+①int arr[5]//arr是一个5
+个元素的整型数组
+②int* parr1[10]//parr1是一个数组，数组有10个元素，每个元素的类型是int*, parr1是指针数组
+③int(* parr2)[10]//parr2是一个指针，该指针指向了一个数组，该数组有10个元素，每个元素的类型是int， parr2是数组指针
+④int (* parr3[10]）[5])//parr3是一个数组，该数组有10个元素，每个元素是一个数组指针，该数组指针指向的数组有5个元素，每个元素的类型是int。
+1.5
 
                                         </div>
                                         
@@ -429,6 +601,10 @@ ListTraverse（&amp;amp;L，visited（））：遍历
 其中，已知第m个元素的位置和每个元素占用i个存储单元，求第n个元素的位置（n&amp;gt;m）。
 若已知第一个元素，就变成了：LOC（a_n）=LOC（a1)+(n-1)*i
 根据顺序表特点可用一维数组来表示：
+线性表长可变--&amp;gt;用一变量表示顺序表的长度属性
+
+注意：线性表顺序存储时的逻辑结构下标是从1开始，存储结构是从0开始的（因为存储在数组），因此，逻辑位序比物理位序多1。
+1.4 顺序表基本操作的实现
 
                                         </div>
                                         
@@ -474,7 +650,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_4">
             #Python
         </a>
                         
@@ -506,7 +682,7 @@ python基础
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_1">
             #心情
         </a>
                         
@@ -538,7 +714,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-success">
             #Gridea
         </a>
                         
@@ -572,7 +748,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629386280895)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629621140283)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

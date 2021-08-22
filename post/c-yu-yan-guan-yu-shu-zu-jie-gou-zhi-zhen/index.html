@@ -7,7 +7,7 @@
 <title>
     C语言重难点-关于数组、结构体、递归、指针 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629386280895">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629621140283">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629386280895" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629621140283" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -130,7 +130,7 @@ double arr[10]</p>
 <li>字符串形式初始化：<code>char arr[]='abcd'</code></li>
 </ul>
 <p>补充：sizeof和strlen<br>
-sizeof：“sizeof()”运算符求的是<strong>字符数组</strong>的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]='abc\0'.<br>
+sizeof：“sizeof()”运算符求的是<strong>字符数组</strong>的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾<strong>增加一个 null 字符</strong>，即char arr1[]='abc\0'。<br>
 strlen：用来计算以’\0’结尾的<strong>字符串</strong>长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。<br>
 <code>char arr1[]='abc';</code><br>
 <code>char arr2[]={'a','b','c'}</code><br>
@@ -138,7 +138,8 @@ sizeof(arr1)=4<br>
 sizeof(arr2)=3<br>
 strlen(arr1)=3<br>
 strlen(arr2)=随机数<br>
-其中，arr1[]是字符串,arr2[]是字符数组</p>
+其中，arr1[]是字符串,arr2[]是字符数组<br>
+总结：以字符串形式出现的，编译器都会为该字符串自动添加一个0作为结束符，如在代码中写 &quot;abc&quot;,那么编译器帮你存储的是&quot;abc/0&quot;，char arr[]=&quot;abc&quot;实际上存储的是 char arr[]={'a','b','c',''\0}</p>
 <h3 id="3二维数组">3.二维数组</h3>
 <h4 id="31-创建方式">3.1 创建方式</h4>
 <p>数据类型 数组名称[行][列]，如：int arr[3][2]代表三行两列的数组</p>
@@ -184,16 +185,21 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 数组长度：sizeof（arr）/sizeof(arr[0])<br>
 其字母占1个字节，故可简写成：sizeof（arr）。</p>
 <p><strong>补充2：&amp;数组名、&amp;数组名【】</strong><br>
-&amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）<br>
+&amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）-&gt;p=&amp;arr,*p=arr(p是整个数组的地址，*p是数组首元素的地址)<br>
 &amp;数组名[0]：取出的是数组的首元素地址<br>
-数组名：取出的是数组的首元素地址</p>
+数组名：取出的是数组的首元素地址<br>
+<strong>注意</strong>：<br>
+①绝大多数时候，&amp;arr[0]和arr都是首元素地址，但是也有例外：<br>
+sizeof（arr）/sizeof(arr[0])；arr表示整个数组，sizeof（arr）表示整个数组的大小。<br>
+②int arr[10]={0}<br>
+<img src="https://i.loli.net/2021/08/20/oFwKAieGCYODWfa.jpg" alt="12D433BF257416152394CC30207FA22C.png" loading="lazy"></p>
 <h2 id="二-指针">二、指针</h2>
 <h3 id="11-定义">1.1 定义</h3>
 <p>指针是编程语言中的一个对象，<strong>利用地址</strong>，它的值<strong>直接指向</strong>存在电脑存储器中的<strong>另一个地方的值</strong>，地址指向变量单元，存放地址的变量就是指针变量，换句话说，<strong>指针就是一个变量，里面存放着地址，指针就是地址。</strong><br>
 如：<br>
 <code>int a=10</code><br>
 <code>int *p=&amp;a</code>//p是一个指针变量<br>
-<code>prunt(*p)</code>//*是解引用，取指针p指向的地址里的内容，*p=10<br>
+<code>prunt(*p)</code>// *是解引用，取指针p指向的地址里的内容，*p=10<br>
 指针的大小在32位平台是四个字节，在64位平台是八个字节。</p>
 <h3 id="12-指针和指针类型">1.2 指针和指针类型</h3>
 <h4 id="1指针类型的意义">（1）指针类型的意义</h4>
@@ -215,6 +221,172 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 <li>指针越界访问</li>
 <li>指针指向的空间释放</li>
 </ul>
+<p>怎么避免野指针：</p>
+<ul>
+<li>指针初始化</li>
+<li>小心指针越界</li>
+<li>指针指向空间释放的话，使之置为NULL</li>
+<li>指针使用之前检查有效性</li>
+</ul>
+<p><strong>补充</strong>：<br>
+① i++与++i<br>
+区别一：i++是右值，++i是左值，左值是可以放到赋值符号左边的变量，即具有对应的可以由用户访问的存储单元，并且能够由用户去改变其值的量，而右值i++不可以。比如说：<br>
+<code>int i=0；</code><br>
+<code>++i=1;//正确</code><br>
+<code>i++=1;//错误</code><br>
+左值与右值的根本区别在于是否允许取地址&amp;运算符获得对应的内存地址，左值允许，右值不允许。如<br>
+<code>&amp;（++i）//正确</code><br>
+<code>&amp; (i++) //错误</code><br>
+为什么++i允许，而i++不允许呢？</p>
+<blockquote>
+<p>C/C++语言中可以放在赋值符号左边的变量，即具有对应的可以由用户访问的存储单元，并且能够由用户去改变其值的量。左值表示存储在计算机内存的对象，而不是常量或计算的结果。或者说左值是代表一个内存地址值，并且通过这个内存地址，就可以对内存进行读并且写（主要是能写）操作；这也就是为什么左值可以被赋值的原因了。相对应的还有右值：当一个符号或者常量放在操作符右边的时候，计算机就读取他们的“右值”，也就是其代表的真实值。简单来说就是，<strong>左值相当于地址值，右值相当于数据值.</strong><br>
+区别二：i++是先运算后自加；++i是先自加后运算。比如说：<br>
+i=3<br>
+n=i++,此时，n=3，i=4（先赋值运算，后加1）<br>
+n=++i，此时，n=4，i=4（先加1，后赋值运算）</p>
+</blockquote>
+<p>②指针+-整数<br>
+float arr[5];<br>
+float *vp；//定义一个指针变量<br>
+for (vp=&amp;arr[0]; vp&lt;arr[5]; ){<br>
+.    *vp++ = 0；<br>
+}<br>
+指针vp指向数组arr的首元素地址，<em>vp++=0先赋值给</em>vp为0，在vp+1指向第二个元素，第二个元素=0；直至第五个元素也为0.</p>
+<p>③指针-指针（地址-地址）<br>
+<strong>必须是同类型指针</strong><br>
+int arr[5]={1，2，3，4，5}<br>
+&amp;arr[5]-&amp;arr[0]=5//结果是两指针中间的元素个数</p>
+<p>④指针比较大小<br>
+法一：<br>
+for(vp = &amp;arr[5];vp&gt;&amp;arr[0]; ){<br>
+*--vp = 0;<br>
+}<br>
+法二：<br>
+for(vp = &amp;arr[5-1];vp&gt;=&amp;arr[0];vp-- ){<br>
+*vp = 0;<br>
+}<br>
+<img src="https://i.loli.net/2021/08/20/gcrhOHvAQuFzMWX.jpg" alt="45B7DCFB9A811FFDE08257C77052CAD4.png" loading="lazy"><br>
+但是更推荐第一种方法，标准规定：允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较即法一，不允许与指向第一个元素之前的那个内存位置的指针进行比较。</p>
+<h3 id="14-二级指针">1.4 二级指针</h3>
+<h4 id="141-定义">1.4.1 定义</h4>
+<p><code>int a=10;</code><br>
+<code>int * p1 = &amp;a;//一级指针，int*分开，int表示p1指向的对象类型是int整形，*表示p1是指针</code><br>
+<code>int* * p2=&amp;p1//二级指针，int*表示p2指向的对象类型是int*指针即p1，右边的*表示p2是一个指针;</code><br>
+<img src="https://i.loli.net/2021/08/21/nfOQ3Bpzulj62Xo.jpg" alt="578EF3F9DF179721C36EF69E71A84A8F.png" loading="lazy"></p>
+<h4 id="142-用法">1.4.2 用法</h4>
+<p>解引用：<br>
+*p1=**p2=a=10<br>
+*p2=p1</p>
+<h4 id="143-指针与数组">1.4.3 指针与数组</h4>
+<p>#####（1）指针数组<br>
+指针数组就是存放指针的数组。<br>
+<code>int a = 10;</code><br>
+<code>int b = 20;</code><br>
+<code>int c = 30;</code><br>
+<code>int* pa=&amp;a;</code><br>
+<code>int* pb=&amp;b;</code><br>
+<code>int* pc=&amp;c;</code><br>
+为了方便，我们可以将pa,pb,pc指针存放在一个数组中。<br>
+<code>int* arr[3]={&amp;a,&amp;b,&amp;c}</code><br>
+或<code>int* arr[3]={pa，pb，pc}</code><br>
+遍历访问元素：<br>
+<code>int i=0;</code><br>
+<code>for(i=0;i&lt;3,i++){</code><br>
+<code>. *(arr[i])</code><br>
+<code>}</code></p>
+<h5 id="2数组指针">(2)数组指针</h5>
+<p>存放数组的指针。见进阶</p>
+<h2 id="三-指针进阶">三、指针进阶</h2>
+<h3 id="11-字符指针">1.1 字符指针</h3>
+<h4 id="111-定义">1.1.1 定义</h4>
+<p>法一：<br>
+<code>char ch = 'abc;</code><br>
+<code>char* pc = &amp;ch;</code><br>
+法二：<br>
+<code>char* p = &quot;abc&quot;//把常量字符串“abc”的首元素a的地址放进了p中，而不是内容abc</code><br>
+这个严格来说应该这么写：const char* p=&quot;abc&quot;,理由后面介绍。<br>
+<strong>补充：字符数组和字符指针</strong><br>
+（1）字符数组：<br>
+char arr1[4]=&quot;abcd&quot;<br>
+char arr2[4]=&quot;abcd&quot;<br>
+定义的是一个<strong>字符数组</strong>，所以就相当于定义了一些空间来存放&quot;abcd&quot;，而又因为字符数组就是把字符一个一个地存放的，所以编译器把这个语句解析为 <code>char arr[5] = {'a','b','c','d','\0'};</code> 回顾之前到讲到的，sizeof(arr[5])=5; 扩展一下，如果char arr[] = &quot;abcd&quot;是在函数内部写的话，那么这里 的&quot;abcd/0&quot;因为不是常量，所以应该被<strong>放在栈上</strong>。<br>
+另外，arr1！=arr2，因为arr1，arr2分别定义了各自的空间来存储内容，这里恰巧两个的字符数组的内容一样而已。故，两者不一样。<br>
+（2）字符指针：<br>
+char* p1=&quot;abcd&quot;<br>
+char* p2=&quot;abcd&quot;<br>
+定义的是一个<strong>普通指针</strong>，并没有定义空间来存放&quot;abcd&quot;，所以编译器得帮我们找地方来放&quot;abcd&quot;，显然，把这里的&quot;abcd&quot;<strong>当成常量</strong>并把它放到程序 的常量区是编译器最合适的选择。拓展一下，<br>
+字符指针指向的字符串保存在内存的<strong>静态存储区</strong>中。<br>
+因为是常量字符串，如下操作：<br>
+char* p1=&quot;abcd&quot;<br>
+<em>p1=“h”<br>
+错误，常量字符串不可修改。<br>
+另外，p1==p2,因为p1，p2都是常量，内容都是“abcd”，都指向同一个内存空间。<br>
+此处，为避免错误，还是写成const char</em> p=&quot;abcd&quot;为好。<br>
+<strong>总结一下就是</strong>：<br>
+首先在内存的中位置不同，字符数组保存的字符串存放在内存的栈中，而字符指针指向的字符串保存在内存的静态存储区中。<br>
+其次字符数组保存的字符串属于字符串变量，可以被修改，而字符指针指向的字符串是属于字符串常量，不能被修改。</p>
+<h3 id="12-指针数组">1.2 指针数组</h3>
+<h4 id="121定义">1.2.1定义</h4>
+<p>指针数组是一个数组，用来存放指针。<br>
+<code>int* p[10]={0}//存放整形指针的数组-指针数组</code><br>
+<code>char* p[10]={0}//存放字符指针的数组-指针数组</code></p>
+<h4 id="122-使用">1.2.2 使用</h4>
+<p>指针数组访问每个元素：<br>
+<img src="https://i.loli.net/2021/08/21/pmWCfOr2cnHeBYE.jpg" alt="C44DCD448B908F2605F09E92CA0CB1D6.png" loading="lazy"></p>
+<h3 id="13-数组指针">1.3 数组指针</h3>
+<p>数组指针是一个指针,(*p)，用来指向数组的指针。<br>
+<code>int* p=NULL //p是整形指针-指向整型的指针-存放整形的地址</code><br>
+<code>char* pc=NULL //pc是字符指针-指向字符的指针-存放字符的指针</code><br>
+<code>int (*p )[10]=&amp;arr //数组指针-指向数组的指针-存放数组的地址</code><br>
+关于数组的地址，前面有讲过，即&amp;arr。<br>
+书写方法：<br>
+<code>char* arr[5];</code><br>
+<code>char* (*p)[5]=&amp;arr;</code><br>
+<code>int arr2[10]={0];</code><br>
+<code>int (*p2)[10]=&amp;arr2;</code><br>
+<img src="https://i.loli.net/2021/08/21/SQ1ldu4hLVz3jc7.jpg" alt="3E1E655F9C0BB99BB0CEBFA54188BCD8.png" loading="lazy"></p>
+<p><strong>补充</strong>：关于<code>*</code>星号<br>
+①在定义变量时，代表着该变量是一个指针<br>
+<code>int a=10;</code><br>
+<code>int* p=&amp;a;</code><br>
+②在取值操作时，叫解引用，即得到指针指向的地址的内容<br>
+<code>*p=a=10</code></p>
+<p>遍历方法：<br>
+<code>int arr[10]={1,2,3,4,5,6,7,8,9,10};</code><br>
+<code>int* p=arr;</code><br>
+<code>int i=0;</code><br>
+<code>for(i=0;i&lt;10;i++){</code><br>
+<code>. printf(&quot;%d&quot;, *(p+i))</code><br>
+<code>. printf(&quot;%d&quot;, *(arr+i))//用指针的方法打印</code><br>
+<code>. printf(&quot;%d&quot;, arr[i])//普通的数组打印方式</code><br>
+<code>. printf(&quot;%d&quot;,p[i])</code><br>
+<code>四种打方式结果一样</code><br>
+<code>}</code><br>
+<strong>关于二维数组</strong>：<br>
+二维数组的数组名是首元素的地址，这里的首元素不是第一行第一列的元素，而是<strong>第一行所有的元素</strong>。（这里把二维数组理解成特殊的一维数组）<br>
+遍历二维数组的元素：<br>
+法一：<br>
+参数是数组的形式<br>
+<img src="https://i.loli.net/2021/08/22/qK58x7h1s4XYHMm.jpg" alt="DA639532E4498FFE5C0A66F394D3AF9E.png" loading="lazy"><br>
+法二（用数组指针）：<br>
+参数是指针的形式<br>
+<img src="https://i.loli.net/2021/08/22/c5XxHB4qFugTyM1.jpg" alt="A8FB103EAB5EEAA1A9184E52A280E973.png" loading="lazy"><br>
+<strong>难点</strong>：解释下为什么是*（*（p+i）+j）:<br>
+<img src="https://i.loli.net/2021/08/22/6RnNg1UVHdQmxcG.jpg" alt="68FFA06AF3561E2E87D20CCF57FB38DA.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/22/EsRiIfSlA3yWgbY.jpg" alt="A3B5175C0E54F9E231E4D23021FFC860.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/22/CI9uzdDsZ4Qfky7.jpg" alt="3F1D262BFBAD01ED5F494E2407CB49CC.png" loading="lazy"><br>
+补充：<br>
+*（*（p+i）+j）的等效写法：<br>
+①（<em>（p+i）[j]）//备注：*（p+i）其实就是一个数组首元素的地址，用指针名[下标]找到数组某个元素。</em>（p+i）=p[i]<br>
+②*（p[i]+j）<br>
+③p[i][j]</p>
+<h3 id="14关于以上几种类型的总结">1.4关于以上几种类型的总结</h3>
+<p>①int arr[5]//arr是一个5<br>
+个元素的整型数组<br>
+②int* parr1[10]//parr1是一个数组，数组有10个元素，每个元素的类型是int*, parr1是指针数组<br>
+③int(* parr2)[10]//parr2是一个指针，该指针指向了一个数组，该数组有10个元素，每个元素的类型是int， parr2是数组指针<br>
+④int (* parr3[10]）[5])//parr3是一个数组，该数组有10个元素，每个元素是一个数组指针，该数组指针指向的数组有5个元素，每个元素的类型是int。</p>
+<h3 id="15">1.5</h3>
 
                                 </div>
                     </article>
@@ -267,6 +439,35 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 <li><a href="#2%E9%87%8E%E6%8C%87%E9%92%88">（2）野指针</a></li>
 </ul>
 </li>
+<li><a href="#14-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88">1.4 二级指针</a>
+<ul>
+<li><a href="#141-%E5%AE%9A%E4%B9%89">1.4.1 定义</a></li>
+<li><a href="#142-%E7%94%A8%E6%B3%95">1.4.2 用法</a></li>
+<li><a href="#143-%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84">1.4.3 指针与数组</a>
+<ul>
+<li><a href="#2%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88">(2)数组指针</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%8C%87%E9%92%88%E8%BF%9B%E9%98%B6">三、指针进阶</a>
+<ul>
+<li><a href="#11-%E5%AD%97%E7%AC%A6%E6%8C%87%E9%92%88">1.1 字符指针</a>
+<ul>
+<li><a href="#111-%E5%AE%9A%E4%B9%89">1.1.1 定义</a></li>
+</ul>
+</li>
+<li><a href="#12-%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84">1.2 指针数组</a>
+<ul>
+<li><a href="#121%E5%AE%9A%E4%B9%89">1.2.1定义</a></li>
+<li><a href="#122-%E4%BD%BF%E7%94%A8">1.2.2 使用</a></li>
+</ul>
+</li>
+<li><a href="#13-%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88">1.3 数组指针</a></li>
+<li><a href="#14%E5%85%B3%E4%BA%8E%E4%BB%A5%E4%B8%8A%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%80%BB%E7%BB%93">1.4关于以上几种类型的总结</a></li>
+<li><a href="#15">1.5</a></li>
 </ul>
 </li>
 </ul>
