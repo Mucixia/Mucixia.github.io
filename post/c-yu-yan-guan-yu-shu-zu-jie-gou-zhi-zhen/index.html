@@ -7,7 +7,7 @@
 <title>
     C语言重难点-关于数组、结构体、递归、指针 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629738271341">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629890642432">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629738271341" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629890642432" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -469,12 +469,65 @@ char* p1=&quot;abcd&quot;<br>
 <h3 id="17-函数指针">1.7 函数指针</h3>
 <blockquote>
 <p>数组指针-指向数组的指针-存放数组的地址- int （* p）[10]<br>
-函数指针-指向函数的指针-存放函数的地址- int (* p)(intx, inty)<br>
+函数指针-指向函数的指针-存放函数的地址- int (* p)(in tx, int y)//函数指针类型int（* ）(int x,int y),p是一个函数声明。</p>
+</blockquote>
+<p>使用方法：<br>
+<code>int ADD(int x,int y)</code><br>
+<code>{ ...}</code><br>
+<code>int main()</code><br>
+<code>{</code><br>
+<code>int(* p)(int x,int y);</code><br>
+<code>p(2,3);</code><br>
+<code>ADD(2,3);</code><br>
+<code>(*p)(2,3)</code><br>
+<code>(*ADD)(2,3)</code><br>
+//以上四种调用函数ADD的方法都正确<br>
+//调用的时候，<em>的数量没有用，*没有意义<br>
+}<br>
 <strong>补充</strong>：<br>
 ①&amp;函数名和函数名都是函数的地址<br>
 ②<code>( *( void ( * )( ) ) 0 )( )</code><br>
-③<code>void (*signal(int , void(\*)(int) ) )( int )</code></p>
+把0强制类型转换成：void（</em>）（）函数指针类型，0就是一个函数的地址。（*（...）0）（）调用0地址处的该函数。<br>
+<img src="https://i.loli.net/2021/08/24/oOjNX1SQyGRAda4.jpg" alt="7BFF3224902709BEBD81A459A9B85EBA.png" loading="lazy"><br>
+③<code>void (*signal(int , void(\*)(int) ) )( int )</code><br>
+signal是一个函数声明，signal的函数有2个参数，一个是int，一个是void（*）（int）函数指针，该函数指针指向的函数的参数类型是int，返回类型是void。<br>
+signal返回类型也是一个函数指针，该函数指针指向的函数的参数类型是int，返回类型是void。<br>
+<img src="https://i.loli.net/2021/08/24/XFP8aHCBV32Gpul.jpg" alt="998BCF01EE1477E5377EA6CB62A038F1.png" loading="lazy"><br>
+该代码可以简化成：<br>
+<code>typedef void(*pfun_t)(int);</code><br>
+<code>pfun_t signal(int,pfun_t);</code></p>
+<h3 id="18-函数指针数组">1.8 函数指针数组</h3>
+<blockquote>
+<p>指针数组-int* arr[5]<br>
+函数指针-int(* p)(int int)=ADD//函数指针的返回类型是int<br>
+函数指针数组-存放多个函数的地址即函数指针的地址-int (* parr[4])(int ,int)={ADD，SUB，MUL，DIV} : parr是一个数组，有四个元素，每个元素的类型是函数指针。<br>
+使用方法：<br>
+<img src="https://i.loli.net/2021/08/24/kMZ84eXFqIm9rfK.jpg" alt="54534461C7AE1C2103A898909C18F447.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/24/8Iy4TmaEgQ9K1pO.jpg" alt="5EF41F24FFDF6D50042FDC58A08F8909.png" loading="lazy"><br>
+函数指针数组的用途--转移表：<br>
+计算器案列：<br>
+<img src="https://i.loli.net/2021/08/25/659vjLIO7GyqF3d.jpg" alt="3708AF522E4CB38219F79C1C1F19CFE9.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/25/8e6MnTfNCAV5LEH.jpg" alt="90D8B061A551E15E4C23E4FAF57ECD0C.png" loading="lazy"><br>
+<code>int main(){</code><br>
+<img src="https://i.loli.net/2021/08/25/8HdbgF39rNuwKEj.jpg" alt="941F2A237891277A6F5C69ED5F6E90A5.png" loading="lazy"><br>
+<code>}</code><br>
+//pfArr是一个函数指针数组，又叫<strong>转移表</strong></p>
 </blockquote>
+<h3 id="19-指向函数指针数组的指针">1.9 指向函数指针数组的指针</h3>
+<h4 id="191-定义">1.9.1 定义</h4>
+<blockquote>
+<p>数组指针-指向数组的指针-存放数组的地址<br>
+<strong>指向</strong>函数指针的<strong>数组的指针</strong>--存放着函数指针数组的地址<br>
+<code>int (* pf)(int , int)//函数指针</code><br>
+<code>int(* pfArr[4])(int , int)//函数指针数组，pfArr是一个数组，函数指针数组</code><br>
+<code>int(* (* ppfArr[4] )(int , int))//指向函数指针数组的指针，ppfArr是一个数组指针，指针指向的数组有4个元素，每个元素的类型是一个函数指针int( * )(int ， int)</code></p>
+</blockquote>
+<h4 id="192-回调函数">1.9.2 回调函数</h4>
+<p>回调函数就是一个通过函数指针调用的函数。<br>
+解释一下就是，如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。<br>
+<img src="https://i.loli.net/2021/08/25/mcNEvqh3pGIAuz6.jpg" alt="5F6F9B79E94B7BDC76CC38BF4165918E.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/25/WVZv6nqIaQhtRTY.jpg" alt="7792398E32ECC37B66A771CF81F9A11D.png" loading="lazy"></p>
+<h4 id="193-qsort函数">1.9.3 qsort函数</h4>
 
                                 </div>
                     </article>
@@ -568,6 +621,14 @@ char* p1=&quot;abcd&quot;<br>
 </ul>
 </li>
 <li><a href="#17-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88">1.7 函数指针</a></li>
+<li><a href="#18-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84">1.8 函数指针数组</a></li>
+<li><a href="#19-%E6%8C%87%E5%90%91%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88">1.9 指向函数指针数组的指针</a>
+<ul>
+<li><a href="#191-%E5%AE%9A%E4%B9%89">1.9.1 定义</a></li>
+<li><a href="#192-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">1.9.2 回调函数</a></li>
+<li><a href="#193-qsort%E5%87%BD%E6%95%B0">1.9.3 qsort函数</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

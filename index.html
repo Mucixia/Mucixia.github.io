@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629738271341">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629890642432">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629738271341" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629890642432" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -97,6 +97,38 @@
                 <div id="content" class="main-container-left">
                     
         
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
+                        简单的记录
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-01-15</time>
+                    
+                        <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
+                            i-tag-other_3">
+            #心情
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/" class="post-feature-image" style="background-image:url(https://mucixia.github.io/post-images/jian-dan-de-ji-lu.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://mucixia.github.io/post/c-yu-yan-guan-yu-shu-zu-jie-gou-zhi-zhen/">
@@ -467,12 +499,65 @@ test1(arr)//arr是数组首元素地址，也就是一级指针的地址
 1.7 函数指针
 
 数组指针-指向数组的指针-存放数组的地址- int （* p）[10]
-函数指针-指向函数的指针-存放函数的地址- int (* p)(intx, inty)
+函数指针-指向函数的指针-存放函数的地址- int (* p)(in tx, int y)//函数指针类型int（* ）(int x,int y),p是一个函数声明。
+
+使用方法：
+int ADD(int x,int y)
+{ ...}
+int main()
+{
+int(* p)(int x,int y);
+p(2,3);
+ADD(2,3);
+(*p)(2,3)
+(*ADD)(2,3)
+//以上四种调用函数ADD的方法都正确
+//调用的时候，的数量没有用，*没有意义
+}
 补充：
 ①&amp;amp;函数名和函数名都是函数的地址
 ②( *( void ( * )( ) ) 0 )( )
-③void (*signal(int , void(\*)(int) ) )( int )
+把0强制类型转换成：void（）（）函数指针类型，0就是一个函数的地址。（*（...）0）（）调用0地址处的该函数。
 
+③void (*signal(int , void(\*)(int) ) )( int )
+signal是一个函数声明，signal的函数有2个参数，一个是int，一个是void（*）（int）函数指针，该函数指针指向的函数的参数类型是int，返回类型是void。
+signal返回类型也是一个函数指针，该函数指针指向的函数的参数类型是int，返回类型是void。
+
+该代码可以简化成：
+typedef void(*pfun_t)(int);
+pfun_t signal(int,pfun_t);
+1.8 函数指针数组
+
+指针数组-int* arr[5]
+函数指针-int(* p)(int int)=ADD//函数指针的返回类型是int
+函数指针数组-存放多个函数的地址即函数指针的地址-int (* parr[4])(int ,int)={ADD，SUB，MUL，DIV} : parr是一个数组，有四个元素，每个元素的类型是函数指针。
+使用方法：
+
+
+函数指针数组的用途--转移表：
+计算器案列：
+
+
+int main(){
+
+}
+//pfArr是一个函数指针数组，又叫转移表
+
+1.9 指向函数指针数组的指针
+1.9.1 定义
+
+数组指针-指向数组的指针-存放数组的地址
+指向函数指针的数组的指针--存放着函数指针数组的地址
+int (* pf)(int , int)//函数指针
+int(* pfArr[4])(int , int)//函数指针数组，pfArr是一个数组，函数指针数组
+int(* (* ppfArr[4] )(int , int))//指向函数指针数组的指针，ppfArr是一个数组指针，指针指向的数组有4个元素，每个元素的类型是一个函数指针int( * )(int ， int)
+
+1.9.2 回调函数
+回调函数就是一个通过函数指针调用的函数。
+解释一下就是，如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。
+
+
+1.9.3 qsort函数
 
                                         </div>
                                         
@@ -794,7 +879,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-">
             #Python
         </a>
                         
@@ -818,38 +903,6 @@ python基础
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
-                        简单的记录
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2020-01-15</time>
-                    
-                        <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-banana">
-            #心情
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                        <a href="https://mucixia.github.io/post/jian-dan-de-ji-lu/" class="post-feature-image" style="background-image:url(https://mucixia.github.io/post-images/jian-dan-de-ji-lu.jpg) ">
-                        </a>
-                        
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
                     <a href="https://mucixia.github.io/post/hello-gridea/">
                         Hello Gridea
                     </a>
@@ -858,7 +911,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-warning">
             #Gridea
         </a>
                         
@@ -892,7 +945,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629738271341)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629890642432)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动
