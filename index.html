@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629891021928">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629916714806">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629891021928" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629916714806" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_2">
             #心情
         </a>
                         
@@ -162,14 +162,14 @@ double arr[10]
 补充：sizeof和strlen
 sizeof：“sizeof()”运算符求的是字符数组的长度，而不是字符串长度。只跟你给该字符串数组定义了多大空间有关，而跟字符串是否结束无关.如果遇到字符串，编译时会自动在末尾增加一个 null 字符，即char arr1[]=&#39;abc\0&#39;。
 strlen：用来计算以’\0’结尾的字符串长度的函数。它并不是计算内存大小，仅计算字符串从开端到’\0’结尾字符的个数(不包含’\0’)。
-char arr1[]=&#39;abc&#39;;
-char arr2[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
-sizeof(arr1)=4
-sizeof(arr2)=3
+char arr1[]=&#39;abc&#39;;//字符串
+char arr2[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}//字符数组
+sizeof(arr1)=4//41=4， char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;\0&#39;}
+sizeof(arr2)=3//31=3
 strlen(arr1)=3
 strlen(arr2)=随机数
 其中，arr1[]是字符串,arr2[]是字符数组
-总结：以字符串形式出现的，编译器都会为该字符串自动添加一个0作为结束符，如在代码中写 &amp;quot;abc&amp;quot;,那么编译器帮你存储的是&amp;quot;abc/0&amp;quot;，char arr[]=&amp;quot;abc&amp;quot;实际上存储的是 char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;&#39;\0}
+总结：以字符串形式出现的，编译器都会为该字符串自动添加一个0作为结束符，如在代码中写 &amp;quot;abc&amp;quot;,那么编译器帮你存储的是&amp;quot;abc/0&amp;quot;，char arr[]=&amp;quot;abc&amp;quot;实际上存储的是 char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;\0&#39;}
 3.二维数组
 3.1 创建方式
 数据类型 数组名称[行][列]，如：int arr[3][2]代表三行两列的数组
@@ -218,10 +218,13 @@ char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;}
 &amp;amp;数组名：取出的是整个数组的地址（打印出首元素地址作为整个地址地代表）-&amp;gt;p=&amp;amp;arr,*p=arr(p是整个数组的地址，*p是数组首元素的地址)
 &amp;amp;数组名[0]：取出的是数组的首元素地址
 数组名：取出的是数组的首元素地址
-注意：
-①绝大多数时候，&amp;amp;arr[0]和arr都是首元素地址，但是也有例外：
-sizeof（arr）/sizeof(arr[0])；arr表示整个数组，sizeof（arr）表示整个数组的大小。
+☀️☀️注意：
+①数组名arr是首元素地址，但是以下两种   情况除外：
+
+sizeof(arr) 数组名表示整个数组，求得数组的大小，单位是字节。sizeof（arr）/sizeof(arr[0])；arr表示整个数组，sizeof（arr）表示整个数组的大小。
+&amp;amp;arr表示整个数组的地址。
 ②int arr[10]={0}
+
 
 二、指针
 1.1 定义
@@ -381,6 +384,11 @@ int a=10;
 int* p=&amp;amp;a;
 ②在取值操作时，叫解引用，即得到指针指向的地址的内容
 *p=a=10
+③ &amp;amp;放在一起，抵消掉，如：
+int a,b; a=100; b=100; int *p,*q; p=&amp;amp;a; q=&amp;amp;b; *p=*q;
+代入：&amp;amp;a=&amp;amp;b
+抵消：a=b
+④有，&amp;amp;符号出现，就说明此处用到了指针，指针（或者说数组/数组元素地址）的大小在32位平台是4，64位平台是8。原因：在32位cpu上，指针能够存储这2^32次个地址就需要4个字节。（1字节=8位）.
 遍历方法：
 int arr[10]={1,2,3,4,5,6,7,8,9,10};
 int* p=arr;
@@ -558,6 +566,29 @@ int(* (* ppfArr[4] )(int , int))//指向函数指针数组的指针，ppfArr是�
 
 
 1.9.3 qsort函数
+...
+三、指针和数组笔试题
+1.1 一维数组
+1.1.1 sizeof（）问题
+（1）整形数组
+
+（2）字符数组
+
+（3）初始化为字符串的数组
+
+总结：
+一个指针（或者说数组/数组元素地址）的大小在32位平台是4，64位平台是8。原因：在32位cpu上，指针能够存储这2^32次个地址就需要4个字节。（1字节=8位），64位同理；
+只要是求地址的大小（数首元素地址，下一个元素地址，整个数组地址，下一个数组地址...）都是4/8字节。
+1.1.2 strlen（）问题
+（1）字符数组
+
+（2）初始化为字符串的数组
+
+总结：
+C 库函数 size_t strlen(const char *str) 接收的类型是地址char *，从给定地址往后寻找，从给定直到空结束字符（不包括空结束字符），然后返回字符串 str 的长度。
+如果传给strlen（）的参数是未可知范围的地址，strlen会一直走下去，直到遇到&amp;quot;\0&amp;quot;为止，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;},strlen(arr) 随机、char arr[]=“abc”,strlen(arr) 随机）；
+如果传给strlen（）的地址后面会出现&#39;\0&#39;,那么就返回字符串的长度；
+如果传给strlen的参数不是一个地址，或者是说转换成ASCII码后的地址不符合要求，就会报错。
 
                                         </div>
                                         
@@ -879,7 +910,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
             #Python
         </a>
                         
@@ -911,7 +942,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-success">
             #Gridea
         </a>
                         
@@ -945,7 +976,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629891021928)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629916714806)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动
