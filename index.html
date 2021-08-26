@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629916802198">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629994386880">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629916802198" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629994386880" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_2">
             #心情
         </a>
                         
@@ -415,9 +415,14 @@ for(i=0;i&amp;lt;10;i++){
 
 补充：
 *（*（p+i）+j）的等效写法：
-①（*（p+i）[j]）//备注：*（p+i）其实就是一个数组首元素的地址，用指针名[下标]找到数组某个元素。（p+i）=p[i]
-②（p[i]+j）
+①（*（p+i）[j]）//备注：*（p+i）=p[i],。*（p+i）=p[i], 比如说，p是二维数组arr的首元素地址p=arr=&amp;amp;arr1，*p=p[0]是一维数组arr1的首元素地址。
+②*（p[i]+j）
 ③p[i][j]
+④二维数组的数组名是地址的地址a=&amp;amp;a[0]=&amp;amp;&amp;amp;a[0][0],一次解引用：*a=&amp;amp;a[0][0],二次解引用：**a=a[0][0]
+a[0]讲解：
+
+
+二维数组指针表示，C语言指针引用二维数组详解
 1.4关于以上几种类型的总结
 ①int arr[5]//arr是一个5
 个元素的整型数组
@@ -578,7 +583,11 @@ int(* (* ppfArr[4] )(int , int))//指向函数指针数组的指针，ppfArr是�
 
 总结：
 一个指针（或者说数组/数组元素地址）的大小在32位平台是4，64位平台是8。原因：在32位cpu上，指针能够存储这2^32次个地址就需要4个字节。（1字节=8位），64位同理；
-只要是求地址的大小（数首元素地址，下一个元素地址，整个数组地址，下一个数组地址...）都是4/8字节。
+
+求地址的大小（数首元素地址，下一个元素地址，整个数组地址，下一个数组地址...）都是4/8字节。
+求元素的大小，就看是整形还是字符，整形4个字节，字符型1个字节。
+不分char，int等类型，只要是求地址大小，都是4/8.
+
 1.1.2 strlen（）问题
 （1）字符数组
 
@@ -586,9 +595,43 @@ int(* (* ppfArr[4] )(int , int))//指向函数指针数组的指针，ppfArr是�
 
 总结：
 C 库函数 size_t strlen(const char *str) 接收的类型是地址char *，从给定地址往后寻找，从给定直到空结束字符（不包括空结束字符），然后返回字符串 str 的长度。
-如果传给strlen（）的参数是未可知范围的地址，strlen会一直走下去，直到遇到&amp;quot;\0&amp;quot;为止，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;},strlen(arr) 随机、char arr[]=“abc”,strlen(arr) 随机）；
-如果传给strlen（）的地址后面会出现&#39;\0&#39;,那么就返回字符串的长度；
-如果传给strlen的参数不是一个地址，或者是说转换成ASCII码后的地址不符合要求，就会报错。
+如果传给strlen（）的参数是未可知范围的地址，strlen会一直走下去，直到遇到&amp;quot;\0&amp;quot;为止，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;},strlen(arr) 随机）；
+如果传给strlen（）的地址后面会出现&#39;\0&#39;,那么就返回字符串的长度（char arr[]=“abc”,strlen(arr) =6）；
+如果传给strlen的参数是一个具体的元素而不是一个地址，这样会把字符a的ascii码值97传给strlen函数，而此函数是访问不到这个地址的，因此会程序中断。（char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;},strlen(*arr) 报错）。
+1.2 二维数组
+
+总结
+①a[0]：
+a[0]是二维数组的第一行，是二维数组的首元素地址，a[0]是第一行的数组名，也就是一维数组的首元素地址，即a[0]=&amp;amp;a[0][0]
+
+
+二维数组指针表示，C语言指针引用二维数组详解
+②a：
+a是二维数组的数组名，没有sizeof（数组名），也没有&amp;amp;（数组名），所以a是二维数组的首元素地址，将二维数组看成一维数组，a就是第一行的地址即a=&amp;amp;a[0]，又因为a[0]是a[0][0]的地址，有a == &amp;amp;(&amp;amp;a[0][0])
+即二维数组名 a 是地址的地址。
+③数组名的意义
+数组名有：一维数组arr，二维数组a，二维数组的第i行a[i]
+
+sizeof（数组名），这里的数组名表示整个数组，计算的是整个数组的大小，单位是字节，元素个数x单个字节
+&amp;amp;数组名，表示是整个数组的地址
+除此之外所有的数组名表示首元素地址
+
+1.3 指针
+题一：
+
+*（ptr-1）= ptr[-1]--&amp;gt;*(*(p+4)+2)=p[4][2]
+题二：
+
+题三：
+
+题四：
+
+补充：
+逗号表达式：
+a=（表达式1, 表达式2），先求解表达式 1，再求解表达式 2。整个逗号表达式的值是表达式 2 的值。
+如：a=（1，2），a就是2；b=(count=19, incr=10, count+1)，b就是20。
+题五：
+
 
                                         </div>
                                         
@@ -910,7 +953,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-info">
             #Python
         </a>
                         
@@ -942,7 +985,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-">
             #Gridea
         </a>
                         
@@ -976,7 +1019,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629916802198)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629994386880)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

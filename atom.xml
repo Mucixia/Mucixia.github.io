@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-25T18:40:56.459Z</updated>
+    <updated>2021-08-26T16:14:32.496Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -287,9 +287,14 @@ char* p1=&quot;abcd&quot;<br>
 <img src="https://i.loli.net/2021/08/22/CI9uzdDsZ4Qfky7.jpg" alt="3F1D262BFBAD01ED5F494E2407CB49CC.png" loading="lazy"><br>
 补充：<br>
 *（*（p+i）+j）的等效写法：<br>
-①（*（p+i）[j]）//备注：*（p+i）其实就是一个数组首元素的地址，用指针名[下标]找到数组某个元素。<em>（p+i）=p[i]<br>
-②</em>（p[i]+j）<br>
-③p[i][j]</p>
+①（*（p+i）[j]）//备注：<code>*</code>（p+i）=p[i],。<code>*</code>（p+i）=p[i], 比如说，p是二维数组arr的首元素地址p=arr=&amp;arr1，<code>*</code>p=p[0]是一维数组arr1的首元素地址。<br>
+②<code>*</code>（p[i]+j）<br>
+③p[i][j]<br>
+④二维数组的数组名是地址的地址<code>a=&amp;a[0]=&amp;&amp;a[0][0]</code>,一次解引用：<code>*a=&amp;a[0][0]</code>,二次解引用：<code>**a=a[0][0]</code><br>
+<strong>a[0]讲解</strong>：<br>
+<img src="https://i.loli.net/2021/08/26/GLQSEw6k7DWzNKI.png" alt="image.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/26/bjduhJelfMyNc8p.png" alt="image.png" loading="lazy"><br>
+<a href="http://c.biancheng.net/view/227.html">二维数组指针表示，C语言指针引用二维数组详解</a></p>
 <h3 id="14关于以上几种类型的总结">1.4关于以上几种类型的总结</h3>
 <p>①int arr[5]//arr是一个5<br>
 个元素的整型数组<br>
@@ -449,8 +454,12 @@ signal返回类型也是一个函数指针，该函数指针指向的函数的�
 （3）初始化为字符串的数组<br>
 <img src="https://i.loli.net/2021/08/26/NncVZprbhId5qlC.jpg" alt="E4E7C6619A0928C82DEEC316B52BD96A.png" loading="lazy"></p>
 <p><strong>总结</strong>：<br>
-一个指针（或者说数组/数组元素地址）的大小在32位平台是4，64位平台是8。原因：在32位cpu上，指针能够存储这2^32次个地址就需要4个字节。（1字节=8位），64位同理；<br>
-只要是求地址的大小（数首元素地址，下一个元素地址，整个数组地址，下一个数组地址...）都是4/8字节。</p>
+一个指针（或者说数组/数组元素地址）的大小在32位平台是4，64位平台是8。原因：在32位cpu上，指针能够存储这2^32次个地址就需要4个字节。（1字节=8位），64位同理；</p>
+<ol>
+<li>求地址的大小（数首元素地址，下一个元素地址，整个数组地址，下一个数组地址...）都是4/8字节。</li>
+<li>求元素的大小，就看是整形还是字符，整形4个字节，字符型1个字节。</li>
+<li>不分char，int等类型，只要是求地址大小，都是4/8.</li>
+</ol>
 <h4 id="112-strlen问题">1.1.2 strlen（）问题</h4>
 <p>（1）字符数组<br>
 <img src="https://i.loli.net/2021/08/26/JhEeWFNPSu8Rg71.jpg" alt="CFF17643EF1DDF3651E11DF7868CDF5C.png" loading="lazy"></p>
@@ -458,9 +467,43 @@ signal返回类型也是一个函数指针，该函数指针指向的函数的�
 <img src="https://i.loli.net/2021/08/26/R9YgpdVoxcAqjlT.jpg" alt="B014F4E9A7AA3444AA90341EE8A740C3.png" loading="lazy"></p>
 <p><strong>总结</strong>：<br>
 C 库函数 size_t strlen(const char *str) <strong>接收的类型是地址char *</strong>，从给定地址<strong>往后寻找，从给定直到空结束字符</strong>（不包括空结束字符），然后返回字符串 str 的长度。<br>
-如果传给strlen（）的参数是未可知范围的地址，strlen会<strong>一直走下去，直到遇到&quot;\0&quot;为止</strong>，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={'a','b','c'},strlen(arr) 随机、char arr[]=“abc”,strlen(arr) 随机）；<br>
-如果传给strlen（）的地址后面会出现'\0',那么就返回字符串的长度；<br>
-如果传给strlen的参数不是一个地址，或者是说转换成ASCII码后的地址不符合要求，就会报错。</p>
+如果传给strlen（）的参数是未可知范围的地址，strlen会<strong>一直走下去，直到遇到&quot;\0&quot;为止</strong>，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={'a','b','c'},strlen(arr) 随机）；<br>
+如果传给strlen（）的地址后面会出现'\0',那么就返回字符串的长度（char arr[]=“abc”,strlen(arr) =6）；<br>
+如果传给strlen的参数是一个具体的元素而不是一个地址，这样会把字符a的ascii码值97传给strlen函数，而此函数是访问不到这个地址的，因此会程序中断。（char arr[]={'a','b','c'},strlen(*arr) 报错）。</p>
+<h3 id="12-二维数组">1.2 二维数组</h3>
+<p><img src="https://i.loli.net/2021/08/26/8epkiAL5jqvSQUx.jpg" alt="B053D9CFA981E7D94BB602A60568EDBB.png" loading="lazy"><br>
+<strong>总结</strong><br>
+①<strong>a[0]</strong>：<br>
+a[0]是二维数组的第一行，是二维数组的首元素地址，a[0]是第一行的数组名，也就是一维数组的首元素地址，即a[0]=&amp;a[0][0]<br>
+<img src="https://i.loli.net/2021/08/26/GLQSEw6k7DWzNKI.png" alt="image.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/26/bjduhJelfMyNc8p.png" alt="image.png" loading="lazy"><br>
+<a href="http://c.biancheng.net/view/227.html">二维数组指针表示，C语言指针引用二维数组详解</a><br>
+②<strong>a</strong>：<br>
+a是二维数组的数组名，没有sizeof（数组名），也没有&amp;（数组名），所以a是二维数组的首元素地址，将二维数组看成一维数组，a就是第一行的地址即a=&amp;a[0]，又因为a[0]是a[0][0]的地址，有a == &amp;(&amp;a[0][0])<br>
+即二维数组名 a 是地址的地址。<br>
+③<strong>数组名的意义</strong><br>
+数组名有：一维数组arr，二维数组a，二维数组的第i行a[i]</p>
+<ol>
+<li>sizeof（数组名），这里的数组名表示整个数组，<strong>计算的是整个数组的大小，单位是字节，元素个数x单个字节</strong></li>
+<li>&amp;数组名，表示是<strong>整个数组的地址</strong></li>
+<li>除此之外所有的数组名表示<strong>首元素地址</strong></li>
+</ol>
+<h3 id="13-指针">1.3 指针</h3>
+<p>题一：<br>
+<img src="https://i.loli.net/2021/08/26/2JE8bzZvfmWiICw.jpg" alt="E4AEB2F154EB0CF349FF989215F6F150.png" loading="lazy"><br>
+<code>*</code>（ptr-1）= ptr[-1]--&gt;<code>*</code>(<code>*</code>(p+4)+2)=p[4][2]<br>
+题二：<br>
+<img src="https://i.loli.net/2021/08/26/RDiMUbezXnQ7NkS.jpg" alt="49D93CBF82EB3C4691F2F1AF2FBEBA48.png" loading="lazy"><br>
+题三：<br>
+<img src="https://i.loli.net/2021/08/26/Ek2ze6wsuQRLXK8.jpg" alt="90EB76D407B4B9D33A5A7C632BABD810.png" loading="lazy"><br>
+题四：<br>
+<img src="https://i.loli.net/2021/08/26/FypcbJhLRNEGgxH.jpg" alt="EBE0D6260023967117C84099F6CA2F3C.png" loading="lazy"></p>
+<p><strong>补充</strong>：<br>
+逗号表达式：<br>
+a=（表达式1, 表达式2），先求解表达式 1，再求解表达式 2。整个逗号表达式的值是表达式 2 的值。<br>
+如：a=（1，2），a就是2；b=(count=19, incr=10, count+1)，b就是20。<br>
+题五：<br>
+<img src="https://i.loli.net/2021/08/27/vkAztJ1sd9luwBG.jpg" alt="F31CE35ECE9FD1609C977B8F2CE2001F.png" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
