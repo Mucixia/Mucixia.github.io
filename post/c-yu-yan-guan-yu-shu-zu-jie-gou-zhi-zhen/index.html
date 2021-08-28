@@ -7,7 +7,7 @@
 <title>
     C语言重难点-关于数组、结构体、递归、指针 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629994386880">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630170709345">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629994386880" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630170709345" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -209,8 +209,8 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 <p>①指针类型决定了指针进行解引用操作的时候，能够访问空间的大小。</p>
 <ul>
 <li>int*p： *p能够访问4个字节</li>
-<li>char *p：*p能够访问1个字节</li>
-<li>double* p：*p能够访问8个字节</li>
+<li>char <code>*</code>p：*p能够访问1个字节</li>
+<li>double<code>*</code> p：*p能够访问8个字节</li>
 <li>②指针类型决定了指针走一步走多远（指针的步长）</li>
 <li>int*p： p+1--&gt;往后4字节</li>
 <li>char *p：p+1--&gt;往后1字节</li>
@@ -601,7 +601,11 @@ a是二维数组的数组名，没有sizeof（数组名），也没有&amp;（�
 a=（表达式1, 表达式2），先求解表达式 1，再求解表达式 2。整个逗号表达式的值是表达式 2 的值。<br>
 如：a=（1，2），a就是2；b=(count=19, incr=10, count+1)，b就是20。<br>
 题五：<br>
-<img src="https://i.loli.net/2021/08/27/vkAztJ1sd9luwBG.jpg" alt="F31CE35ECE9FD1609C977B8F2CE2001F.png" loading="lazy"></p>
+<img src="https://i.loli.net/2021/08/27/vkAztJ1sd9luwBG.jpg" alt="F31CE35ECE9FD1609C977B8F2CE2001F.png" loading="lazy"><br>
+题六：<br>
+<img src="https://i.loli.net/2021/08/27/bO9eVaocxthGSMF.jpg" alt="60D39AC3AA0BC9F35A701E733D1F908B.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/27/equioEO9KMPbA8w.jpg" alt="BA7492B4E8234FECD101340FA8A9150E.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/27/3T7Ex8kmSWwK4nt.jpg" alt="81DD4BBD6B545FCAD6C5F6C3FA2F131C.png" loading="lazy"></p>
 
                                 </div>
                     </article>

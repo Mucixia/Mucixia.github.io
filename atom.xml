@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-26T16:16:15.496Z</updated>
+    <updated>2021-08-28T17:11:53.662Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -10,6 +10,95 @@
     <logo>https://mucixia.github.io/images/avatar.png</logo>
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言重难点-数据在内存中的存储、内存函数、动态内存分配]]></title>
+        <id>https://mucixia.github.io/post/c-yu-yan-chong-nan-dian-shu-ju-zai-nei-cun-zhong-de-cun-chu-nei-cun-han-shu-dong-tai-nei-cun-fen-pei/</id>
+        <link href="https://mucixia.github.io/post/c-yu-yan-chong-nan-dian-shu-ju-zai-nei-cun-zhong-de-cun-chu-nei-cun-han-shu-dong-tai-nei-cun-fen-pei/">
+        </link>
+        <updated>2021-08-27T09:11:28.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-数据存储">一、数据存储</h2>
+<h3 id="1-数据类型">1. 数据类型</h3>
+<p>类型的意义：</p>
+<ul>
+<li>使用这个类型开辟内存空间（大小决定了适用范围）</li>
+<li>决定了如何看待内存空间的视角</li>
+</ul>
+<h4 id="11-内置类型">1.1 内置类型</h4>
+<h5 id="1整形家族">（1）整形家族</h5>
+<ol>
+<li>char</li>
+<li>short</li>
+<li>int</li>
+<li>long</li>
+</ol>
+<h5 id="2浮点型家族">（2）浮点型家族</h5>
+<ol>
+<li>float</li>
+<li>double</li>
+</ol>
+<h5 id="3指针类型">（3）指针类型</h5>
+<h5 id="4空类型">（4）空类型</h5>
+<p>void表示空类型，通常用于函数的返回类型、函数的参数、指针类型</p>
+<h4 id="12-自定义类型构造类型">1.2 自定义类型（构造类型）</h4>
+<h5 id="1-数组类型">（1） 数组类型</h5>
+<h5 id="2结构体类型-struct">（2）结构体类型 struct</h5>
+<h5 id="3枚举类型-enum">（3）枚举类型 enum</h5>
+<h5 id="4联合类型-union">（4）联合类型 union</h5>
+<p><strong>补充</strong>：<br>
+<img src="https://i.loli.net/2021/08/28/WIgtPfKC3QB47yN.png" alt="QQ截图20210828135840.png" loading="lazy"><br>
+①<strong>原码反码补码</strong><br>
+计算机中的有符号数有三种表示方法，即原码、反码和补码。对于整形，数据存放内存中存放的是补码<br>
+8位二进制, 使用原码或反码表示的范围为[-127, +127], 即2^7-1，而有符号数使用补码表示的范围为[-128, 127]，-128就是10000000，无符号数范围是[0，255]；因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-2^31, 2^31-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值。<br>
+原码：<br>
+直接将二进制数按照正负数形式翻译成二进制就可以；<br>
+反码：<br>
+正数的反码是其本身<br>
+将原码的符号位不变，其它依次按位取反；<br>
+补码：<br>
+正数的反码是其本身<br>
+反码+1就是补码。<br>
+<strong>栗子</strong>：<br>
+[+1] = [00000001]原 = [00000001]反 = [00000001]补<br>
+[-1] = [10000001]原 = [11111110]反 = [11111111]补<br>
+<a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/computercode.html">正码、反码和补码详解</a><br>
+真值： 现实世界中的数字<br>
+原码：在真值的基础上解决了正负号在机器中的表示问题<br>
+补码：在原码的基础上解决了如何将减法变成加法的问题<br>
+移码：在补码的基础上解决了数字的直观大小比较问题<br>
+②<strong>大小端</strong>：<br>
+大端模式（大端字节序存储模式）：数据的低位保存在内存的高地址中，而数据的高位保存在内存的低地址中<br>
+小端模式（小端字节序存储模式）：数据的低位保存在内存的低地址中，而数据的高位保存在内存的高地址中<br>
+<img src="https://i.loli.net/2021/08/28/N7m3TYJoFLtU1IA.jpg" alt="BE38E4E0B3D9775936C15F0CC81DBAD4.png" loading="lazy"><br>
+<strong>栗子</strong>：<br>
+判断当前机器的字节序：<br>
+//思路：将存储的地址存放在一个字符指针变量中，判断首元素和待比较的低位相等。<br>
+<img src="https://i.loli.net/2021/08/28/fAIHLYXEO1R5auF.png" alt="QQ截图20210828203335.png" loading="lazy"><br>
+将其封装成一个函数：<br>
+<img src="https://i.loli.net/2021/08/28/XVS4ZTqGcWOw7Le.png" alt="QQ截图20210828204128.png" loading="lazy"><br>
+指针部分可以简化成：return <code>*</code>(char<code>*</code> )&amp;a;<br>
+③<strong>整型提升</strong><br>
+表达式中的字符和短整型操作数在使用之前被转换为普通整型，这种转换称为整型提升。<br>
+表达式中各种长度可能小于int长度的整型值，都必须先转换为int或unsigned int，然后才能送入CPU去执行运算。</p>
+<ol>
+<li>负数的整型提升<br>
+char c1 = -1; 变量c1的二进制位(补码)中只有8个比特位： 1111111 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即1， 提升之后的结果是： 11111111111111111111111111111111</li>
+<li>正数的整型提升<br>
+char c2 = 1; 变量c2的二进制位(补码)中只有8个比特位： 00000001 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即0， 提升之后的结果是： 00000000000000000000000000000001</li>
+<li>无符号整形提升，高位补0</li>
+</ol>
+<p><strong>栗子</strong>：<br>
+<img src="https://i.loli.net/2021/08/28/EK6zyBjOX4cvRUL.png" alt="QQ截图20210828212735.png" loading="lazy"><br>
+（即使两个char类型8位的相加，在CPU执行时实际上也要先转换为CPU内整型32位操作数的标准长度。）<br>
+<img src="https://i.loli.net/2021/08/28/98mxUlFNRMc5JYi.jpg" alt="7C64E6DB1FAC6F72BDB1F1B14FFD968F.png" loading="lazy"><br>
+计算方法：因为整形存储的是补码，所以先计算出32位补码，后取8位char类型，遇到整型提升（%d），补充0/1至32位（此时还是补码），提升后输出将此时的补码转化成原码再转化成十进制即可。</p>
+<ul>
+<li>负数：补充1</li>
+<li>正数：补充0</li>
+<li>无符号unsigned：补充0</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/28/IBe2CikobKQ6c4p.jpg" alt="6109DDA675C45092A09D41CBEA9FD77C.png" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言重难点-关于数组、结构体、递归、指针]]></title>
         <id>https://mucixia.github.io/post/c-yu-yan-guan-yu-shu-zu-jie-gou-zhi-zhen/</id>
@@ -111,8 +200,8 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 <p>①指针类型决定了指针进行解引用操作的时候，能够访问空间的大小。</p>
 <ul>
 <li>int*p： *p能够访问4个字节</li>
-<li>char *p：*p能够访问1个字节</li>
-<li>double* p：*p能够访问8个字节</li>
+<li>char <code>*</code>p：*p能够访问1个字节</li>
+<li>double<code>*</code> p：*p能够访问8个字节</li>
 <li>②指针类型决定了指针走一步走多远（指针的步长）</li>
 <li>int*p： p+1--&gt;往后4字节</li>
 <li>char *p：p+1--&gt;往后1字节</li>
@@ -503,7 +592,11 @@ a是二维数组的数组名，没有sizeof（数组名），也没有&amp;（�
 a=（表达式1, 表达式2），先求解表达式 1，再求解表达式 2。整个逗号表达式的值是表达式 2 的值。<br>
 如：a=（1，2），a就是2；b=(count=19, incr=10, count+1)，b就是20。<br>
 题五：<br>
-<img src="https://i.loli.net/2021/08/27/vkAztJ1sd9luwBG.jpg" alt="F31CE35ECE9FD1609C977B8F2CE2001F.png" loading="lazy"></p>
+<img src="https://i.loli.net/2021/08/27/vkAztJ1sd9luwBG.jpg" alt="F31CE35ECE9FD1609C977B8F2CE2001F.png" loading="lazy"><br>
+题六：<br>
+<img src="https://i.loli.net/2021/08/27/bO9eVaocxthGSMF.jpg" alt="60D39AC3AA0BC9F35A701E733D1F908B.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/27/equioEO9KMPbA8w.jpg" alt="BA7492B4E8234FECD101340FA8A9150E.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/27/3T7Ex8kmSWwK4nt.jpg" alt="81DD4BBD6B545FCAD6C5F6C3FA2F131C.png" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>

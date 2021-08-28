@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1629994386880">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630170709345">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1629994386880" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630170709345" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_3">
             #心情
         </a>
                         
@@ -125,6 +125,110 @@
                                     </div>
                                     
                                             <a class="btn btn-text" href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://mucixia.github.io/post/c-yu-yan-chong-nan-dian-shu-ju-zai-nei-cun-zhong-de-cun-chu-nei-cun-han-shu-dong-tai-nei-cun-fen-pei/">
+                        C语言重难点-数据在内存中的存储、内存函数、动态内存分配
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-08-27</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            一、数据存储
+1. 数据类型
+类型的意义：
+
+使用这个类型开辟内存空间（大小决定了适用范围）
+决定了如何看待内存空间的视角
+
+1.1 内置类型
+（1）整形家族
+
+char
+short
+int
+long
+
+（2）浮点型家族
+
+float
+double
+
+（3）指针类型
+（4）空类型
+void表示空类型，通常用于函数的返回类型、函数的参数、指针类型
+1.2 自定义类型（构造类型）
+（1） 数组类型
+（2）结构体类型 struct
+（3）枚举类型 enum
+（4）联合类型 union
+补充：
+
+①原码反码补码
+计算机中的有符号数有三种表示方法，即原码、反码和补码。对于整形，数据存放内存中存放的是补码
+8位二进制, 使用原码或反码表示的范围为[-127, +127], 即2^7-1，而有符号数使用补码表示的范围为[-128, 127]，-128就是10000000，无符号数范围是[0，255]；因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-2^31, 2^31-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值。
+原码：
+直接将二进制数按照正负数形式翻译成二进制就可以；
+反码：
+正数的反码是其本身
+将原码的符号位不变，其它依次按位取反；
+补码：
+正数的反码是其本身
+反码+1就是补码。
+栗子：
+[+1] = [00000001]原 = [00000001]反 = [00000001]补
+[-1] = [10000001]原 = [11111110]反 = [11111111]补
+正码、反码和补码详解
+真值： 现实世界中的数字
+原码：在真值的基础上解决了正负号在机器中的表示问题
+补码：在原码的基础上解决了如何将减法变成加法的问题
+移码：在补码的基础上解决了数字的直观大小比较问题
+②大小端：
+大端模式（大端字节序存储模式）：数据的低位保存在内存的高地址中，而数据的高位保存在内存的低地址中
+小端模式（小端字节序存储模式）：数据的低位保存在内存的低地址中，而数据的高位保存在内存的高地址中
+
+栗子：
+判断当前机器的字节序：
+//思路：将存储的地址存放在一个字符指针变量中，判断首元素和待比较的低位相等。
+
+将其封装成一个函数：
+
+指针部分可以简化成：return *(char* )&amp;amp;a;
+③整型提升
+表达式中的字符和短整型操作数在使用之前被转换为普通整型，这种转换称为整型提升。
+表达式中各种长度可能小于int长度的整型值，都必须先转换为int或unsigned int，然后才能送入CPU去执行运算。
+
+负数的整型提升
+char c1 = -1; 变量c1的二进制位(补码)中只有8个比特位： 1111111 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即1， 提升之后的结果是： 11111111111111111111111111111111
+正数的整型提升
+char c2 = 1; 变量c2的二进制位(补码)中只有8个比特位： 00000001 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即0， 提升之后的结果是： 00000000000000000000000000000001
+无符号整形提升，高位补0
+
+栗子：
+
+（即使两个char类型8位的相加，在CPU执行时实际上也要先转换为CPU内整型32位操作数的标准长度。）
+
+计算方法：因为整形存储的是补码，所以先计算出32位补码，后取8位char类型，遇到整型提升（%d），补充0/1至32位（此时还是补码），提升后输出将此时的补码转化成原码再转化成十进制即可。
+
+负数：补充1
+正数：补充0
+无符号unsigned：补充0
+
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://mucixia.github.io/post/c-yu-yan-chong-nan-dian-shu-ju-zai-nei-cun-zhong-de-cun-chu-nei-cun-han-shu-dong-tai-nei-cun-fen-pei/">Read More ~</a>
                             </div>
                 </div>
             </article>
@@ -632,6 +736,10 @@ a=（表达式1, 表达式2），先求解表达式 1，再求解表达式 2。�
 如：a=（1，2），a就是2；b=(count=19, incr=10, count+1)，b就是20。
 题五：
 
+题六：
+
+
+
 
                                         </div>
                                         
@@ -953,7 +1061,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-banana">
             #Python
         </a>
                         
@@ -985,7 +1093,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-info">
             #Gridea
         </a>
                         
@@ -1019,7 +1127,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1629994386880)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630170709345)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

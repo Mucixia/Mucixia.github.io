@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    简单的记录 | 在高处，凝望世界流动
+    C语言重难点-数据在内存中的存储、内存函数、动态内存分配 | 在高处，凝望世界流动
 </title>
 <link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630170709345">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -106,146 +106,95 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            简单的记录
+                            C语言重难点-数据在内存中的存储、内存函数、动态内存分配
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2020-01-15</time>
+                            <time class="post-time">2021-08-27</time>
                             
-                                <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-banana">
-                            #心情
-                        </a>
-                                
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://mucixia.github.io/post-images/jian-dan-de-ji-lu.jpg')"></div>
-                            
                                 <div class="post-content">
-                                    <h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
-<!-- more -->
-<p><strong>《在山上的船》</strong></p>
-<p>一只船孤独地泊在湖上<br>
-既没有向往远方<br>
-亦无怀恋过往<br>
-只在原地静默<br>
-头顶迷离的山雾<br>
-底下是静静的群山<br>
-船在群山之下<br>
-却又停在了群山之上<br>
-它去到了永不会去的地方<br>
-<img src="https://mucixia.github.io/post-images/1628926441921.jpg" alt="" loading="lazy"></p>
-<p><strong>《十年后》</strong></p>
-<p>十年后，二十年后，或许是论尽半生<br>
-于 半生的尽头<br>
-回望 记不起究竟多少年前<br>
-留下的痕迹<br>
-当时那一封 心书<br>
-已蒙上 光留下的灰尘<br>
-大概早已被当事人遗忘<br>
-只有纸墨勤勤恳恳还记着</p>
-<p>那些尘埃<br>
-仅此证明 时间走过<br>
-还有<br>
-这个世界<br>
-他也来过<br>
-2019-11-27<br>
-<img src="https://mucixia.github.io/post-images/1628928100550.jpg" alt="" loading="lazy"></p>
-<p><strong>《历程》</strong></p>
-<p>任何事物大概都会<br>
-萌发、生长、繁盛<br>
-消褪、最终湮灭吧<br>
-这是抵不过的自然规律<br>
-消亡后的重生<br>
-隐匿后的沉寂<br>
-萧败后的接续<br>
-亦是无声后的沉默<br>
-亦或是沉寂后的再次归来<br>
-<img src="https://i.loli.net/2021/08/14/yLGkarQf5RW4SZl.jpg" alt="pexels-pixabay-414144.jpg" loading="lazy"></p>
-<p><strong>《雪》</strong></p>
-<p>揉碎的云<br>
-选择在夜里降临世间<br>
-带来了纯白<br>
-带去了污浊<br>
-当然，这只是一个常见的形容<br>
-<img src="https://i.loli.net/2021/08/14/LGd27qZ1kwMpgSN.jpg" alt="pexels-s-migaj-1081111.jpg" loading="lazy"></p>
-<p><strong>《时间与星星》</strong></p>
-<p>我们数着时间<br>
-时间也在数着我们<br>
-我们数着星星<br>
-星星也在望着我们<br>
-<img src="https://i.loli.net/2021/08/14/iqf35WtSbav1Y9e.jpg" alt="pexels-rafael-cerqueira-4737484 _1_.jpg" loading="lazy"></p>
-<p><strong>《适应》</strong></p>
-<p>part01<br>
-一个习惯和依赖黑暗的人<br>
-感恩黑暗带给他的无尽和深邃<br>
-哪怕见到一瞬的太阳<br>
-也会憎恶万物渴望的光明<br>
-part02<br>
-一个习惯和依赖黑暗的人<br>
-感恩黑暗带给他的无尽和深邃<br>
-哪怕见到一瞬的光明后而<br>
-转向长久的黑暗<br>
-也可能会狂热于一丝的光亮而反过来<br>
-憎恶给他一辈子生存环境的黑暗<br>
-<img src="https://i.loli.net/2021/08/14/gHVophvJiNMSnO1.jpg" alt="pexels-pedro-figueras-681467.jpg" loading="lazy"></p>
-<p><strong>《无题》</strong></p>
-<p>不论心憾<br>
-存在即是美好<br>
-不论完美<br>
-合理即使唯一<br>
-<img src="https://i.loli.net/2021/08/14/9J3cOdvZsj5N4Lq.jpg" alt="pexels-adrien-olichon-2736135.jpg" loading="lazy"></p>
-<p><strong>《少年 壮年 老年》</strong></p>
-<p>少年轻狂<br>
-企望柏拉图式的理想生活<br>
-壮年迷茫<br>
-奢求桃花源般的容身圣境<br>
-老年暗伤<br>
-回忆草蛇灰线似可怜时光<br>
-<img src="https://i.loli.net/2021/08/14/VRpNvMO38ysq7E1.jpg" alt="pexels-krunal-parmar-965663.jpg" loading="lazy"></p>
-<p><strong>《人生的一种》</strong><br>
-生命中平凡<br>
-平凡中卑微<br>
-卑微后死去...<br>
-周而复始<br>
-生而不息<br>
-<img src="https://i.loli.net/2021/08/14/MbcRIPYkWgToZCJ.jpg" alt="pexels-cats-coming-707582.jpg" loading="lazy"></p>
-<p><strong>《归向》</strong><br>
-在高处 凝望世界流动<br>
-为填满每一个虚弱地方<br>
-行人揣着欲望涌进街巷<br>
-人车停在线前渴望远方<br>
-可他们 终会重聚于某点<br>
-周而往复 往复不息<br>
-<img src="https://i.loli.net/2021/08/17/iPOWUb4Rlu3dIgV.jpg" alt="pexels-paweł-l-1309687.jpg" loading="lazy"></p>
-<p><strong>《捉迷藏》</strong></p>
-<p>趁着落霞的掩护<br>
-夕阳躲进山中<br>
-跟月亮捉着迷藏<br>
-朝着东方<br>
-赶了一夜<br>
-在另一边的山头<br>
-悄悄地探出头看月亮走了没<br>
-于是有了人们口中的朝阳<br>
-<img src="https://i.loli.net/2021/08/19/XbcS3ZrwGN1MkfC.jpg" alt="pexels-pixabay-462023.jpg" loading="lazy"><br>
-<img src="https://i.loli.net/2021/08/19/UqDVgdZE9kBcPXn.jpg" alt="pexels-tomáš-malík-3367619.jpg" loading="lazy"></p>
-<p><strong>《车里车外》</strong><br>
-虹光和雨滴结满了车窗<br>
-有人趁着雾气<br>
-写上某某名字<br>
-像是在宣告某种存在<br>
-而我在雾上<br>
-划上一个圈<br>
-行人和车子<br>
-都住进这个由小水滴围成的圈里<br>
-数不清的雨滴<br>
-对车里的人是整个斑斓世界<br>
-对车外的人仅仅是一颗水滴<br>
-数不清的名字<br>
-对车里的人是他们自己存在的的存在<br>
-对车外的人或是雨滴落后留下的轨迹<br>
-水滴、乘客、名字与行人<br>
-因为一场雨短暂聚在了一起<br>
-<img src="https://i.loli.net/2021/08/25/AICKVOehuv41cPJ.jpg" alt="pexels-kaique-rocha-125510.jpg" loading="lazy"></p>
+                                    <h2 id="一-数据存储">一、数据存储</h2>
+<h3 id="1-数据类型">1. 数据类型</h3>
+<p>类型的意义：</p>
+<ul>
+<li>使用这个类型开辟内存空间（大小决定了适用范围）</li>
+<li>决定了如何看待内存空间的视角</li>
+</ul>
+<h4 id="11-内置类型">1.1 内置类型</h4>
+<h5 id="1整形家族">（1）整形家族</h5>
+<ol>
+<li>char</li>
+<li>short</li>
+<li>int</li>
+<li>long</li>
+</ol>
+<h5 id="2浮点型家族">（2）浮点型家族</h5>
+<ol>
+<li>float</li>
+<li>double</li>
+</ol>
+<h5 id="3指针类型">（3）指针类型</h5>
+<h5 id="4空类型">（4）空类型</h5>
+<p>void表示空类型，通常用于函数的返回类型、函数的参数、指针类型</p>
+<h4 id="12-自定义类型构造类型">1.2 自定义类型（构造类型）</h4>
+<h5 id="1-数组类型">（1） 数组类型</h5>
+<h5 id="2结构体类型-struct">（2）结构体类型 struct</h5>
+<h5 id="3枚举类型-enum">（3）枚举类型 enum</h5>
+<h5 id="4联合类型-union">（4）联合类型 union</h5>
+<p><strong>补充</strong>：<br>
+<img src="https://i.loli.net/2021/08/28/WIgtPfKC3QB47yN.png" alt="QQ截图20210828135840.png" loading="lazy"><br>
+①<strong>原码反码补码</strong><br>
+计算机中的有符号数有三种表示方法，即原码、反码和补码。对于整形，数据存放内存中存放的是补码<br>
+8位二进制, 使用原码或反码表示的范围为[-127, +127], 即2^7-1，而有符号数使用补码表示的范围为[-128, 127]，-128就是10000000，无符号数范围是[0，255]；因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-2^31, 2^31-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值。<br>
+原码：<br>
+直接将二进制数按照正负数形式翻译成二进制就可以；<br>
+反码：<br>
+正数的反码是其本身<br>
+将原码的符号位不变，其它依次按位取反；<br>
+补码：<br>
+正数的反码是其本身<br>
+反码+1就是补码。<br>
+<strong>栗子</strong>：<br>
+[+1] = [00000001]原 = [00000001]反 = [00000001]补<br>
+[-1] = [10000001]原 = [11111110]反 = [11111111]补<br>
+<a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/computercode.html">正码、反码和补码详解</a><br>
+真值： 现实世界中的数字<br>
+原码：在真值的基础上解决了正负号在机器中的表示问题<br>
+补码：在原码的基础上解决了如何将减法变成加法的问题<br>
+移码：在补码的基础上解决了数字的直观大小比较问题<br>
+②<strong>大小端</strong>：<br>
+大端模式（大端字节序存储模式）：数据的低位保存在内存的高地址中，而数据的高位保存在内存的低地址中<br>
+小端模式（小端字节序存储模式）：数据的低位保存在内存的低地址中，而数据的高位保存在内存的高地址中<br>
+<img src="https://i.loli.net/2021/08/28/N7m3TYJoFLtU1IA.jpg" alt="BE38E4E0B3D9775936C15F0CC81DBAD4.png" loading="lazy"><br>
+<strong>栗子</strong>：<br>
+判断当前机器的字节序：<br>
+//思路：将存储的地址存放在一个字符指针变量中，判断首元素和待比较的低位相等。<br>
+<img src="https://i.loli.net/2021/08/28/fAIHLYXEO1R5auF.png" alt="QQ截图20210828203335.png" loading="lazy"><br>
+将其封装成一个函数：<br>
+<img src="https://i.loli.net/2021/08/28/XVS4ZTqGcWOw7Le.png" alt="QQ截图20210828204128.png" loading="lazy"><br>
+指针部分可以简化成：return <code>*</code>(char<code>*</code> )&amp;a;<br>
+③<strong>整型提升</strong><br>
+表达式中的字符和短整型操作数在使用之前被转换为普通整型，这种转换称为整型提升。<br>
+表达式中各种长度可能小于int长度的整型值，都必须先转换为int或unsigned int，然后才能送入CPU去执行运算。</p>
+<ol>
+<li>负数的整型提升<br>
+char c1 = -1; 变量c1的二进制位(补码)中只有8个比特位： 1111111 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即1， 提升之后的结果是： 11111111111111111111111111111111</li>
+<li>正数的整型提升<br>
+char c2 = 1; 变量c2的二进制位(补码)中只有8个比特位： 00000001 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即0， 提升之后的结果是： 00000000000000000000000000000001</li>
+<li>无符号整形提升，高位补0</li>
+</ol>
+<p><strong>栗子</strong>：<br>
+<img src="https://i.loli.net/2021/08/28/EK6zyBjOX4cvRUL.png" alt="QQ截图20210828212735.png" loading="lazy"><br>
+（即使两个char类型8位的相加，在CPU执行时实际上也要先转换为CPU内整型32位操作数的标准长度。）<br>
+<img src="https://i.loli.net/2021/08/28/98mxUlFNRMc5JYi.jpg" alt="7C64E6DB1FAC6F72BDB1F1B14FFD968F.png" loading="lazy"><br>
+计算方法：因为整形存储的是补码，所以先计算出32位补码，后取8位char类型，遇到整型提升（%d），补充0/1至32位（此时还是补码），提升后输出将此时的补码转化成原码再转化成十进制即可。</p>
+<ul>
+<li>负数：补充1</li>
+<li>正数：补充0</li>
+<li>无符号unsigned：补充0</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/28/IBe2CikobKQ6c4p.jpg" alt="6109DDA675C45092A09D41CBEA9FD77C.png" loading="lazy"></figure>
 
                                 </div>
                     </article>
@@ -253,9 +202,9 @@ part02<br>
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://mucixia.github.io/post/hello-gridea/">
+                            <a href="https://mucixia.github.io/post/c-yu-yan-guan-yu-shu-zu-jie-gou-zhi-zhen/">
                                 <h3 class="post-title">
-                                    Hello Gridea
+                                    C语言重难点-关于数组、结构体、递归、指针
                                 </h3>
                             </a>
                         </div>
@@ -276,11 +225,26 @@ part02<br>
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
+<li><a href="#%E4%B8%80-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8">一、数据存储</a>
 <ul>
-<li>
+<li><a href="#1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">1. 数据类型</a>
 <ul>
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%E5%91%A8%E8%80%8C%E5%A4%8D%E5%A7%8B-%E7%94%9F%E8%80%8C%E4%B8%8D%E6%81%AF">写在前面：周而复始 生而不息</a></li>
+<li><a href="#11-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B">1.1 内置类型</a>
+<ul>
+<li><a href="#1%E6%95%B4%E5%BD%A2%E5%AE%B6%E6%97%8F">（1）整形家族</a></li>
+<li><a href="#2%E6%B5%AE%E7%82%B9%E5%9E%8B%E5%AE%B6%E6%97%8F">（2）浮点型家族</a></li>
+<li><a href="#3%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B">（3）指针类型</a></li>
+<li><a href="#4%E7%A9%BA%E7%B1%BB%E5%9E%8B">（4）空类型</a></li>
+</ul>
+</li>
+<li><a href="#12-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%E6%9E%84%E9%80%A0%E7%B1%BB%E5%9E%8B">1.2 自定义类型（构造类型）</a>
+<ul>
+<li><a href="#1-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B">（1） 数组类型</a></li>
+<li><a href="#2%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B-struct">（2）结构体类型 struct</a></li>
+<li><a href="#3%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B-enum">（3）枚举类型 enum</a></li>
+<li><a href="#4%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B-union">（4）联合类型 union</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
