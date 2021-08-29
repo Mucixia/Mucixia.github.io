@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630170709345">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630259144373">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630170709345" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630259144373" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-primary">
             #心情
         </a>
                         
@@ -155,6 +155,7 @@
 （1）整形家族
 
 char
+有符号数，范围是[-128，127]
 short
 int
 long
@@ -165,16 +166,19 @@ float
 double
 
 （3）指针类型
+*p
 （4）空类型
 void表示空类型，通常用于函数的返回类型、函数的参数、指针类型
 1.2 自定义类型（构造类型）
-（1） 数组类型
-（2）结构体类型 struct
-（3）枚举类型 enum
-（4）联合类型 union
-补充：
 
-①原码反码补码
+数组类型
+结构体类型 struct
+枚举类型 enum
+联合类型 union
+
+2.整形在内存中的存储
+
+（1）原码反码补码
 计算机中的有符号数有三种表示方法，即原码、反码和补码。对于整形，数据存放内存中存放的是补码
 8位二进制, 使用原码或反码表示的范围为[-127, +127], 即2^7-1，而有符号数使用补码表示的范围为[-128, 127]，-128就是10000000，无符号数范围是[0，255]；因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-2^31, 2^31-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值。
 原码：
@@ -193,7 +197,7 @@ void表示空类型，通常用于函数的返回类型、函数的参数、指�
 原码：在真值的基础上解决了正负号在机器中的表示问题
 补码：在原码的基础上解决了如何将减法变成加法的问题
 移码：在补码的基础上解决了数字的直观大小比较问题
-②大小端：
+（2）大小端
 大端模式（大端字节序存储模式）：数据的低位保存在内存的高地址中，而数据的高位保存在内存的低地址中
 小端模式（小端字节序存储模式）：数据的低位保存在内存的低地址中，而数据的高位保存在内存的高地址中
 
@@ -204,7 +208,7 @@ void表示空类型，通常用于函数的返回类型、函数的参数、指�
 将其封装成一个函数：
 
 指针部分可以简化成：return *(char* )&amp;amp;a;
-③整型提升
+（3）整型提升
 表达式中的字符和短整型操作数在使用之前被转换为普通整型，这种转换称为整型提升。
 表达式中各种长度可能小于int长度的整型值，都必须先转换为int或unsigned int，然后才能送入CPU去执行运算。
 
@@ -214,17 +218,60 @@ char c1 = -1; 变量c1的二进制位(补码)中只有8个比特位： 1111111 �
 char c2 = 1; 变量c2的二进制位(补码)中只有8个比特位： 00000001 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即0， 提升之后的结果是： 00000000000000000000000000000001
 无符号整形提升，高位补0
 
-栗子：
+（4）举个栗子
+题一：
 
 （即使两个char类型8位的相加，在CPU执行时实际上也要先转换为CPU内整型32位操作数的标准长度。）
+题二：
 
 计算方法：因为整形存储的是补码，所以先计算出32位补码，后取8位char类型，遇到整型提升（%d），补充0/1至32位（此时还是补码），提升后输出将此时的补码转化成原码再转化成十进制即可。
+原码——&amp;gt;补码（取后八位...）——&amp;gt;整型提升成补码——&amp;gt;原码输出
 
 负数：补充1
 正数：补充0
 无符号unsigned：补充0
 
+题三：
 
+题四：
+
+//这里的数是int类型，在计算时不需要取后8位整型提升；%d是输出有符号数，将相加后的补码，按照符号位不变的原则，算出对应原码即可。
+题五：
+
+//因为i是无符号数始终&amp;gt;=0，此循环执行结果为：9，8，7，6，5，4，3，2，1，死循环。
+无符号数取值范围：[0,255]；有符号数（char）取值范围：[-128,127]
+题六：
+
+//此题注意有符号类型（char）的范围和钟表法
+2.浮点型在内存中的存储
+1.1 浮点数的表示方法
+（1）表示方式：
+
+
+S：符号位
+M：1&amp;lt;=M&amp;lt;2，M可以写成1.~~~~~~形式，在计算机保存Mde时候，默认第一位总为1，故存储时只存小数点后的数，小数部分补齐0至32/64位，读取时再加上第一位的1。好处就是可以多存一位有效数字。
+E：是无符号整数，若E为8位，它的范围是[0，255]；若E为11位，它的范围是[0,2047]。
+因为科学计数法中E可能是负数，如十进制小数0.5它转换成二进制为0.1，写成科学计数法为（-1）0`*`1.0`*`2(-1),所以IEEE 754规定，保存E时加上中间值，对于8位，加上127；对于11位，加上1023,这样保证了存入的E为正。
+补充：关于二进制与十进制的转换
+其中，E从内存中取出有以下三种情况：
+①E不全为1或不全为0
+举个栗子：0.5
+（-1）0`*`1.0`*`2(-1)：s=0,M=1.0,E=-1，E存入的位-1+127=126；对于32位来说，存储如下：
+
+②E全为0
+当E为0时，那么真实值为-127，那么V趋于0.
+所以直接规定，当指数E存储值为0时，它的真实值为1-127，有效数字M不再加上1，直接写成+-0.几几几。
+这样的好处就是可以表示+-0，以及接近于0的很小的数字。如：
+0/1 00000000 01100000000000000000000——&amp;gt;+/- 0.011*2^(-126)
+③E为全1
+当E=11111111即255时，E的真实值为128，表示的数是正负无穷大的数字。
+举个栗子：
+
+//n=9是整形，存入的形式是：符号位（1）+数值（31位）
+即00000000 00000000 00000000 00001001
+若要以%f输出，则将00000000 00000000 00000000 00001001看成是0 00000000 0000000 0000000000001001即S（1位）+E（8位）+M（23位）表示的数就是（-1）^0*0000000 0000000000001001*2^(-126) ，趋于0 。
+9.0是float类型，二进制为1001.0，E存储值为127+3=130，存放形式是0 10000010 00000000000000000000000
+若以整形形式输出，将其看成0（符号位） 1000001000000000000000000000000即可。
 
                                         </div>
                                         
@@ -1061,7 +1108,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-">
             #Python
         </a>
                         
@@ -1093,7 +1140,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-success">
             #Gridea
         </a>
                         
@@ -1127,7 +1174,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630170709345)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630259144373)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-28T17:11:53.662Z</updated>
+    <updated>2021-08-29T17:45:47.983Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -26,7 +26,8 @@
 <h4 id="11-内置类型">1.1 内置类型</h4>
 <h5 id="1整形家族">（1）整形家族</h5>
 <ol>
-<li>char</li>
+<li>char<br>
+有符号数，范围是[-128，127]</li>
 <li>short</li>
 <li>int</li>
 <li>long</li>
@@ -37,16 +38,19 @@
 <li>double</li>
 </ol>
 <h5 id="3指针类型">（3）指针类型</h5>
+<p>*p</p>
 <h5 id="4空类型">（4）空类型</h5>
 <p>void表示空类型，通常用于函数的返回类型、函数的参数、指针类型</p>
 <h4 id="12-自定义类型构造类型">1.2 自定义类型（构造类型）</h4>
-<h5 id="1-数组类型">（1） 数组类型</h5>
-<h5 id="2结构体类型-struct">（2）结构体类型 struct</h5>
-<h5 id="3枚举类型-enum">（3）枚举类型 enum</h5>
-<h5 id="4联合类型-union">（4）联合类型 union</h5>
-<p><strong>补充</strong>：<br>
-<img src="https://i.loli.net/2021/08/28/WIgtPfKC3QB47yN.png" alt="QQ截图20210828135840.png" loading="lazy"><br>
-①<strong>原码反码补码</strong><br>
+<ol>
+<li>数组类型</li>
+<li>结构体类型 struct</li>
+<li>枚举类型 enum</li>
+<li>联合类型 union</li>
+</ol>
+<h3 id="2整形在内存中的存储">2.整形在内存中的存储</h3>
+<p><img src="https://i.loli.net/2021/08/28/WIgtPfKC3QB47yN.png" alt="QQ截图20210828135840.png" loading="lazy"><br>
+<strong>（1）原码反码补码</strong><br>
 计算机中的有符号数有三种表示方法，即原码、反码和补码。对于整形，数据存放内存中存放的是补码<br>
 8位二进制, 使用原码或反码表示的范围为[-127, +127], 即2^7-1，而有符号数使用补码表示的范围为[-128, 127]，-128就是10000000，无符号数范围是[0，255]；因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-2^31, 2^31-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值。<br>
 原码：<br>
@@ -65,7 +69,7 @@
 原码：在真值的基础上解决了正负号在机器中的表示问题<br>
 补码：在原码的基础上解决了如何将减法变成加法的问题<br>
 移码：在补码的基础上解决了数字的直观大小比较问题<br>
-②<strong>大小端</strong>：<br>
+<strong>（2）大小端</strong><br>
 大端模式（大端字节序存储模式）：数据的低位保存在内存的高地址中，而数据的高位保存在内存的低地址中<br>
 小端模式（小端字节序存储模式）：数据的低位保存在内存的低地址中，而数据的高位保存在内存的高地址中<br>
 <img src="https://i.loli.net/2021/08/28/N7m3TYJoFLtU1IA.jpg" alt="BE38E4E0B3D9775936C15F0CC81DBAD4.png" loading="lazy"><br>
@@ -76,7 +80,7 @@
 将其封装成一个函数：<br>
 <img src="https://i.loli.net/2021/08/28/XVS4ZTqGcWOw7Le.png" alt="QQ截图20210828204128.png" loading="lazy"><br>
 指针部分可以简化成：return <code>*</code>(char<code>*</code> )&amp;a;<br>
-③<strong>整型提升</strong><br>
+<strong>（3）整型提升</strong><br>
 表达式中的字符和短整型操作数在使用之前被转换为普通整型，这种转换称为整型提升。<br>
 表达式中各种长度可能小于int长度的整型值，都必须先转换为int或unsigned int，然后才能送入CPU去执行运算。</p>
 <ol>
@@ -86,17 +90,60 @@ char c1 = -1; 变量c1的二进制位(补码)中只有8个比特位： 1111111 �
 char c2 = 1; 变量c2的二进制位(补码)中只有8个比特位： 00000001 因为 char 为有符号的 char 所以整形提升的时候，高位补充符号位即0， 提升之后的结果是： 00000000000000000000000000000001</li>
 <li>无符号整形提升，高位补0</li>
 </ol>
-<p><strong>栗子</strong>：<br>
+<p><strong>（4）举个栗子</strong><br>
+题一：<br>
 <img src="https://i.loli.net/2021/08/28/EK6zyBjOX4cvRUL.png" alt="QQ截图20210828212735.png" loading="lazy"><br>
 （即使两个char类型8位的相加，在CPU执行时实际上也要先转换为CPU内整型32位操作数的标准长度。）<br>
+题二：<br>
 <img src="https://i.loli.net/2021/08/28/98mxUlFNRMc5JYi.jpg" alt="7C64E6DB1FAC6F72BDB1F1B14FFD968F.png" loading="lazy"><br>
-计算方法：因为整形存储的是补码，所以先计算出32位补码，后取8位char类型，遇到整型提升（%d），补充0/1至32位（此时还是补码），提升后输出将此时的补码转化成原码再转化成十进制即可。</p>
+计算方法：因为整形存储的是补码，所以先计算出32位补码，后取8位char类型，遇到整型提升（%d），补充0/1至32位（此时还是补码），提升后输出将此时的补码转化成原码再转化成十进制即可。<br>
+原码——&gt;补码（取后八位...）——&gt;整型提升成补码——&gt;原码输出</p>
 <ul>
 <li>负数：补充1</li>
 <li>正数：补充0</li>
 <li>无符号unsigned：补充0</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/08/28/IBe2CikobKQ6c4p.jpg" alt="6109DDA675C45092A09D41CBEA9FD77C.png" loading="lazy"></figure>
+<p>题三：<br>
+<img src="https://i.loli.net/2021/08/28/IBe2CikobKQ6c4p.jpg" alt="6109DDA675C45092A09D41CBEA9FD77C.png" loading="lazy"><br>
+题四：<br>
+<img src="https://i.loli.net/2021/08/29/x5c6eHqlNoXKuwE.jpg" alt="2ADC57E4EC301B5F65AF210D7DB55F79.png" loading="lazy"><br>
+//这里的数是int类型，在计算时不需要取后8位整型提升；%d是输出有符号数，将相加后的补码，按照符号位不变的原则，算出对应原码即可。<br>
+题五：<br>
+<img src="https://i.loli.net/2021/08/29/DTINhKWRZLuH3zm.jpg" alt="3DD1B1C6EE26EEA76F9E8438F15DE4EE.png" loading="lazy"><br>
+//因为i是无符号数始终&gt;=0，此循环执行结果为：9，8，7，6，5，4，3，2，1，死循环。<br>
+无符号数取值范围：[0,255]；有符号数（char）取值范围：[-128,127]<br>
+题六：<br>
+<img src="https://i.loli.net/2021/08/29/FW4HoQqbfKRdJAy.jpg" alt="DC47C3747CA542BFFC321BE90331A327.png" loading="lazy"><br>
+//此题注意有符号类型（char）的范围和钟表法</p>
+<h3 id="2浮点型在内存中的存储">2.浮点型在内存中的存储</h3>
+<h4 id="11-浮点数的表示方法">1.1 浮点数的表示方法</h4>
+<p>（1）表示方式：<br>
+<img src="https://i.loli.net/2021/08/30/afZqKXVelsS2DbG.jpg" alt="DB5F908746358D080CDCB5919E7536F8.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/08/30/JcdbrLwDkFy798S.jpg" alt="4C75E1C3074B7AB399DB737028B1B803.png" loading="lazy"><br>
+S：符号位<br>
+M：1&lt;=M&lt;2，M可以写成1.~~~~~~形式，在计算机保存Mde时候，默认第一位总为1，故存储时只存小数点后的数，小数部分补齐0至32/64位，读取时再加上第一位的1。好处就是可以多存一位有效数字。<br>
+E：是无符号整数，若E为8位，它的范围是[0，255]；若E为11位，它的范围是[0,2047]。<br>
+因为科学计数法中E可能是负数，如十进制小数0.5它转换成二进制为0.1，写成科学计数法为（-1）<sup>0`*`1.0`*`2</sup>(-1),所以IEEE 754规定，保存E时加上中间值，对于8位，加上127；对于11位，加上1023,这样保证了存入的E为正。<br>
+<strong>补充</strong>：<a href="https://www.runoob.com/w3cnote/decimal-decimals-are-converted-to-binary-fractions.html">关于二进制与十进制的转换</a></p>
+<p>其中，E从内存中取出有以下三种情况：<br>
+<strong>①E不全为1或不全为0</strong><br>
+<strong>举个栗子</strong>：0.5<br>
+（-1）<sup>0`*`1.0`*`2</sup>(-1)：s=0,M=1.0,E=-1，E存入的位-1+127=126；对于32位来说，存储如下：<br>
+<img src="https://i.loli.net/2021/08/30/Q3brKCNBjlRhSnc.jpg" alt="761D650449F22415EC53E8088996BF52.png" loading="lazy"><br>
+<strong>②E全为0</strong><br>
+当E为0时，那么真实值为-127，那么V趋于0.<br>
+所以直接规定，当指数E存储值为0时，它的真实值为1-127，有效数字M不再加上1，直接写成+-0.几几几。<br>
+这样的好处就是可以表示+-0，以及接近于0的很小的数字。如：<br>
+0/1 00000000 01100000000000000000000——&gt;+/- 0.011<code>*</code>2^(-126)<br>
+<strong>③E为全1</strong><br>
+当E=11111111即255时，E的真实值为128，表示的数是正负无穷大的数字。</p>
+<p><strong>举个栗子</strong>：<br>
+<img src="https://i.loli.net/2021/08/30/fuSxmWo6vYGAKha.jpg" alt="82529130843C2668D6C6237984AB6455.png" loading="lazy"><br>
+//n=9是整形，存入的形式是：符号位（1）+数值（31位）<br>
+即00000000 00000000 00000000 00001001<br>
+若要以%f输出，则将00000000 00000000 00000000 00001001看成是0 00000000 0000000 0000000000001001即S（1位）+E（8位）+M（23位）表示的数就是（-1）^0<code>*</code>0000000 0000000000001001<code>*</code>2^(-126) ，趋于0 。<br>
+9.0是float类型，二进制为1001.0，E存储值为127+3=130，存放形式是0 10000010 00000000000000000000000<br>
+若以整形形式输出，将其看成0（符号位） 1000001000000000000000000000000即可。</p>
 ]]></content>
     </entry>
     <entry>
