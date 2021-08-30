@@ -7,7 +7,7 @@
 <title>
     C语言重难点-关于数组、结构体、递归、指针 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630259144373">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630318896334">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630259144373" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630318896334" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -202,7 +202,7 @@ sizeof（arr）/sizeof(arr[0])就是数组的长度；<br>
 如：<br>
 <code>int a=10</code><br>
 <code>int *p=&amp;a</code>//p是一个指针变量<br>
-<code>prunt(*p)</code>// *是解引用，取指针p指向的地址里的内容，*p=10<br>
+<code>prunt(*p)</code>// <code>*</code>是解引用，取指针p指向的地址里的内容，*p=10<br>
 指针的大小在32位平台是四个字节，在64位平台是八个字节。</p>
 <h3 id="12-指针和指针类型">1.2 指针和指针类型</h3>
 <h4 id="1指针类型的意义">（1）指针类型的意义</h4>
@@ -564,7 +564,7 @@ signal返回类型也是一个函数指针，该函数指针指向的函数的�
 <p>（2）初始化为字符串的数组<br>
 <img src="https://i.loli.net/2021/08/26/R9YgpdVoxcAqjlT.jpg" alt="B014F4E9A7AA3444AA90341EE8A740C3.png" loading="lazy"></p>
 <p><strong>总结</strong>：<br>
-C 库函数 size_t strlen(const char *str) <strong>接收的类型是地址char *</strong>，从给定地址<strong>往后寻找，从给定直到空结束字符</strong>（不包括空结束字符），然后返回字符串 str 的长度。<br>
+C 库函数 size_t strlen(const char *str) <strong>接收的类型是地址char *</strong>，函数返回值是<strong>无符号</strong>的。从给定地址<strong>往后寻找，从给定直到空结束字符</strong>（不包括空结束字符），然后返回字符串 str 的长度。<br>
 如果传给strlen（）的参数是未可知范围的地址，strlen会<strong>一直走下去，直到遇到&quot;\0&quot;为止</strong>，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={'a','b','c'},strlen(arr) 随机）；<br>
 如果传给strlen（）的地址后面会出现'\0',那么就返回字符串的长度（char arr[]=“abc”,strlen(arr) =6）；<br>
 如果传给strlen的参数是一个具体的元素而不是一个地址，这样会把字符a的ascii码值97传给strlen函数，而此函数是访问不到这个地址的，因此会程序中断。（char arr[]={'a','b','c'},strlen(*arr) 报错）。</p>

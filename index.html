@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630259144373">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630318896334">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630259144373" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630318896334" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-info">
             #心情
         </a>
                         
@@ -125,6 +125,76 @@
                                     </div>
                                     
                                             <a class="btn btn-text" href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://mucixia.github.io/post/mou-xie-ci/">
+                        某些词
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-08-30</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            毛不易
+《给你给我》
+给你我平平淡淡的等待和守候
+给你我轰轰烈烈的渴望和温柔
+给你我百转千回的喜乐和哀愁
+给你我微不足道 所有的所有
+给我你带着微笑的嘴角和眼眸
+给我你灿烂无比的初春和深秋
+给我你未经雕琢的天真和自由
+给我你最最珍贵 所有的所有
+给你我义无反顾的长长和久久
+给我你多年以后仍握紧的手
+给你成熟 你给我迁就
+会不会就这样白了头
+给你我义无反顾的长长和久久
+给我你多年以后仍握紧的手
+给你成熟 你给我迁就
+会不会就这样白了头
+给我你带着微笑的嘴角和眼眸
+给你我轰轰烈烈的渴望和温柔
+给我你未经雕琢的天真和自由
+给你我微不足道 所有的所有
+给你我微不足道 所有的所有
+《一程山路》
+青石板留着谁的梦啊
+一场秋雨 又落一地花
+旅人匆匆的赶路啊
+走四季 访人家
+如同昨夜天光乍破了远山的轮廓
+想起很久之前我们都忘了说
+一夜曲折过后 又一道坎坷
+走不出 看不破
+山谷的薄雾吻着烟霞
+枯叶之下 藏多少情话
+划破天空的归鸟啊
+它不问 你不答
+如同昨夜天光乍破了远山的轮廓
+想起很久之前我们都忘了说
+一夜曲折过后 又一道坎坷
+走不出 看不破
+潺潺流水终于穿过了群山一座座
+好像多年之后你依然执着
+白云是否也听过你的诉说
+笑着你 笑着我
+白云是否也听了你的诉说
+笑着你 笑着我
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://mucixia.github.io/post/mou-xie-ci/">Read More ~</a>
                             </div>
                 </div>
             </article>
@@ -176,6 +246,7 @@ void表示空类型，通常用于函数的返回类型、函数的参数、指�
 枚举类型 enum
 联合类型 union
 
+此处见二、自定义数据类型
 2.整形在内存中的存储
 
 （1）原码反码补码
@@ -272,6 +343,70 @@ E：是无符号整数，若E为8位，它的范围是[0，255]；若E为11位�
 若要以%f输出，则将00000000 00000000 00000000 00001001看成是0 00000000 0000000 0000000000001001即S（1位）+E（8位）+M（23位）表示的数就是（-1）^0*0000000 0000000000001001*2^(-126) ，趋于0 。
 9.0是float类型，二进制为1001.0，E存储值为127+3=130，存放形式是0 10000010 00000000000000000000000
 若以整形形式输出，将其看成0（符号位） 1000001000000000000000000000000即可。
+二、自定义数据类型
+1.结构体
+1.1 结构体类型的声明
+结构是一些值的集合，这些值成为成员变量。结构体的每个成员可以是不同类型。
+（1）结构的声明
+声明格式：
+struct tag
+{
+member-list;
+}variable-liast;
+//tag 是结构体标签。
+member-list 是标准的变量定义，比如 int i; 或者 float f，或者其他有效的变量定义。
+variable-list 结构变量，定义在结构的末尾，最后一个分号之前，您可以指定一个或多个结构变量。
+在声明结构体时，tag、member-list、variable-list 这 3 部分至少要出现 2个：
+①声明了结构变量，未声明结构体标签——又叫匿名结构体类型，必须要声明结构变量。
+struct
+{
+int a;
+char b;
+double c;
+} s1;
+②未声明结构变量，声明了结构体标签
+struct  Su
+{
+int a;
+char b;
+double c;
+} ;
+③声明了结构变量，也声明了结构体标签
+struct  Su
+{
+int a;
+char b;
+double c;
+} s1;
+1.2 结构体的自引用
+struct Node
+{
+int data;
+struct Node* next;
+};
+可以使用 typedef 来为用户自定义的数据类型取一个新的名字。
+typedef struct  Node// 重命名时不建议省略结构体标签，若省略，则Node无声明。
+{
+int data;
+struct Node next;
+} Node;
+1.3 结构体变量的定义和初始化
+（1）定义
+struct  Su
+{
+int a;
+char b;
+double c;
+} s1;//定义方式1：声明类型变量的同时定义变量s1
+struct Su s2；//定义方式2：定义结构体变量s2
+(2)初始化
+
+在结构体里包含结构体：
+
+访问weight，用s.st.weight即可。
+1.4 结构体内存对齐
+2.枚举
+3.联合
 
                                         </div>
                                         
@@ -745,7 +880,7 @@ int(* (* ppfArr[4] )(int , int))//指向函数指针数组的指针，ppfArr是�
 （2）初始化为字符串的数组
 
 总结：
-C 库函数 size_t strlen(const char *str) 接收的类型是地址char *，从给定地址往后寻找，从给定直到空结束字符（不包括空结束字符），然后返回字符串 str 的长度。
+C 库函数 size_t strlen(const char *str) 接收的类型是地址char *，函数返回值是无符号的。从给定地址往后寻找，从给定直到空结束字符（不包括空结束字符），然后返回字符串 str 的长度。
 如果传给strlen（）的参数是未可知范围的地址，strlen会一直走下去，直到遇到&amp;quot;\0&amp;quot;为止，‘\0’出现位置是未知的，结果就是随机值（如char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;},strlen(arr) 随机）；
 如果传给strlen（）的地址后面会出现&#39;\0&#39;,那么就返回字符串的长度（char arr[]=“abc”,strlen(arr) =6）；
 如果传给strlen的参数是一个具体的元素而不是一个地址，这样会把字符a的ascii码值97传给strlen函数，而此函数是访问不到这个地址的，因此会程序中断。（char arr[]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;},strlen(*arr) 报错）。
@@ -1108,7 +1243,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-warning">
             #Python
         </a>
                         
@@ -1140,7 +1275,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-other_2">
             #Gridea
         </a>
                         
@@ -1174,7 +1309,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630259144373)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630318896334)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动
