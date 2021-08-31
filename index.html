@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630396933524">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630426667553">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630396933524" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630426667553" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_4">
             #心情
         </a>
                         
@@ -401,6 +401,7 @@ double c;
 struct Su s2；//定义方式2：定义结构体变量s2
 (2)初始化
 
+s.c=&#39;c&#39;,s.a=100赋值也可以。
 在结构体里包含结构体：
 
 访问weight，用s.st.weight即可。
@@ -411,10 +412,13 @@ struct Su s2；//定义方式2：定义结构体变量s2
 并非所有平台能任意访问任意地址的任意数据，某些硬件只能在某些地址处取某些特定类型的数据。
 性能原因
 数据结构（尤其是栈）应该尽可能在自然边界对齐，因为若是未对齐的地址，处理器需要两次内存访问，而对齐的地址只需要访问一次。
+
 （2）对齐规则
+
 第一个成员在与结构体变量偏移量为0的地址处。
 其他成员变量要对齐到对齐数的整数倍的地址处。这里的地址是相对于初始地址0而言，也就是偏移量。
-对齐数=编译器默认的一个对齐数 与 该成员大小（字节）的较小值。
+对齐数=编译器默认的一个对齐数 与 该成员大小（最基本的数据类型的大小）的较小值。
+char arr[5]//对齐数为1
 结构体总大小为最大对齐数（每个成员变量都有一个对齐数）的整数倍。（不够就补齐空间）
 如果嵌套了结构体，嵌套的结构体对齐自己的最大对齐数的整数倍的地址处，结构体的整体大小就是所有最大对齐数（含嵌套结构体的对齐数）的整数倍。
 
@@ -435,14 +439,78 @@ struct Su s2；//定义方式2：定义结构体变量s2
 补充：
 
 引入头文件：#include &amp;lt;stddef.h&amp;gt;
+
 offsetof()函数用来计算偏移量。
 
 具体的之后更新。
 ........
-（4）结构体传参
+1.5 结构体传参
+
+结构体传参的时候，要传结构体的地址
+1.6 位段
+(1) 位段的声明：
+
+位段的成员必须是int，unsigned int，signed int。
+位段的成员名后有一个冒号和一个数字，数字代表着二进制位。
+
+struct S
+{
+int a : 2;
+int b : 5;
+int c : 10;
+int d : 30;
+};
+//struct S s;
+//sizeof(s)=8字节
+(2)内存分配规则
+
+位段成员可以是 int，unsigned int，signed int或是 char（整形家族）；
+位段的空间上是按照需要以4个字节（int）或者是1个字节（char）的方式来开辟的；
+位段：不跨平台，注重可移植的程序应该避免使用位段。
+
+（3）应用
+数据传输时的数据包
 
 2.枚举
-3.联合
+1.2 枚举类型的定义
+enum Sex
+{
+//枚举的可能取值-常量
+male，//male默认的值为0
+female，//默认值为1
+secret//默认为2，依次加1
+};
+除了默认值赋值外，也可以自己赋给常量一个初始值。
+1.3 枚举的优点
+（1）增加代码的可读性和可维护性
+（2）与#define比较，枚举有类型检查，更严谨
+（3）防止了命名污染（封装）
+（4）便于调试，一次可以定义多个常量
+3.联合(共用体)
+1.1 定义
+联合是一种特殊的自定义类型，定义的变量包含了一系列成员，特征是这些成员共用同一块空间。
+union Un
+{
+char c;
+int  i;
+};
+union Un u;
+sizeof(u)//4，大小至少是最大成员的大小;（满足4是最大对齐数4的整数倍）
+//&amp;amp;u,&amp;amp;u.c,&amp;amp;u.i三者的地址一样，共用同一块空间
+补充：用联合体判断大小端：
+
+1.2 联合大小的计算
+
+联合的大小至少是最大成员的大小
+当最大成员的大小不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍。
+
+
+三、动态内存分配
+1. 基本介绍
+2.基本函数
+3.常见的动态内存错误
+4. 举个栗子
+5.柔性数组
 
                                         </div>
                                         
@@ -1279,7 +1347,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-info">
             #Python
         </a>
                         
@@ -1311,7 +1379,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-primary">
             #Gridea
         </a>
                         
@@ -1345,7 +1413,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630396933524)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1630426667553)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

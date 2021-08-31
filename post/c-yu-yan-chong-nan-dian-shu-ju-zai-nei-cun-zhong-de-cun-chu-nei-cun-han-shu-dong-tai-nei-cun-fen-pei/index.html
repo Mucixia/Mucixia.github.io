@@ -7,7 +7,7 @@
 <title>
     C语言重难点-数据在内存中的存储、内存函数、动态内存分配 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630396933524">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630426667553">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630396933524" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630426667553" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -301,6 +301,7 @@ double c;<br>
 <p>struct Su s2；//定义方式2：定义结构体变量s2<br>
 (2)初始化<br>
 <img src="https://i.loli.net/2021/08/30/tovH6r7RXNJpg42.jpg" alt="B07C7899C692B7AF57FCF5B4E8FA28E8.png" loading="lazy"><br>
+s.c='c',s.a=100赋值也可以。<br>
 在结构体里包含结构体：<br>
 <img src="https://i.loli.net/2021/08/30/5KAqylOn1Y4R3Dr.jpg" alt="60F6D115F77FE2FC33E7E92499DACA74.png" loading="lazy"><br>
 访问weight，用s.st.weight即可。</p>
@@ -310,11 +311,14 @@ double c;<br>
 <li>平台原因（移植原因）<br>
 并非所有平台能任意访问任意地址的任意数据，某些硬件只能在某些地址处取某些特定类型的数据。</li>
 <li>性能原因<br>
-数据结构（尤其是栈）应该尽可能在自然边界对齐，因为若是未对齐的地址，处理器需要两次内存访问，而对齐的地址只需要访问一次。<br>
-（2）对齐规则</li>
+数据结构（尤其是栈）应该尽可能在自然边界对齐，因为若是未对齐的地址，处理器需要两次内存访问，而对齐的地址只需要访问一次。</li>
+</ol>
+<p>（2）对齐规则</p>
+<ol>
 <li>第一个成员在与结构体变量偏移量为0的地址处。</li>
 <li>其他成员变量要对齐到对齐数的整数倍的地址处。这里的地址是相对于初始地址0而言，也就是偏移量。<br>
-<strong>对齐数</strong>=编译器默认的一个对齐数 与 该成员大小（字节）的<strong>较小值</strong>。</li>
+<strong>对齐数</strong>=编译器默认的一个对齐数 与 该成员大小（最基本的数据类型的大小）的<strong>较小值</strong>。<br>
+char arr[5]//对齐数为1</li>
 <li>结构体总大小为最大对齐数（每个成员变量都有一个对齐数）的整数倍。（不够就补齐空间）</li>
 <li>如果嵌套了结构体，嵌套的结构体对齐自己的最大对齐数的整数倍的地址处，结构体的整体大小就是所有最大对齐数（含嵌套结构体的对齐数）的整数倍。</li>
 </ol>
@@ -334,15 +338,79 @@ double c;<br>
 <code>#</code>pragma pack（ )//取消设置的默认对齐数<br>
 <strong>补充</strong>：</p>
 <blockquote>
-<p>引入头文件：#include &lt;stddef.h&gt;<br>
-offsetof()函数用来计算偏移量。<br>
+<p>引入头文件：#include &lt;stddef.h&gt;</p>
+</blockquote>
+<p>offsetof()函数用来计算偏移量。<br>
 <img src="https://i.loli.net/2021/08/31/akLroWnmuUMSV5H.jpg" alt="B89571F43B1F5BA199762918FCF5C4E2.png" loading="lazy"><br>
 具体的之后更新。<br>
-........<br>
-（4）结构体传参</p>
-</blockquote>
+........</p>
+<h4 id="15-结构体传参">1.5 结构体传参</h4>
+<p><img src="https://i.loli.net/2021/08/31/xaWJLK43O69CyNR.jpg" alt="8BB118AB6239A7BA790A551022BD6E4D.png" loading="lazy"><br>
+结构体传参的时候，要传结构体的地址</p>
+<h4 id="16-位段">1.6 位段</h4>
+<p>(1) 位段的声明：</p>
+<ol>
+<li>位段的成员必须是int，unsigned int，signed int。</li>
+<li>位段的成员名后有一个冒号和一个数字，数字代表着二进制位。</li>
+</ol>
+<p><code>struct S</code><br>
+<code>{</code><br>
+<code>int a : 2;</code><br>
+<code>int b : 5;</code><br>
+<code>int c : 10;</code><br>
+<code>int d : 30;</code><br>
+<code>};</code><br>
+//struct S s;<br>
+//sizeof(s)=8字节<br>
+(2)内存分配规则</p>
+<ol>
+<li>位段成员可以是 int，unsigned int，signed int或是 char（整形家族）；</li>
+<li>位段的空间上是按照需要以4个字节（int）或者是1个字节（char）的方式来开辟的；</li>
+<li>位段：不跨平台，注重可移植的程序应该避免使用位段。<br>
+<img src="https://i.loli.net/2021/08/31/w36gEK4teINaVdo.jpg" alt="C9298323C5D8456D1BE39C24B83E8F1E.png" loading="lazy"><br>
+（3）应用<br>
+数据传输时的数据包</li>
+</ol>
 <h3 id="2枚举">2.枚举</h3>
-<h3 id="3联合">3.联合</h3>
+<h4 id="12-枚举类型的定义">1.2 枚举类型的定义</h4>
+<p><code>enum Sex</code><br>
+<code>{</code><br>
+//枚举的可能取值-常量<br>
+male，//male默认的值为0<br>
+female，//默认值为1<br>
+secret//默认为2，依次加1<br>
+<code>};</code><br>
+除了默认值赋值外，也可以自己赋给常量一个初始值。</p>
+<h4 id="13-枚举的优点">1.3 枚举的优点</h4>
+<p>（1）增加代码的可读性和可维护性<br>
+（2）与#define比较，枚举有类型检查，更严谨<br>
+（3）防止了命名污染（封装）<br>
+（4）便于调试，一次可以定义多个常量</p>
+<h3 id="3联合共用体">3.联合(共用体)</h3>
+<h4 id="11-定义">1.1 定义</h4>
+<p>联合是一种特殊的自定义类型，定义的变量包含了一系列成员，特征是这些成员共用同一块空间。<br>
+<code>union Un</code><br>
+<code>{</code><br>
+char c;<br>
+int  i;<br>
+<code>};</code><br>
+union Un u;<br>
+sizeof(u)//4，大小至少是<strong>最大成员的大小</strong>;（满足4是最大对齐数4的整数倍）<br>
+//&amp;u,&amp;u.c,&amp;u.i三者的地址一样，共用同一块空间<br>
+<strong>补充：用联合体判断大小端：</strong><br>
+<img src="https://i.loli.net/2021/08/31/rxAEmfM8Pzq4iVc.jpg" alt="CF0BAF6AF6DF92243AE60462A62C2E02.png" loading="lazy"></p>
+<h4 id="12-联合大小的计算">1.2 联合大小的计算</h4>
+<ol>
+<li>联合的大小至少是最大成员的大小</li>
+<li>当最大成员的大小不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍。<br>
+<img src="https://i.loli.net/2021/08/31/BdFhU7yCEKN9bDV.jpg" alt="99B0A1748DAEC8A3D7C9BAA4AC709508.png" loading="lazy"></li>
+</ol>
+<h2 id="三-动态内存分配">三、动态内存分配</h2>
+<h3 id="1-基本介绍">1. 基本介绍</h3>
+<h3 id="2基本函数">2.基本函数</h3>
+<h3 id="3常见的动态内存错误">3.常见的动态内存错误</h3>
+<h3 id="4-举个栗子">4. 举个栗子</h3>
+<h3 id="5柔性数组">5.柔性数组</h3>
 
                                 </div>
                     </article>
@@ -404,10 +472,31 @@ offsetof()函数用来计算偏移量。<br>
 <li><a href="#12-%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E8%87%AA%E5%BC%95%E7%94%A8">1.2 结构体的自引用</a></li>
 <li><a href="#13-%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96">1.3 结构体变量的定义和初始化</a></li>
 <li><a href="#14-%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90">1.4 结构体内存对齐</a></li>
+<li><a href="#15-%E7%BB%93%E6%9E%84%E4%BD%93%E4%BC%A0%E5%8F%82">1.5 结构体传参</a></li>
+<li><a href="#16-%E4%BD%8D%E6%AE%B5">1.6 位段</a></li>
 </ul>
 </li>
-<li><a href="#2%E6%9E%9A%E4%B8%BE">2.枚举</a></li>
-<li><a href="#3%E8%81%94%E5%90%88">3.联合</a></li>
+<li><a href="#2%E6%9E%9A%E4%B8%BE">2.枚举</a>
+<ul>
+<li><a href="#12-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AE%9A%E4%B9%89">1.2 枚举类型的定义</a></li>
+<li><a href="#13-%E6%9E%9A%E4%B8%BE%E7%9A%84%E4%BC%98%E7%82%B9">1.3 枚举的优点</a></li>
+</ul>
+</li>
+<li><a href="#3%E8%81%94%E5%90%88%E5%85%B1%E7%94%A8%E4%BD%93">3.联合(共用体)</a>
+<ul>
+<li><a href="#11-%E5%AE%9A%E4%B9%89">1.1 定义</a></li>
+<li><a href="#12-%E8%81%94%E5%90%88%E5%A4%A7%E5%B0%8F%E7%9A%84%E8%AE%A1%E7%AE%97">1.2 联合大小的计算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">三、动态内存分配</a>
+<ul>
+<li><a href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D">1. 基本介绍</a></li>
+<li><a href="#2%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0">2.基本函数</a></li>
+<li><a href="#3%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF">3.常见的动态内存错误</a></li>
+<li><a href="#4-%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90">4. 举个栗子</a></li>
+<li><a href="#5%E6%9F%94%E6%80%A7%E6%95%B0%E7%BB%84">5.柔性数组</a></li>
 </ul>
 </li>
 </ul>
