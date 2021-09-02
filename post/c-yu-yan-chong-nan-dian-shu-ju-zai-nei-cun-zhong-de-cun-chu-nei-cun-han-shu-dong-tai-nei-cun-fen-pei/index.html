@@ -7,7 +7,7 @@
 <title>
     C语言重难点-数据在内存中的存储、内存函数、动态内存分配 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630428120333">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1630559425640">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630428120333" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1630559425640" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -407,9 +407,19 @@ sizeof(u)//4，大小至少是<strong>最大成员的大小</strong>;（满足4�
 </ol>
 <h2 id="三-动态内存分配">三、动态内存分配</h2>
 <h3 id="1-基本介绍">1. 基本介绍</h3>
+<p>（1）内存的使用方式</p>
+<ol>
+<li>创建一个变量<br>
+栈区：存放局部变量、函数的形式参数<br>
+堆区：动态内存分配<br>
+静态区：存放全局变量、静态变量</li>
+<li>创建一个数组</li>
+</ol>
 <h3 id="2基本函数">2.基本函数</h3>
+<h4 id="11-malloc">1.1 malloc</h4>
+<h4 id="12">1.2</h4>
 <h3 id="3常见的动态内存错误">3.常见的动态内存错误</h3>
-<h3 id="4-举个栗子">4. 举个栗子</h3>
+<h3 id="4举个栗子">4.举个栗子</h3>
 <h3 id="5柔性数组">5.柔性数组</h3>
 
                                 </div>
@@ -493,9 +503,14 @@ sizeof(u)//4，大小至少是<strong>最大成员的大小</strong>;（满足4�
 <li><a href="#%E4%B8%89-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">三、动态内存分配</a>
 <ul>
 <li><a href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D">1. 基本介绍</a></li>
-<li><a href="#2%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0">2.基本函数</a></li>
+<li><a href="#2%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0">2.基本函数</a>
+<ul>
+<li><a href="#11-malloc">1.1 malloc</a></li>
+<li><a href="#12">1.2</a></li>
+</ul>
+</li>
 <li><a href="#3%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E9%94%99%E8%AF%AF">3.常见的动态内存错误</a></li>
-<li><a href="#4-%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90">4. 举个栗子</a></li>
+<li><a href="#4%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90">4.举个栗子</a></li>
 <li><a href="#5%E6%9F%94%E6%80%A7%E6%95%B0%E7%BB%84">5.柔性数组</a></li>
 </ul>
 </li>

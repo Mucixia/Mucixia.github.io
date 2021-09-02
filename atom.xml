@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-08-31T16:44:03.996Z</updated>
+    <updated>2021-09-02T05:10:56.187Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -365,9 +365,19 @@ sizeof(u)//4，大小至少是<strong>最大成员的大小</strong>;（满足4�
 </ol>
 <h2 id="三-动态内存分配">三、动态内存分配</h2>
 <h3 id="1-基本介绍">1. 基本介绍</h3>
+<p>（1）内存的使用方式</p>
+<ol>
+<li>创建一个变量<br>
+栈区：存放局部变量、函数的形式参数<br>
+堆区：动态内存分配<br>
+静态区：存放全局变量、静态变量</li>
+<li>创建一个数组</li>
+</ol>
 <h3 id="2基本函数">2.基本函数</h3>
+<h4 id="11-malloc">1.1 malloc</h4>
+<h4 id="12">1.2</h4>
 <h3 id="3常见的动态内存错误">3.常见的动态内存错误</h3>
-<h3 id="4-举个栗子">4. 举个栗子</h3>
+<h3 id="4举个栗子">4.举个栗子</h3>
 <h3 id="5柔性数组">5.柔性数组</h3>
 ]]></content>
     </entry>
