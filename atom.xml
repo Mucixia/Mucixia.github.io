@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-09-02T05:10:56.187Z</updated>
+    <updated>2021-09-14T02:07:54.788Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://mucixia.github.io/images/avatar.png</logo>
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言基础—分支与循环]]></title>
+        <id>https://mucixia.github.io/post/c-yu-yan-ji-chu-fen-zhi-yu-xun-huan/</id>
+        <link href="https://mucixia.github.io/post/c-yu-yan-ji-chu-fen-zhi-yu-xun-huan/">
+        </link>
+        <updated>2021-09-13T14:54:10.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-控制结构">一、控制结构</h2>
+<h3 id="1分支语句">1.分支语句</h3>
+<h4 id="11-分支分类">1.1 分支分类</h4>
+<ul>
+<li>if</li>
+<li>if-else</li>
+<li>if-else if-else</li>
+<li>switch(多分支)<br>
+<strong>注意：</strong><br>
+if-else 就近原则配对</li>
+</ul>
+<h3 id="2循环语句">2.循环语句</h3>
+<ul>
+<li>while</li>
+<li>for</li>
+<li>do  while</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[某些词]]></title>
         <id>https://mucixia.github.io/post/mou-xie-ci/</id>
@@ -376,9 +401,9 @@ sizeof(u)//4，大小至少是<strong>最大成员的大小</strong>;（满足4�
 <h3 id="2基本函数">2.基本函数</h3>
 <h4 id="11-malloc">1.1 malloc</h4>
 <h4 id="12">1.2</h4>
-<h3 id="3常见的动态内存错误">3.常见的动态内存错误</h3>
-<h3 id="4举个栗子">4.举个栗子</h3>
-<h3 id="5柔性数组">5.柔性数组</h3>
+<h3 id="13常见的动态内存错误">1.3.常见的动态内存错误</h3>
+<h3 id="14举个栗子">1.4.举个栗子</h3>
+<h3 id="15柔性数组">1.5.柔性数组</h3>
 ]]></content>
     </entry>
     <entry>
@@ -1122,6 +1147,64 @@ ASL：<br>
 O（n）</li>
 </ul>
 <h3 id="15-线性表的链式表示和实现">1.5 线性表的链式表示和实现</h3>
+<h4 id="1概念">（1）概念</h4>
+<p>①结点<br>
+数据元素的存储映象。由数据域和指针域两部分组成。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据域</th>
+<th style="text-align:center">指针域</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>数据域是存储元素数值数据；指针域是存储直接后继结点的存储位置（地址）<br>
+②链表<br>
+n个结点由指针链组成一个链表。<br>
+Head -&gt;| 数据a | 指针p1 | -&gt;| 数据b | 指针p2 | -&gt;| 数据c | NULL |<br>
+③头指针<br>
+链表中第一个结点（即第一个数据元素的存储映像）的存储位置。当存在头结点时头指针指向头结点的数据域，当不存在头结点时，头指针指向首结点。<br>
+头指针具有标识作用，故常用头指针冠以链表的名字。<br>
+无论链表是否为空，头指针均不为空。头指针是链表的必要元素。</p>
+<h4 id="2-链表分类">(2) 链表分类</h4>
+<p>①单链表（或线性链表）<br>
+结点只有一个指针域的链表<br>
+单链表是由表头唯一确定的，故单链表可以用头指针的名字来命名，若头指针名是L，则叫做链表L。<br>
+②双链表<br>
+结点有两个指针域的链表<br>
+③循环链表<br>
+首尾相接的链表<br>
+<img src="https://i.loli.net/2021/09/12/V8basSfcK5tdlrM.jpg" alt="4F41B3648980B495A84822E18A505896.png" loading="lazy"><br>
+<img src="https://i.loli.net/2021/09/12/Q1xkbsMj9OCFPKt.jpg" alt="QQ图片20210818161509.jpg" loading="lazy"><br>
+补充：</p>
+<ol>
+<li>怎么表示空链表？<br>
+无头结点时，头指针为空表示空表<br>
+有头结点时，当头结点的指针域为空表示空表</li>
+<li>设置头结点有什么好处？</li>
+</ol>
+<ul>
+<li>便于首元节点的处理<br>
+首元结点的地址保存在头结点的指针域中，所以在链表的第一个位置上的操作和其他位置一致，无需进行特殊处理。</li>
+<li>便于空表和非空表的统一处理<br>
+无论链表是否为空，头指针都是指向头结点得非空指针，因此空表和非空表的处理也就统一了。</li>
+</ul>
+<ol start="3">
+<li>头节点的数据域存放着什么？<br>
+头结点的数据域可以为空，也可以<strong>存放线性表长度</strong>、<strong>监哨所</strong>等附加信息，但<strong>此结点不能计入链表长度值</strong>。</li>
+</ol>
+<h4 id="3链表特点">（3）链表特点</h4>
+<ol>
+<li>结点在存储器中的位置是任意的，即逻辑上相邻的数据元素在物理上不一定相邻。</li>
+<li>只能通过头指针访问链表，并通过每个结点的指针域<strong>依次向后顺序扫描</strong>其余结点。<br>
+顺序表 -&gt; 随机存取 eg:访问第i个元素，a[i-1]；<br>
+链表 -&gt; 顺序存取 eg:访问第i个元素，要从1，2，3，...i依次访问到i。</li>
+</ol>
+<h4 id="4单链表的存储结构">（4）单链表的存储结构</h4>
+<p><img src="https://i.loli.net/2021/09/12/z7xVmdEtGskAoDF.jpg" alt="0EC62DFC1C1CB50E7D92BA924129380A.png" loading="lazy"><br>
+定义链表L：LinkList L；<br>
+定义结点指针p: LNode *P;</p>
 ]]></content>
     </entry>
     <entry>
