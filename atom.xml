@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-09-14T02:09:05.608Z</updated>
+    <updated>2021-09-15T02:47:36.244Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -11,19 +11,160 @@
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
     <entry>
-        <title type="html"><![CDATA[C语言基础—分支与循环]]></title>
+        <title type="html"><![CDATA[C语言刷题记录]]></title>
+        <id>https://mucixia.github.io/post/c-yu-yan-shua-ti-ji-lu/</id>
+        <link href="https://mucixia.github.io/post/c-yu-yan-shua-ti-ji-lu/">
+        </link>
+        <updated>2021-09-15T02:16:39.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一">一、</h2>
+<h3 id="1n的阶乘">1.n的阶乘</h3>
+<pre><code>int i=0;
+int n;
+int sum=1;
+printf(&quot;输入n的值：&quot;); 
+scanf(&quot;%d&quot;,&amp;n); //获取n的值
+for(i=1;i&lt;=n;i++)
+{
+   sum=i*sum;//实现阶乘
+}
+printf(&quot;%d\n&quot;,sum);
+return 0;
+</code></pre>
+<h3 id="2n的阶乘之和">2.n的阶乘之和</h3>
+<pre><code>//法一：嵌套循环
+int i=0;
+int j=0;
+int sum_1=1;
+int sum_2=0;
+int n=10;
+for(i=1;i&lt;=3;i++)
+{
+  sum_1=1;
+  for(j=1;j&lt;=i;j++)
+    {
+    sum_1=j*sum_1;//阶乘 
+    }
+    sum_2=sum_1+sum_2;//阶乘之和 
+}
+printf(&quot;%d&quot;,sum_2);
+
+return 0;
+//法二：
+int i=0;
+int sum=1;
+int sum_1=0;
+for(i=1;i&lt;=3;i++)
+{
+  sum*=i;
+  sum_1+=sum;	
+}
+printf(&quot;%d&quot;,sum_1);
+return 0;	
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言基础—输入输出、分支与循环]]></title>
         <id>https://mucixia.github.io/post/c-yu-yan-ji-chu-fen-zhi-yu-xun-huan/</id>
         <link href="https://mucixia.github.io/post/c-yu-yan-ji-chu-fen-zhi-yu-xun-huan/">
         </link>
         <updated>2021-09-13T14:54:10.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-控制结构">一、控制结构</h2>
+        <content type="html"><![CDATA[<h2 id="一-输入输出">一、输入输出</h2>
+<h3 id="1-scanf与printf">1. scanf与printf</h3>
+<p>####（1）scanf<br>
+scanf函数称为格式输入函数，即按用户指定的格式从键盘上把数据输入到指定的变量之中。scanf函数是一个标准库函数，它的函数原型在头文件“stdio.h”中。故在程序前面要先声明#include &lt;stdio.h&gt;.<br>
+scanf的一般形式： scanf(“格式控制字符串”, 地址表列); 如<code>scanf(&quot;%d&quot;,&amp;a)；</code><br>
+其中，<strong>格式化字符串</strong>：<br>
+格式字符串的一般形式为：<br>
+%[*][输入数据宽度][长度]类型<br>
+各部分含义：<br>
+①类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式</th>
+<th style="text-align:center">字符意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">输入十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">输入八进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">输入十六进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">输入无符号十进制整数</td>
+</tr>
+<tr>
+<td style="text-align:center">f或e</td>
+<td style="text-align:center">输入实型数(用小数形式或指数形式)</td>
+</tr>
+<tr>
+<td style="text-align:center">f或e</td>
+<td style="text-align:center">输入实型数(用小数形式或指数形式)</td>
+</tr>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">输入单个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">输入字符串</td>
+</tr>
+</tbody>
+</table>
+<p>②“*”符<br>
+用以表示该输入项，读入后不赋予相应的变量，即跳过该输入值。如：<br>
+<code>scanf(&quot;%d %*d %d&quot;,&amp;a,&amp;b);</code><br>
+当输入为：1   2   3时，把1赋予a，2被跳过，3赋予b<br>
+③ 数据宽度<br>
+用十进制整数指定输入的宽度（即字符数）。例如：<br>
+scanf(&quot;%5d&quot;,&amp;a);<br>
+输入12345678只把12345赋予变量a，其余部分被截去。又如：<br>
+scanf(&quot;%4d%4d&quot;,&amp;a,&amp;b);<br>
+输入12345678将把1234赋予a，而把5678赋予b。<br>
+④长度<br>
+长度格式符为l和h，l表示输入长整型数据（如%ld）和双精度浮点数（如%lf）。h表示输入短整型数据。</p>
+<p><strong>地址列表</strong>：<br>
+&amp;是一个取地址运算符，&amp;a是一个表达式，其功能是求变量的地址。系统先为其变量a分配内存空间，这样变量a就有了内存地址,用&amp;取出a的地址,把输入的数根据所取出的地址，存入内存空间。<br>
+scanf实现原理：<br>
+用户输入 -&gt; 输入缓冲区 -&gt;scanf<br>
+scanf只要输入缓存区有内容,就不会要求用户输入数据。<br>
+由于scanf函数本身不能显示提示串，故先用printf语句在屏幕上输出提示，如：<br>
+<code>printf(&quot;input a,b,c:&quot;);</code><br>
+<code>scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</code></p>
+<h4 id="2-printf">(2) printf</h4>
+<p>功能是将程序运行的结果输出到屏幕上.<br>
+一般格式：<br>
+①printf(&quot;字符串\n&quot;);<br>
+②printf(&quot;字符串\n&quot;);<br>
+③printf(&quot;输出控制符1 输出控制符2…&quot;, 输出参数1, 输出参数2, …); 如:<br>
+<code>printf(&quot;%d %d</code>\n<code>&quot;, i, j);</code>//%d就是输出控制符。<br>
+输出控制符：计算机中所有的数据都是二进制 0、1 代码，所以输出的时候要用“输出控制符”告诉计算机以什么形式将二进制数据显示出来。</p>
+<h3 id="2-getchar与putchar">2. getchar与putchar</h3>
+<h4 id="1getchar">（1）getchar</h4>
+<p>从标准输入流只读取一个字符(包括空格、回车、tab)，读到回车符('\n')时退出，键盘输入的字符都存到缓冲区内,一旦键入回车,getchar就进入缓冲区读取字符,一次只返回第一个字符作为getchar函数的值,如果有循环或足够多的getchar语句,就会依次读出缓冲区内的所有字符直到'\n'.<br>
+如：while((ch=getchar())!='0')<br>
+//		       putchar(ch);<br>
+####（2）putchar<br>
+函数putchar()用于将给定的字符输出到控制台，其原型如下：<br>
+int putchar (int ch);</p>
+<h2 id="二-控制结构">二、控制结构</h2>
 <h3 id="1分支语句">1.分支语句</h3>
 <h4 id="11-分支分类">1.1 分支分类</h4>
 <ul>
 <li>if</li>
 <li>if-else</li>
 <li>if-else if-else</li>
-<li>switch(多分支)<br>
+<li>switch(多分支适用)<br>
 <strong>注意：</strong><br>
 if-else 就近原则配对</li>
 </ul>
@@ -33,6 +174,10 @@ if-else 就近原则配对</li>
 <li>for</li>
 <li>do  while</li>
 </ul>
+<p><strong>注意</strong>：<br>
+①不可以在for循环体内修改循环变量，防止for循环失去控制（死循环）。<br>
+②建议循环控制变量的取值采用“前闭后开”写法。<code>for(i=0; i &lt;10; i++)</code><br>
+③for循环的初始化、调整、判断都可以被省略，但是如果判断部分省略掉，判断条件就恒为真，陷入死循环。</p>
 ]]></content>
     </entry>
     <entry>
@@ -1172,7 +1317,7 @@ Head -&gt;| 数据a | 指针p1 | -&gt;| 数据b | 指针p2 | -&gt;| 数据c | NU
 结点只有一个指针域的链表<br>
 单链表是由表头唯一确定的，故单链表可以用头指针的名字来命名，若头指针名是L，则叫做链表L。<br>
 ②双链表<br>
-结点有两个指针域的链表<br>
+每个结点有两个指针域的链表<br>
 ③循环链表<br>
 首尾相接的链表<br>
 <img src="https://i.loli.net/2021/09/12/V8basSfcK5tdlrM.jpg" alt="4F41B3648980B495A84822E18A505896.png" loading="lazy"><br>
@@ -1199,12 +1344,35 @@ Head -&gt;| 数据a | 指针p1 | -&gt;| 数据b | 指针p2 | -&gt;| 数据c | NU
 <li>结点在存储器中的位置是任意的，即逻辑上相邻的数据元素在物理上不一定相邻。</li>
 <li>只能通过头指针访问链表，并通过每个结点的指针域<strong>依次向后顺序扫描</strong>其余结点。<br>
 顺序表 -&gt; 随机存取 eg:访问第i个元素，a[i-1]；<br>
-链表 -&gt; 顺序存取 eg:访问第i个元素，要从1，2，3，...i依次访问到i。</li>
+链表 -&gt; <strong>顺序存取</strong> eg:访问第i个元素，要从1，2，3，...i依次访问到i。</li>
 </ol>
-<h4 id="4单链表的存储结构">（4）单链表的存储结构</h4>
+<h4 id="4单链表">（4）单链表</h4>
+<p><strong>定义</strong>：<br>
+链表有单链表、双链表以及循环链表。其中，重点介绍单链表。<br>
+单链表是由表头唯一确定的，故单链表可以用头指针的名字来命名，若头指针名是L，则叫做链表L。<br>
+<strong>存储结构</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据域</th>
+<th style="text-align:center">指针域</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">data</th>
+<th style="text-align:center">next</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
 <p><img src="https://i.loli.net/2021/09/12/z7xVmdEtGskAoDF.jpg" alt="0EC62DFC1C1CB50E7D92BA924129380A.png" loading="lazy"><br>
 定义链表L：LinkList L；<br>
 定义结点指针p: LNode *P;</p>
+<hr>
 ]]></content>
     </entry>
     <entry>
@@ -1361,38 +1529,6 @@ part02<br>
 水滴、乘客、名字与行人<br>
 因为一场雨短暂聚在了一起<br>
 <img src="https://i.loli.net/2021/08/25/AICKVOehuv41cPJ.jpg" alt="pexels-kaique-rocha-125510.jpg" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://mucixia.github.io/post/hello-gridea/</id>
-        <link href="https://mucixia.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>
