@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1632662766067">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1632708499587">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1632662766067" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1632708499587" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-warning">
             #心情
         </a>
                         
@@ -132,7 +132,7 @@
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://mucixia.github.io/post/c-yu-yan-shua-ti-ji-lu/">
-                        C语言刷题记录
+                        C语言例题
                     </a>
                 </h2>
                 <div class="post-info">
@@ -190,6 +190,7 @@ printf(&amp;quot;%d&amp;quot;,sum_1);
 return 0;	
 
 3.冒泡排序
+核心在于双层嵌套循环
 排分数：
 int i,j,t,n;
 int a[100];
@@ -221,8 +222,43 @@ for(i=1;i&amp;lt;=n;i++)//打印排好序的数字
    return 0;
 
 根据分数打印人名：
-struct{
+struct student{
+	char name[21];
+	char score;
+};//创建一个结构体存放姓名和分数
+
+int main(){
+	int i,j,n;
+	struct student a[100],t;//创建一个数组用来存放姓名和分数
+	printf(&amp;quot;输入一个n：&amp;quot;);
+	scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);
+	for(i=1;i&amp;lt;=n;i++)
+	{
+		scanf(&amp;quot;%s %d&amp;quot;,&amp;amp;a[i].name,&amp;amp;a[i].score);//分别存入姓名和分数
+	}
+	//排序
+	for(i=1;i&amp;lt;=n-1;i++)
+	{
+		for(j=1;j&amp;lt;=n-i;j++)
+		{
+			if(a[j].score&amp;lt;a[j+1].score)//数组中的分数进行比较
+			{
+				t=a[j];//交换保存着姓名和分数的数组
+				a[j]=a[j+1];
+				a[j+1]=t;
+			}
+			
+		}
+	}
+	for(i=1;i&amp;lt;=n;i++)
+	{
+		printf(&amp;quot;%s %d\n&amp;quot;,a[i].name,a[i].score);//打印排好序的姓名和分数
+	}
+	return 0;	
 }
+
+时间复杂度为O（n^2）
+4. 快速排序
 
                                         </div>
                                         
@@ -1673,7 +1709,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-primary">
             #Python
         </a>
                         
@@ -1739,7 +1775,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1632662766067)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1632708499587)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

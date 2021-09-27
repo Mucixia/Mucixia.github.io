@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-09-26T13:26:22.568Z</updated>
+    <updated>2021-09-27T02:08:25.085Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
     <entry>
-        <title type="html"><![CDATA[C语言刷题记录]]></title>
+        <title type="html"><![CDATA[C语言例题]]></title>
         <id>https://mucixia.github.io/post/c-yu-yan-shua-ti-ji-lu/</id>
         <link href="https://mucixia.github.io/post/c-yu-yan-shua-ti-ji-lu/">
         </link>
@@ -62,7 +62,8 @@ printf(&quot;%d&quot;,sum_1);
 return 0;	
 </code></pre>
 <h3 id="3冒泡排序">3.冒泡排序</h3>
-<p>排分数：</p>
+<p><strong>核心在于双层嵌套循环</strong><br>
+排分数：</p>
 <pre><code>int i,j,t,n;
 int a[100];
 printf(&quot;输入需要排序的个数：&quot;);
@@ -92,9 +93,44 @@ for(i=1;i&lt;=n;i++)//打印排好序的数字
  
    return 0;
 </code></pre>
-<p>根据分数打印人名：<br>
-struct{</p>
-<p>}</p>
+<p>根据分数打印人名：</p>
+<pre><code>struct student{
+	char name[21];
+	char score;
+};//创建一个结构体存放姓名和分数
+
+int main(){
+	int i,j,n;
+	struct student a[100],t;//创建一个数组用来存放姓名和分数
+	printf(&quot;输入一个n：&quot;);
+	scanf(&quot;%d&quot;,&amp;n);
+	for(i=1;i&lt;=n;i++)
+	{
+		scanf(&quot;%s %d&quot;,&amp;a[i].name,&amp;a[i].score);//分别存入姓名和分数
+	}
+	//排序
+	for(i=1;i&lt;=n-1;i++)
+	{
+		for(j=1;j&lt;=n-i;j++)
+		{
+			if(a[j].score&lt;a[j+1].score)//数组中的分数进行比较
+			{
+				t=a[j];//交换保存着姓名和分数的数组
+				a[j]=a[j+1];
+				a[j+1]=t;
+			}
+			
+		}
+	}
+	for(i=1;i&lt;=n;i++)
+	{
+		printf(&quot;%s %d\n&quot;,a[i].name,a[i].score);//打印排好序的姓名和分数
+	}
+	return 0;	
+}
+</code></pre>
+<p>时间复杂度为O（n^2）</p>
+<h3 id="4-快速排序">4. 快速排序</h3>
 ]]></content>
     </entry>
     <entry>

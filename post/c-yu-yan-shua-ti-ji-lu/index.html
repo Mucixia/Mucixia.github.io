@@ -5,9 +5,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    C语言刷题记录 | 在高处，凝望世界流动
+    C语言例题 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1632662766067">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1632708499587">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1632662766067" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1632708499587" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -106,7 +106,7 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            C语言刷题记录
+                            C语言例题
                         </h2>
                         <div class="post-info">
                             <time class="post-time">2021-09-15</time>
@@ -160,7 +160,8 @@ printf(&quot;%d&quot;,sum_1);
 return 0;	
 </code></pre>
 <h3 id="3冒泡排序">3.冒泡排序</h3>
-<p>排分数：</p>
+<p><strong>核心在于双层嵌套循环</strong><br>
+排分数：</p>
 <pre><code>int i,j,t,n;
 int a[100];
 printf(&quot;输入需要排序的个数：&quot;);
@@ -190,9 +191,44 @@ for(i=1;i&lt;=n;i++)//打印排好序的数字
  
    return 0;
 </code></pre>
-<p>根据分数打印人名：<br>
-struct{</p>
-<p>}</p>
+<p>根据分数打印人名：</p>
+<pre><code>struct student{
+	char name[21];
+	char score;
+};//创建一个结构体存放姓名和分数
+
+int main(){
+	int i,j,n;
+	struct student a[100],t;//创建一个数组用来存放姓名和分数
+	printf(&quot;输入一个n：&quot;);
+	scanf(&quot;%d&quot;,&amp;n);
+	for(i=1;i&lt;=n;i++)
+	{
+		scanf(&quot;%s %d&quot;,&amp;a[i].name,&amp;a[i].score);//分别存入姓名和分数
+	}
+	//排序
+	for(i=1;i&lt;=n-1;i++)
+	{
+		for(j=1;j&lt;=n-i;j++)
+		{
+			if(a[j].score&lt;a[j+1].score)//数组中的分数进行比较
+			{
+				t=a[j];//交换保存着姓名和分数的数组
+				a[j]=a[j+1];
+				a[j+1]=t;
+			}
+			
+		}
+	}
+	for(i=1;i&lt;=n;i++)
+	{
+		printf(&quot;%s %d\n&quot;,a[i].name,a[i].score);//打印排好序的姓名和分数
+	}
+	return 0;	
+}
+</code></pre>
+<p>时间复杂度为O（n^2）</p>
+<h3 id="4-快速排序">4. 快速排序</h3>
 
                                 </div>
                     </article>
@@ -228,6 +264,7 @@ struct{</p>
 <li><a href="#1n%E7%9A%84%E9%98%B6%E4%B9%98">1.n的阶乘</a></li>
 <li><a href="#2n%E7%9A%84%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C">2.n的阶乘之和</a></li>
 <li><a href="#3%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F">3.冒泡排序</a></li>
+<li><a href="#4-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">4. 快速排序</a></li>
 </ul>
 </li>
 </ul>
