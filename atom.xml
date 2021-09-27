@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mucixia.github.io</id>
     <title>在高处，凝望世界流动</title>
-    <updated>2021-09-27T02:12:48.262Z</updated>
+    <updated>2021-09-27T11:44:24.539Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mucixia.github.io"/>
     <link rel="self" href="https://mucixia.github.io/atom.xml"/>
@@ -10,6 +10,112 @@
     <logo>https://mucixia.github.io/images/avatar.png</logo>
     <icon>https://mucixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 在高处，凝望世界流动</rights>
+    <entry>
+        <title type="html"><![CDATA[《啊哈 算法》笔记]]></title>
+        <id>https://mucixia.github.io/post/lesslessa-ha-suan-fa-greatergreater-bi-ji/</id>
+        <link href="https://mucixia.github.io/post/lesslessa-ha-suan-fa-greatergreater-bi-ji/">
+        </link>
+        <updated>2021-09-27T02:12:57.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="一-排序">一、排序</h3>
+<h4 id="1桶排序">1.桶排序</h4>
+<h4 id="2冒泡排序">2.冒泡排序</h4>
+<p><strong>核心在于双层嵌套循环</strong><br>
+排分数：</p>
+<pre><code>int i,j,t,n;
+int a[100];
+printf(&quot;输入需要排序的个数：&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+for(i=1;i&lt;=n;i++)
+{
+    scanf(&quot;%d&quot;,&amp;a[i]);
+}
+
+for(i=1; i&lt;=n-1; i++)//n个数需要排n-1趟
+{
+   for(j=1; j&lt;=n-i; j++)//每一趟需要比较n-i次大小
+   {
+   	if(a[j]&lt;a[j+1])//交换位置，从小到大
+   	{
+   		t=a[j];
+   		a[j]=a[j+1];
+   		a[j+1]=t;	
+   		}	
+   }
+}
+
+for(i=1;i&lt;=n;i++)//打印排好序的数字
+{
+   printf(&quot;%d\n&quot;,a[i]);
+}
+ 
+   return 0;
+</code></pre>
+<p>根据分数打印人名：</p>
+<pre><code>struct student{
+	char name[21];
+	char score;
+};//创建一个结构体存放姓名和分数
+
+int main(){
+	int i,j,n;
+	struct student a[100],t;//创建一个数组用来存放姓名和分数
+	printf(&quot;输入一个n：&quot;);
+	scanf(&quot;%d&quot;,&amp;n);
+	for(i=1;i&lt;=n;i++)
+	{
+		scanf(&quot;%s %d&quot;,&amp;a[i].name,&amp;a[i].score);//分别存入姓名和分数
+	}
+	//排序
+	for(i=1;i&lt;=n-1;i++)
+	{
+		for(j=1;j&lt;=n-i;j++)
+		{
+			if(a[j].score&lt;a[j+1].score)//数组中的分数进行比较
+			{
+				t=a[j];//交换保存着姓名和分数的数组
+				a[j]=a[j+1];
+				a[j+1]=t;
+			}
+			
+		}
+	}
+	for(i=1;i&lt;=n;i++)
+	{
+		printf(&quot;%s %d\n&quot;,a[i].name,a[i].score);//打印排好序的姓名和分数
+	}
+	return 0;	
+}
+</code></pre>
+<p>时间复杂度为O（n^2）</p>
+<h4 id="3快速排序">3.快速排序</h4>
+<h3 id="二-栈-队列-链表">二、栈 队列 链表</h3>
+<h4 id="1队列">1.队列</h4>
+<p>允许在队列的首部进行删除操作（head++），在队列的尾部进行插入操作（tail++）；haed用来记录队列的队首（即第一位），tail用来记录队列的队尾的下一个位置。规定：队首和队尾重合时，队列为空。<br>
+问题：现有一串数字，删除第一个数字，第二个数字移到队尾；删除第三个数字，将第四个数字移到队尾......<br>
+<img src="https://i.loli.net/2021/09/27/DBKLMFmlskPwfTy.png" alt="image.png" loading="lazy"><br>
+一般代码实现：</p>
+<pre><code>int main()
+{
+	int q[102]={0,6,3,1,7,5,8,9,2,4},head,tail;
+	int i;
+	head=1;
+	tail=10;
+	while(head&lt;tail)
+	{	printf(&quot;%d&quot;,q[head]);//打印队首
+		head++;//加1，指向新的队首
+		
+		q[tail]=q[head];//将新的队首移到队尾
+		tail++;
+		
+		head++;	//再将队首出队，进入下次循环
+	}
+	return 0;
+}
+
+</code></pre>
+<p>结构体实现：</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言例题]]></title>
         <id>https://mucixia.github.io/post/c-yu-yan-shua-ti-ji-lu/</id>
@@ -1464,141 +1570,6 @@ Head -&gt;| 数据a | 指针p1 | -&gt;| 数据b | 指针p2 | -&gt;| 数据c | NU
         </link>
         <updated>2021-08-08T08:27:29.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/386867829">我的python 之旅 记录与心得 - 流年的文章 - 知乎</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[简单的记录]]></title>
-        <id>https://mucixia.github.io/post/jian-dan-de-ji-lu/</id>
-        <link href="https://mucixia.github.io/post/jian-dan-de-ji-lu/">
-        </link>
-        <updated>2020-01-15T05:40:06.000Z</updated>
-        <summary type="html"><![CDATA[<h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
-]]></summary>
-        <content type="html"><![CDATA[<h4 id="写在前面周而复始-生而不息">写在前面：周而复始 生而不息</h4>
-<!-- more -->
-<p><strong>《在山上的船》</strong></p>
-<p>一只船孤独地泊在湖上<br>
-既没有向往远方<br>
-亦无怀恋过往<br>
-只在原地静默<br>
-头顶迷离的山雾<br>
-底下是静静的群山<br>
-船在群山之下<br>
-却又停在了群山之上<br>
-它去到了永不会去的地方<br>
-<img src="https://mucixia.github.io/post-images/1628926441921.jpg" alt="" loading="lazy"></p>
-<p><strong>《十年后》</strong></p>
-<p>十年后，二十年后，或许是论尽半生<br>
-于 半生的尽头<br>
-回望 记不起究竟多少年前<br>
-留下的痕迹<br>
-当时那一封 心书<br>
-已蒙上 光留下的灰尘<br>
-大概早已被当事人遗忘<br>
-只有纸墨勤勤恳恳还记着</p>
-<p>那些尘埃<br>
-仅此证明 时间走过<br>
-还有<br>
-这个世界<br>
-他也来过<br>
-2019-11-27<br>
-<img src="https://mucixia.github.io/post-images/1628928100550.jpg" alt="" loading="lazy"></p>
-<p><strong>《历程》</strong></p>
-<p>任何事物大概都会<br>
-萌发、生长、繁盛<br>
-消褪、最终湮灭吧<br>
-这是抵不过的自然规律<br>
-消亡后的重生<br>
-隐匿后的沉寂<br>
-萧败后的接续<br>
-亦是无声后的沉默<br>
-亦或是沉寂后的再次归来<br>
-<img src="https://i.loli.net/2021/08/14/yLGkarQf5RW4SZl.jpg" alt="pexels-pixabay-414144.jpg" loading="lazy"></p>
-<p><strong>《雪》</strong></p>
-<p>揉碎的云<br>
-选择在夜里降临世间<br>
-带来了纯白<br>
-带去了污浊<br>
-当然，这只是一个常见的形容<br>
-<img src="https://i.loli.net/2021/08/14/LGd27qZ1kwMpgSN.jpg" alt="pexels-s-migaj-1081111.jpg" loading="lazy"></p>
-<p><strong>《时间与星星》</strong></p>
-<p>我们数着时间<br>
-时间也在数着我们<br>
-我们数着星星<br>
-星星也在望着我们<br>
-<img src="https://i.loli.net/2021/08/14/iqf35WtSbav1Y9e.jpg" alt="pexels-rafael-cerqueira-4737484 _1_.jpg" loading="lazy"></p>
-<p><strong>《适应》</strong></p>
-<p>part01<br>
-一个习惯和依赖黑暗的人<br>
-感恩黑暗带给他的无尽和深邃<br>
-哪怕见到一瞬的太阳<br>
-也会憎恶万物渴望的光明<br>
-part02<br>
-一个习惯和依赖黑暗的人<br>
-感恩黑暗带给他的无尽和深邃<br>
-哪怕见到一瞬的光明后而<br>
-转向长久的黑暗<br>
-也可能会狂热于一丝的光亮而反过来<br>
-憎恶给他一辈子生存环境的黑暗<br>
-<img src="https://i.loli.net/2021/08/14/gHVophvJiNMSnO1.jpg" alt="pexels-pedro-figueras-681467.jpg" loading="lazy"></p>
-<p><strong>《无题》</strong></p>
-<p>不论心憾<br>
-存在即是美好<br>
-不论完美<br>
-合理即使唯一<br>
-<img src="https://i.loli.net/2021/08/14/9J3cOdvZsj5N4Lq.jpg" alt="pexels-adrien-olichon-2736135.jpg" loading="lazy"></p>
-<p><strong>《少年 壮年 老年》</strong></p>
-<p>少年轻狂<br>
-企望柏拉图式的理想生活<br>
-壮年迷茫<br>
-奢求桃花源般的容身圣境<br>
-老年暗伤<br>
-回忆草蛇灰线似可怜时光<br>
-<img src="https://i.loli.net/2021/08/14/VRpNvMO38ysq7E1.jpg" alt="pexels-krunal-parmar-965663.jpg" loading="lazy"></p>
-<p><strong>《人生的一种》</strong><br>
-生命中平凡<br>
-平凡中卑微<br>
-卑微后死去...<br>
-周而复始<br>
-生而不息<br>
-<img src="https://i.loli.net/2021/08/14/MbcRIPYkWgToZCJ.jpg" alt="pexels-cats-coming-707582.jpg" loading="lazy"></p>
-<p><strong>《归向》</strong><br>
-在高处 凝望世界流动<br>
-为填满每一个虚弱地方<br>
-行人揣着欲望涌进街巷<br>
-人车停在线前渴望远方<br>
-可他们 终会重聚于某点<br>
-周而往复 往复不息<br>
-<img src="https://i.loli.net/2021/08/17/iPOWUb4Rlu3dIgV.jpg" alt="pexels-paweł-l-1309687.jpg" loading="lazy"></p>
-<p><strong>《捉迷藏》</strong></p>
-<p>趁着落霞的掩护<br>
-夕阳躲进山中<br>
-跟月亮捉着迷藏<br>
-朝着东方<br>
-赶了一夜<br>
-在另一边的山头<br>
-悄悄地探出头看月亮走了没<br>
-于是有了人们口中的朝阳<br>
-<img src="https://i.loli.net/2021/08/19/XbcS3ZrwGN1MkfC.jpg" alt="pexels-pixabay-462023.jpg" loading="lazy"><br>
-<img src="https://i.loli.net/2021/08/19/UqDVgdZE9kBcPXn.jpg" alt="pexels-tomáš-malík-3367619.jpg" loading="lazy"></p>
-<p><strong>《车里车外》</strong><br>
-虹光和雨滴结满了车窗<br>
-有人趁着雾气<br>
-写上某某名字<br>
-像是在宣告某种存在<br>
-而我在雾上<br>
-划上一个圈<br>
-行人和车子<br>
-都住进这个由小水滴围成的圈里<br>
-数不清的雨滴<br>
-对车里的人是整个斑斓世界<br>
-对车外的人仅仅是一颗水滴<br>
-数不清的名字<br>
-对车里的人是他们自己存在的的存在<br>
-对车外的人或是雨滴落后留下的轨迹<br>
-水滴、乘客、名字与行人<br>
-因为一场雨短暂聚在了一起<br>
-<img src="https://i.loli.net/2021/08/25/AICKVOehuv41cPJ.jpg" alt="pexels-kaique-rocha-125510.jpg" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>
