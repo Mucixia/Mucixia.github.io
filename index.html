@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1633523979804">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1633593167187">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1633523979804" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1633593167187" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,7 @@
                     <time class="post-time">2020-01-15</time>
                     
                         <a href="https://mucixia.github.io/tag/tATJ1Mcio/" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-primary">
             #心情
         </a>
                         
@@ -1765,6 +1765,7 @@ ASL：
 O（n）
 
 1.5 线性表的链式表示和实现
+1.5.1 表示
 （1）概念
 ①结点
 数据元素的存储映象。由数据域和指针域两部分组成。
@@ -1845,6 +1846,77 @@ next
 
 定义链表L：LinkList L；
 定义结点指针p: LNode *P;
+栗子
+typedef struct student{
+    char num[8];
+    char name[8];
+    int score;//前三都是数据域
+    struct student *next;//指针域，next指针指向下一个节点，指针类型是包含四个成员的struct student
+}Lnode,*LinList;
+LinkList L;
+
+或者
+typedef struct{
+    char num[8];
+    char num[8];
+    int score;
+}ElemType;
+typedef struct Lnode {
+    ElemType data;//数据域
+    struct Lnode *next;//指针域
+
+1.5.2 基本操作的实现
+（1）单链表的初始化（带头结点的单链表）
+
+
+
+
+^
+
+
+
+
+步骤：
+
+生成一个新节点作为头结点，用头指针L指向头节点
+将头结点的指针域置空
+
+描述：
+Status InitList_L(LinkList &amp;amp;L){
+    L= new LNode;或 L=(LinkList)molloc(sizeof(LNode));//创建一个头结点
+    L-&amp;gt;next=NULL;//将头结点的指针域置空
+    return 0;
+}
+
+补充：
+
+判断链表是否为空
+空表：链表中无元素，但头指针和头结点还在
+思路：判断头结点的指针域是否为空
+算法描述：
+
+int ListEmpty(LinkList){
+    if(L-&amp;gt;next)//若链表为空，返回0；不为空返回1
+        return 0;
+    else
+        return 1;
+}
+
+
+单链表的销毁
+链表销毁后不存在（头结点也会消失）
+思路：从头指点开始，依次释放所有结点；
+
+算法描述：
+
+Status DestoryList_L(LinkList &amp;amp;L){
+    LinkList p;//Lnode *p;
+    while(L){
+        p=L;
+        L=L-&amp;gt;next;
+        delete p;
+    }
+}
 
 
                                         </div>
@@ -1891,7 +1963,7 @@ python基础
                     <time class="post-time">2021-08-08</time>
                     
                         <a href="https://mucixia.github.io/tag/np7UkmaTS/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-other_3">
             #Python
         </a>
                         
@@ -1923,7 +1995,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-error">
             #Gridea
         </a>
                         
@@ -1957,7 +2029,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1633523979804)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1633593167187)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动
