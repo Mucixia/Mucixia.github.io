@@ -7,7 +7,7 @@
 <title>
     在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1633680191465">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1633916448788">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1633680191465" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1633916448788" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -1915,11 +1915,58 @@ int ListEmpty(LinkList){
 Status DestoryList_L(LinkList &amp;amp;L){
     LinkList p;//Lnode *p;
     while(L){
-        p=L;
+        p=L;//p指针指向头结点
         L=L-&amp;gt;next;
         delete p;
     }
 }
+
+
+清空单链表
+链表仍存在，但链表无元素，成为空链表。（头结点仍存在,，其他节点删除）
+
+Status DestoryList_L(LinkList &amp;amp;L){
+    Lnode *p;*q;//或LinkList p,q;
+    p=L-&amp;gt;next;//p存放要删除的结点
+    while(L){
+        q=p-&amp;gt;next;//q存放下一个节点
+        delete p;
+        p=q;
+    }
+    L-&amp;gt;next=NULL;
+    return OK;
+
+}
+
+
+单链表的表长
+从首元结点开始，每访问一个节点，表长i就+1（头结点不算入表长）
+
+Status DestoryList_L(LinkList L){
+    Lnode *p;
+    int i=0;
+    p=L-&amp;gt;next;//p指向首元结点
+    while(p){
+        i++;//p不为空，表长就加1
+        p=p-&amp;gt;next;
+    }
+    return i;
+}
+
+(2) 取值-取单链表中第i个元素的内容
+从第一个结点出发，顺着链域next逐个结点往下搜索，直至搜索到第i个节点为止。因此，链表不是随机存取结构。
+算法描述:
+Status GetElem L(LinkList L,inti,Elemtype &amp;amp;e){
+    p=L-&amp;gt;next;i=1;
+    while(p&amp;amp;&amp;amp;j&amp;lt;i){
+        p=0-&amp;gt;next;
+        ++j;
+    }
+    if(!p||j&amp;gt;i) return ERROR;
+    e=p-&amp;gt;data;
+    return OK;
+}//GetElem_L
+
 
 
                                         </div>
@@ -1998,7 +2045,7 @@ python基础
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://mucixia.github.io/tag/CzEDw4Xfz/" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_2">
             #Gridea
         </a>
                         
@@ -2032,7 +2079,7 @@ python基础
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1633680191465)">
+        <div class="id_card-avatar" style="background-image: url(https://mucixia.github.io/images/avatar.png?v=1633916448788)">
         </div>
         <h1 class="id_card-title">
             在高处，凝望世界流动

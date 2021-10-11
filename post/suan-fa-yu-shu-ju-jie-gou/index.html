@@ -7,7 +7,7 @@
 <title>
     算法与数据结构 | 在高处，凝望世界流动
 </title>
-<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1633680191465">
+<link rel="shortcut icon" href="https://mucixia.github.io/favicon.ico?v=1633916448788">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://mucixia.github.io">
-                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1633680191465" alt="">
+                <img class="avatar" src="https://mucixia.github.io/images/avatar.png?v=1633916448788" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -485,11 +485,58 @@ typedef struct Lnode {
 <pre><code>Status DestoryList_L(LinkList &amp;L){
     LinkList p;//Lnode *p;
     while(L){
-        p=L;
+        p=L;//p指针指向头结点
         L=L-&gt;next;
         delete p;
     }
 }
+</code></pre>
+<ol start="3">
+<li>清空单链表<br>
+链表仍存在，但链表无元素，成为空链表。（头结点仍存在,，其他节点删除）</li>
+</ol>
+<pre><code>Status DestoryList_L(LinkList &amp;L){
+    Lnode *p;*q;//或LinkList p,q;
+    p=L-&gt;next;//p存放要删除的结点
+    while(L){
+        q=p-&gt;next;//q存放下一个节点
+        delete p;
+        p=q;
+    }
+    L-&gt;next=NULL;
+    return OK;
+
+}
+</code></pre>
+<ol start="4">
+<li>单链表的表长<br>
+从首元结点开始，每访问一个节点，表长i就+1（头结点不算入表长）</li>
+</ol>
+<pre><code>Status DestoryList_L(LinkList L){
+    Lnode *p;
+    int i=0;
+    p=L-&gt;next;//p指向首元结点
+    while(p){
+        i++;//p不为空，表长就加1
+        p=p-&gt;next;
+    }
+    return i;
+}
+</code></pre>
+<p>(2) 取值-取单链表中第i个元素的内容<br>
+从第一个结点出发，顺着链域next逐个结点往下搜索，直至搜索到第i个节点为止。因此，<strong>链表不是随机存取结构</strong>。<br>
+算法描述:</p>
+<pre><code>Status GetElem L(LinkList L,inti,Elemtype &amp;e){
+    p=L-&gt;next;i=1;
+    while(p&amp;&amp;j&lt;i){
+        p=0-&gt;next;
+        ++j;
+    }
+    if(!p||j&gt;i) return ERROR;
+    e=p-&gt;data;
+    return OK;
+}//GetElem_L
+
 </code></pre>
 
                                 </div>
